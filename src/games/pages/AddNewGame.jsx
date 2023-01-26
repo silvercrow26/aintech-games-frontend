@@ -34,9 +34,9 @@ export const AddNewGame = () => {
         graficos, memoria, almacenamiento, googledrive, onInputChange, formState, setFormState } = useForm(formFields);
 
 
-    const [checkedState, setCheckedState] = useState(
-        new Array(cat.length).fill(false)
-    );
+        const [checkedState, setCheckedState] = useState(
+            new Array(cat.length).fill(false)
+        );
 
 
     const handleOnChange = (position) => {
@@ -47,7 +47,7 @@ export const AddNewGame = () => {
                 console.log(cate);
                 setFormState({
                     ...formState,
-                    genre : cat.push(cate)
+                    genre: cat.push(cate.name)
                 });
                
                 return !item;
@@ -59,6 +59,8 @@ export const AddNewGame = () => {
         console.log(formState);
     }
 
+
+    
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(formState);
