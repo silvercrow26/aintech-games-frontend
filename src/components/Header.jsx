@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -12,7 +13,9 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+                <Link className='linka' to='/'>
+                  <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">Link</a>
@@ -24,12 +27,17 @@ const Header = () => {
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Action</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><hr className="dropdown-divider"/></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
               <li className="nav-item">
                 <a className="nav-link disabled">Peliculas(Proximamente)</a>
+              </li>
+              <li className="nav-item">
+                <Link className='linka' to='/newgame'>
+                  <a className="nav-link">Agregar juego</a>
+                </Link>
               </li>
             </ul>
             <form className="d-flex" role="search">
