@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
+import { CheckboxCat } from '../../components/CheckboxCat'
 import Header from '../../components/Header'
 import { useForm } from '../../hooks/useForm'
 
@@ -19,52 +20,54 @@ const formFields = {
 
 
 export const AddNewGame = () => {
+
+
     const cat = [
         {
+            order: 0,
             name: 'Accion',
         },
         {
+            order: 1,
             name: 'Aventura',
+        },
+        {
+            order: 2,
+            name: 'Carreras',
         }
     ]
 
 
 
-    const { nombre, peso, categoria, plataforma, sistema, procesador,
+    const { nombre, peso, plataforma, sistema, procesador,
         graficos, memoria, almacenamiento, googledrive, onInputChange, formState, setFormState } = useForm(formFields);
 
-
-    const [checkedState, setCheckedState] = useState(
-        new Array(cat.length).fill(false)
+    const [data, setData] = useState(
+        cat.sort((a, b) => a.order - b.order)
     );
 
+    const isCheck = () => {
+        const categoria = [];
 
-    const handleOnChange = (position) => {
-        
-        const updatedCheckedState = checkedState.map((item, index) => {
-            if (index === position) {
-                const cate = cat[index].name;
-                console.log(cate);
+        data.map((cat) => {
+            if (cat.checked) {
+
+                categoria.push({name: cat.name});
+
                 setFormState({
                     ...formState,
-                    genre : cat.push(cate)
-                });
-               
-                return !item;
-            } else {
-                return item;
+                    'categoria': categoria
+                })
             }
-        });
-        setCheckedState(updatedCheckedState);
-        console.log(formState);
+        })
     }
 
     const onSubmit = (event) => {
         event.preventDefault();
+        isCheck();
+        console.log(data);
         console.log(formState);
     }
-
-
 
     return (
         <>
@@ -110,27 +113,16 @@ export const AddNewGame = () => {
                     </div>
                     <label>Categoría(s)</label>
                     <div className='form-group'>
-                        <ul className="form-group">
-                            {cat.map(({ name }, index) => {
-                                return (
-                                    <li key={index}>
-                                        <div className="toppings-list-item">
-                                            <div className="left-section">
-                                                <input
-                                                    type="checkbox"
-                                                    id={`custom-checkbox-${index}`}
-                                                    name={categoria}
-                                                    value={name}
-                                                    checked={checkedState[index]}
-                                                    onChange={() => {handleOnChange(index)}}
-                                                />
-                                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                                            </div>
-                                        </div>
-                                    </li>
-                                );
-                            })}
-                        </ul>
+                        {data.map((obj, index) => (
+                            <li key={index}>
+                                <CheckboxCat
+                                    obj={obj}
+                                    onChange={(item) => {
+                                        setData(data.map((d) => (d.order === item.order ? item : d)));
+                                    }}
+                                />
+                            </li>
+                        ))}
                     </div>
                     <div className='form row'>
                         <div className='col-md-6'>
@@ -175,7 +167,6 @@ export const AddNewGame = () => {
                                 name='almacenamiento'
                                 onChange={onInputChange}
                             />
-
                         </div>
                         <div className='col-md-6'>
                             <label className='mt-2'>Servidores de descarga:</label>
