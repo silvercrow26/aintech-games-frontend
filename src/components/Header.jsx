@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuthStore } from '../hooks/useAuthStore';
 
 const Header = () => {
+
+  const { status } = useAuthStore();
+
   return (
     <>
       <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -36,11 +40,14 @@ const Header = () => {
               <li className="nav-item">
                 <a className="nav-link disabled">Peliculas(Proximamente)</a>
               </li>
-              <li className="nav-item">
-                <Link className='nav-link linka' to='/newgame'>
-                  Agregar juego
-                </Link>
-              </li>
+              {
+                (status === 'authenticated') ? (<li className="nav-item">
+                  <Link className='nav-link linka' to='/newgame'>
+                    Agregar juego
+                  </Link>
+                </li>) : null
+              }
+
             </ul>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
