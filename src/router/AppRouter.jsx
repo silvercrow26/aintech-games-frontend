@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { useAuthStore } from '../auth/hooks/useAuthStore';
 import LoginPage from '../auth/pages/LoginPage';
 import { AddNewGame } from '../games/pages/AddNewGame';
 import GamesPage from '../games/pages/GamesPage';
-import { useAuthStore } from '../hooks/useAuthStore';
+
 
 const AppRouter = () => {
 
