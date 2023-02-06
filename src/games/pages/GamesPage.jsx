@@ -5,8 +5,10 @@ import Header from '../../components/Header'
 const GamesPage = () => {
   return (
     <>
-      <Header/>
-      <GameCard/>
+      <Header />
+      <div className='container'>
+        <GameCard />
+      </div>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { CheckboxCat } from '../../components/CheckboxCat'
 import Header from '../../components/Header'
 import { useForm } from '../../hooks/useForm'
@@ -18,9 +18,7 @@ const formFields = {
 }
 
 
-
 export const AddNewGame = () => {
-
 
     const cat = [
         {
@@ -37,10 +35,8 @@ export const AddNewGame = () => {
         }
     ]
 
-
-
     const { nombre, peso, plataforma, sistema, procesador,
-        graficos, memoria, almacenamiento, googledrive, onInputChange, formState, setFormState } = useForm(formFields);
+        graficos, memoria, googledrive, onInputChange, formState, setFormState } = useForm(formFields);
 
     const [data, setData] = useState(
         cat.sort((a, b) => a.order - b.order)
@@ -50,10 +46,8 @@ export const AddNewGame = () => {
         const categoria = [];
 
         data.map((cat) => {
-            if (cat.checked === true) {
-
-                categoria.push({name: cat.name});
-
+            if (cat.checked) {
+                categoria.push({ name: cat.name });
                 setFormState({
                     ...formState,
                     'categoria': categoria
@@ -65,11 +59,14 @@ export const AddNewGame = () => {
 
     
     const onSubmit = (event) => {
-        event.preventDefault();
-        isCheck();
-        console.log(data);
         console.log(formState);
+        event.preventDefault();
     }
+
+    useEffect(() => {
+        isCheck();
+    }, [data])
+
 
     return (
         <>
@@ -87,7 +84,6 @@ export const AddNewGame = () => {
                             name='nombre'
                             onChange={onInputChange}
                         />
-
                     </div>
                     <div className='form row'>
                         <div className='col-md-6'>
@@ -146,9 +142,9 @@ export const AddNewGame = () => {
                                 onChange={onInputChange}
                             />
                             <input
-                                type='text'
+                                type='number'
                                 className='form-control my-2'
-                                placeholder='Memoria'
+                                placeholder='Memoria(GB)'
                                 value={memoria}
                                 name='memoria'
                                 onChange={onInputChange}
@@ -159,14 +155,6 @@ export const AddNewGame = () => {
                                 placeholder='Gráficos'
                                 value={graficos}
                                 name='graficos'
-                                onChange={onInputChange}
-                            />
-                            <input
-                                type='text'
-                                className='form-control'
-                                placeholder='Almacenamiento'
-                                value={almacenamiento}
-                                name='almacenamiento'
                                 onChange={onInputChange}
                             />
                         </div>
@@ -199,7 +187,6 @@ export const AddNewGame = () => {
                             />
                         </div>
                     </div>
-
                     <input
                         type='submit'
                         className='btn btn-success my-2'

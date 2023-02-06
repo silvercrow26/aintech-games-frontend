@@ -1,4 +1,18 @@
-.linka{
+body {
+    font-family: 'Sofia Sans', sans-serif !important;
+    margin: 0;
+    scroll-behavior: smooth !important;
+    overflow-x: hidden !important;
+  
+}
+
+.nav-link .linka{
     all: unset;
     cursor: pointer;
+}
+
+.titles {
+    color: #6F3AFF !important;
+    cursor: pointer;
+    font-size: 1rem;
 }
