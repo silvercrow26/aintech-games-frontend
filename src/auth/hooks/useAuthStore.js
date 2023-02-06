@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
-import { onClearErrorMessage, onChecking, onLogin, onLogout } from "../../store/auth/authSlice";
-import gamesApi from "../api/gamesApi";
+import { onClearErrorMessage, onChecking, onLogin, onLogout } from "../../../store/auth/authSlice";
+import gamesApi from "../../api/gamesApi";
 
 
 export const useAuthStore = () => {

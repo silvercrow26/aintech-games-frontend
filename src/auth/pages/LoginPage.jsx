@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAuthStore } from '../../hooks/useAuthStore';
-import { useForm } from '../../hooks/useForm';
+import { useForm } from '../../games/hooks/useForm';
+import { useAuthStore } from '../hooks/useAuthStore';
 import './LoginPage.css';
 
 const loginFormFields = {

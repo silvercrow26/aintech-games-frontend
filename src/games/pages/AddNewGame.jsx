@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { CheckboxCat } from '../../components/CheckboxCat'
-import Header from '../../components/Header'
-import { useForm } from '../../hooks/useForm'
+import { CheckboxCat } from '../components/CheckboxCat'
+import Header from '../components/Header'
+import { useForm } from '../hooks/useForm'
+
 
 
 const formFields = {
