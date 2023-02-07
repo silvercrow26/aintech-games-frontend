@@ -1,14 +1,40 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+
 
 export const GameCard = (game) => {
+
+    const [steamData, setSteamData] = useState(null);
+
+    const startLoadingGamesDetails = async () => {
+        try {
+            const { data } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${game.steamId}`);
+            setSteamData(data);
+            console.log(data.resp);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        startLoadingGamesDetails();
+    }, [])
+
     return (
         <>
-            <div className="card">
-                <img src="https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png" alt="Card image cap"/>
+            {steamData !== null ? (
+                <div className="card">
+                    <img src={steamData.resp.header_image} alt="Card image cap" />
                     <div className="card-body">
+                        <p className=''>{game.requerimientos}</p>
                         <h5 className="">{game.nombre}</h5>
+                        <button className='btn btn-success'>ver más</button>
                     </div>
-            </div>
+                </div>
+            ) : (
+                <p></p>
+            )}
 
         </>
     )
