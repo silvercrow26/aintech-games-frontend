@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect } from 'react'
 import { useGameStore } from '../hooks/useGameStore';
 import { GameCard } from './GameCard';
@@ -5,9 +6,9 @@ import { GameCard } from './GameCard';
 
 
 export const GameItem = () => {
-    
+
     const { startLoadingGames, games, isLoading } = useGameStore();
-    
+
     useEffect(() => {
         startLoadingGames();
     }, [])

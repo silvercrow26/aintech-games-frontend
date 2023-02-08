@@ -12,7 +12,6 @@ export const useGameStore = () => {
         try {
             dispatch(onLoadingGames());
             const { data } = await gamesApi.get('/games');
-            console.log(data);
             dispatch(onSetGames(data));
         } catch (error) {
             console.log(error);

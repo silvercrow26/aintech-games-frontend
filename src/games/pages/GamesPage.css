@@ -20,7 +20,8 @@
 }
 
 .card-body{
-    margin: 0px !important;
+    --bs-card-spacer-y: 0.2rem;
+    --bs-card-spacer-x: 0.2rem;
     
 }
 
