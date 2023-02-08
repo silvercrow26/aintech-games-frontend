@@ -13,13 +13,13 @@ export const GameItem = () => {
     }, [])
     return (
         <>
-            <span>{isLoading ? "Cargando juegos..." :
+            <div className="d-flex justify-content-between flex-wrap container mt-5">{isLoading ? "Cargando juegos..." :
                 games.length === 0 ? "No hay juegos disponibles en este momento." : games.map(game => (
                     <GameCard key={game._id}
                         {...game}
                     />
                 ))
-            }</span>
+            }</div>
         </>
     )
 }
