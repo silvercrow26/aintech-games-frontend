@@ -10,8 +10,8 @@ export const GameCard = (game) => {
         try {
             const { data } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${game.steamId}`);
             setSteamData(data);
+            // console.log(data.resp);
             console.log(data.resp);
-
         } catch (error) {
             console.log(error);
         }
@@ -20,7 +20,6 @@ export const GameCard = (game) => {
     useEffect(() => {
         startLoadingGamesDetails();
     }, [])
-
     return (
         <>
             {steamData !== null ? (
@@ -29,7 +28,15 @@ export const GameCard = (game) => {
                     <div className="card-body">
                         <p className=''>{game.requerimientos}</p>
                         <h5 className="">{game.nombre}</h5>
+                        <ul>
+                            {
+                                steamData.resp.genres.map(gen => (
+                                    <li key={gen.description}>{gen.description}</li>
+                                )
+                                )}
+                        </ul>
                         <button className='btn btn-success'>ver más</button>
+
                     </div>
                 </div>
             ) : (
