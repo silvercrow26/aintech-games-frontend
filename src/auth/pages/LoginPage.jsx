@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from '../../games/hooks/useForm';
-import { useAuthStore } from '../hooks/useAuthStore';
+import { useGameStore } from '../../games/hooks/useGameStore';
 import './LoginPage.css';
 
 const loginFormFields = {
@@ -10,7 +10,7 @@ const loginFormFields = {
 
 const LoginPage = () => {
 
-  const { startLogin } = useAuthStore();
+  const { startLoadingDetails } = useGameStore();
 
   const { loginEmail, loginPassword, onInputChange } = useForm(loginFormFields)
 

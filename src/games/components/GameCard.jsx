@@ -1,36 +1,23 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useAuthStore } from '../../auth/hooks/useAuthStore';
+import { useGameStore } from '../hooks/useGameStore';
 
 
-export const GameCard = (game) => {
+export const GameCard = (item) => {
 
-    const [steamData, setSteamData] = useState(null);
-
-    const startLoadingGamesDetails = async () => {
-        try {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${game.steamId}`);
-            setSteamData(data);
-            // console.log(data.resp);
-            console.log(data.resp);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        startLoadingGamesDetails();
-    }, [])
     return (
         <>
-            {steamData !== null ? (
+            {item !== null ? (
                 <div className="card">
-                    <img src={steamData.resp.header_image} alt="Card image cap" />
+                    <img src={item.detail.header_image} alt="Card image cap" />
                     <div className="card-body">
-                        <p className=''>{game.requerimientos}</p>
-                        <h5 className="">{game.nombre}</h5>
+                        <p className=''>{item.requerimientos}</p>
+                        <h5 className="">{item.game.nombre}</h5>
+                        <h5 className="">{item.detail.steam_appid}</h5>
                         <ul>
                             {
-                                steamData.resp.genres.map(gen => (
+                                item.detail.genres.map(gen => (
                                     <li key={gen.description}>{gen.description}</li>
                                 )
                                 )}
