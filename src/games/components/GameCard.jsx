@@ -9,9 +9,10 @@ export const GameCard = (game) => {
     const startLoadingGamesDetails = async () => {
         try {
             const { data } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${game.steamId}`);
+            
             setSteamData(data);
             // console.log(data.resp);
-            console.log(data.resp);
+            console.log(data);
         } catch (error) {
             console.log(error);
         }

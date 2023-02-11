@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary bgNavbar" data-bs-theme="dark">
         <div className="container-fluid container">
           <Link className='navbar-brand titles' aria-current="page" href="#" to='/'>
             AINTECH GAMES
@@ -52,9 +52,13 @@ const Header = () => {
             </ul>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Buscar</button>
+              <button className="btn btn-outline-success me-4" type="submit">Buscar</button>
             </form>
+
+            <button className="buttonLogin">Logearse</button>
+
           </div>
+
         </div>
       </nav>
     </>
