@@ -7,23 +7,8 @@ import gamesApi from "../../api/gamesApi";
 
 export const useGameStore = () => {
     const { games, isLoading } = useSelector(state => state.game);
-    const dispatch = useDispatch();
-    
-    // const startLoadingGames = async () => {
-    //     var arr = [];
-    //     try {
-    //         dispatch(onLoadingGames());
-    //         const { data } = await gamesApi.get('/games');
 
-    //         await Promise.all(data.map(async (element) => {
-    //             const { data: detail } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${element.steamId}`);
-    //             arr.push({ game: element, detail: detail.resp });
-    //         }));
-    //         dispatch(onSetGames(arr));
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const dispatch = useDispatch();
 
     const startLoadingGames = async () => {
         try {
@@ -39,7 +24,7 @@ export const useGameStore = () => {
         const {data} = await gamesApi.post('/games/new', game);
         dispatch(onAddGame({...game, _id: data._id}));
     }
-
+    
 
     return {
         //Props
@@ -49,6 +34,7 @@ export const useGameStore = () => {
         //Methods
         startLoadingGames,
         startSavingGame,
+
     }
 }
 

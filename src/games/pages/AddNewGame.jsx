@@ -42,6 +42,8 @@ export const AddNewGame = () => {
 
     const [detalle, setDetalle] = useState(details);
 
+
+    
     const onSubmit = (event) => {
         event.preventDefault();
         if (detalle.header_image == '' && detalle.genres == []) {
@@ -108,7 +110,6 @@ export const AddNewGame = () => {
     
     return (
         <>
-            <Header />
             <div className='container'>
                 <h3 className='text-center py-3'>Agregar juego nuevo</h3>
                 <div className='row'>
