@@ -8,6 +8,7 @@ import { GameCard } from './GameCard';
 export const GameItem = () => {
 
     const { startLoadingGames, games, isLoading} = useGameStore();
+
     useEffect(() => {
         startLoadingGames();
 
