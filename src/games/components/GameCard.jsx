@@ -1,49 +1,47 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { faGamepad, faWarning } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useAuthStore } from "../../auth/hooks/useAuthStore";
+import { useGameStore } from "../hooks/useGameStore";
+
+export const GameCard = (item) => {
 
 
-export const GameCard = (game) => {
+  return (
+    <>
+    <div data-aos="fade-up">
 
-    const [steamData, setSteamData] = useState(null);
-
-    const startLoadingGamesDetails = async () => {
-        try {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${game.steamId}`);
+      {item !== null ? (
+        <Link to={`juegos/${item.game._id}`} className="text-decoration-none">
+        <div className="text-light mb-1 bgCard mb-5 mx-1 ">
+          <img
+            src={item.game.header_image}
+            alt="Card image cap"
+            className="imagenCard"
+            />
+          {item.game.requerimientos === "Bajos Requisitos"
+          ? (
+            <span className="badge bg-success d-flex justify-content-between">
+            <FontAwesomeIcon icon={faGamepad}/> {item.game.requerimientos}
+           </span>
+          ) : (
             
-            setSteamData(data);
-            // console.log(data.resp);
-            console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        startLoadingGamesDetails();
-    }, [])
-    return (
-        <>
-            {steamData !== null ? (
-                <div className="card">
-                    <img src={steamData.resp.header_image} alt="Card image cap" />
-                    <div className="card-body">
-                        <p className=''>{game.requerimientos}</p>
-                        <h5 className="">{game.nombre}</h5>
-                        <ul>
-                            {
-                                steamData.resp.genres.map(gen => (
-                                    <li key={gen.description}>{gen.description}</li>
-                                )
-                                )}
-                        </ul>
-                        <button className='btn btn-success'>ver más</button>
-
-                    </div>
-                </div>
-            ) : (
-                <p></p>
-            )}
-
-        </>
-    )
-}
+            <span className="badge bg-danger d-flex justify-content-between text-center">
+              <FontAwesomeIcon icon={faGamepad}/> {item.game.requerimientos}
+            </span>
+          )}
+      
+          <div className="mt-2">
+            <h6 className="text-center">{item.game.nombre}</h6>
+          </div>
+        </div>
+        </Link>
+      ) : (
+        <p>Cargando..</p>
+        )}
+        </div>
+    </>
+  );
+};
