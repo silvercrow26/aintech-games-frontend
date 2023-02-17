@@ -1,198 +1,252 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { CheckboxCat } from '../components/CheckboxCat'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
+import { ImageItem } from '../components/ImageItem'
 import { useForm } from '../hooks/useForm'
-
-
+import { useGameStore } from '../hooks/useGameStore'
 
 const formFields = {
     nombre: '',
-    peso: '',
-    plataforma: '',
-    sistema: '',
-    categoria: '',
-    procesador: '',
-    graficos: '',
-    memoria: '',
-    almacenamiento: '',
-    googledrive: '',
+    steamId: '',
+    requerimientos: 'Altos Requisitos',
+    googleServ: '',
+    mediafireServ: '',
+    torrentServ: '',
+    ddownloadServ: '',
+    comprarJuego: '',
+    observaciones: '',
+}
+
+const details = {
+    genres: "",
+    required_age: "",
+    detailed_description: "",
+    developers: "",
+    publishers: "",
+    release_date: "",
+    pc_requirements: "",
+    background: "",
 }
 
 
 export const AddNewGame = () => {
 
-    const cat = [
-        {
-            order: 0,
-            name: 'Accion',
-        },
-        {
-            order: 1,
-            name: 'Aventura',
-        },
-        {
-            order: 2,
-            name: 'Carreras',
-        }
-    ]
+    const { nombre, steamId, requerimientos, observaciones, comprarJuego, googleServ, mediafireServ, torrentServ, ddownloadServ, onInputChange, formState, setFormState } = useForm(formFields);
+    const [file, setFile] = useState();
+    const [title, setTitle] = useState('');
+    const [header_image, setHeader_image] = useState('');
 
-    const { nombre, peso, plataforma, sistema, procesador,
-        graficos, memoria, googledrive, onInputChange, formState, setFormState } = useForm(formFields);
+    const { startSavingGame } = useGameStore();
+    const [validId, setValidId] = useState('');
+    const [enabledButton, setEnabledButton] = useState('disabled');
 
-    const [data, setData] = useState(
-        cat.sort((a, b) => a.order - b.order)
-    );
-
-    const isCheck = () => {
-        const categoria = [];
-
-        data.map((cat) => {
-            if (cat.checked) {
-                categoria.push({ name: cat.name });
-                setFormState({
-                    ...formState,
-                    'categoria': categoria
-                })
-            }
-        })
-    }
+    const [detalle, setDetalle] = useState(details);
 
     const onSubmit = (event) => {
-        console.log(formState);
         event.preventDefault();
+        if (detalle.header_image == '' && detalle.genres == []) {
+            return console.log('Verifica la id ingresada.')
+        }
+        console.log(formState);
+        startSavingGame(formState);
+        console.log('Se ha agregado el juego: ' + nombre)
+    }
+
+
+    const handleCheck = async () => {
+        try {
+            setValidId('');
+            setEnabledButton('disabled');
+            const { data: detail } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${steamId}`);
+            setDetalle({
+                genres: detail.resp.genres,
+                required_age: detail.resp.required_age,
+                detailed_description: detail.resp.detailed_description,
+                developers: detail.resp.developers,
+                publishers: detail.resp.publishers,
+                release_date: detail.resp.release_date,
+                pc_requirements: detail.resp.pc_requirements,
+                background: detail.resp.background,
+            });
+            setFormState({
+                ...formState,
+                "detalle": detalle,
+            });
+            setValidId('is-valid');
+            setEnabledButton('enabled');
+        } catch (error) {
+            console.log('No se encontró la id ingresada.');
+            setDetalle(details);
+        }
+    };
+    const handleUpload = async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('name', title);
+        formData.append('game', steamId);
+
+        const { data } = await axios.post(`${import.meta.env.VITE_API_URL_IMG}/upload`, formData);
+        setHeader_image(data.img.url);
+    };
+
+    const handleChange = (e) => {
+        setFile(e.target.files[0]);
     }
 
     useEffect(() => {
-        isCheck();
-    }, [data])
+        handleCheck();
+    }, [steamId, file]);
 
-
+    useEffect(() => {
+        setFormState({
+            ...formState,
+            "header_image": header_image,
+        })
+    }, [header_image]);
+    
     return (
         <>
             <Header />
             <div className='container'>
                 <h3 className='text-center py-3'>Agregar juego nuevo</h3>
-                <form onSubmit={onSubmit}>
-                    <div className='form-group'>
-                        <label>Nombre</label>
-                        <input
-                            type='text'
-                            className='form-control'
-                            placeholder='Nombre del videojuego'
-                            value={nombre}
-                            name='nombre'
-                            onChange={onInputChange}
-                        />
-                    </div>
-                    <div className='form row'>
-                        <div className='col-md-6'>
-                            <label>Peso(GB)</label>
-                            <input
-                                type='number'
-                                className='form-control'
-                                placeholder='15'
-                                value={peso}
-                                name='peso'
-                                onChange={onInputChange}
-                            />
-                        </div>
-                        <div className='col-md-6'>
-                            <label>Plataforma</label>
+                <div className='row'>
+
+                    <form onSubmit={onSubmit} className="col">
+                        <div className='form-group'>
+                            <label>Nombre</label>
                             <input
                                 type='text'
                                 className='form-control'
-                                placeholder='PC'
-                                value={plataforma}
-                                name='plataforma'
+                                placeholder='Nombre del videojuego'
+                                value={nombre}
+                                name='nombre'
                                 onChange={onInputChange}
+                                required
                             />
                         </div>
-                    </div>
-                    <label>Categoría(s)</label>
-                    <div className='form-group'>
-                        {data.map((obj, index) => (
-                            <li key={index}>
-                                <CheckboxCat
-                                    obj={obj}
-                                    onChange={(item) => {
-                                        setData(data.map((d) => (d.order === item.order ? item : d)));
-                                    }}
+
+
+                        <div className='form row'>
+                            <div className='col-md-3'>
+                                <label>Steam ID</label>
+
+                                <input
+                                    type='number'
+                                    className={`form-control ${validId}`}
+                                    placeholder='15'
+                                    value={steamId}
+                                    name='steamId'
+                                    onChange={onInputChange}
+                                    required
                                 />
-                            </li>
-                        ))}
-                    </div>
-                    <div className='form row'>
-                        <div className='col-md-6'>
-                            <label className='mt-2'>Requisitos mínimos:</label>
-                            <input
-                                type='text'
-                                className='form-control my-2'
-                                placeholder='Sistema operativo'
-                                value={sistema}
-                                name='sistema'
-                                onChange={onInputChange}
-                            />
-                            <input
-                                type='text'
-                                className='form-control my-2'
-                                placeholder='Procesador'
-                                value={procesador}
-                                name='procesador'
-                                onChange={onInputChange}
-                            />
-                            <input
-                                type='number'
-                                className='form-control my-2'
-                                placeholder='Memoria(GB)'
-                                value={memoria}
-                                name='memoria'
-                                onChange={onInputChange}
-                            />
-                            <input
-                                type='text'
-                                className='form-control my-2'
-                                placeholder='Gráficos'
-                                value={graficos}
-                                name='graficos'
-                                onChange={onInputChange}
-                            />
+
+                            </div>
+                            <div className='col'>
+                                <label>Requisitos:</label>
+                                <select className="form-select" aria-label="Default select example"
+                                    id="requerimientos"
+                                    value={requerimientos}
+                                    onChange={onInputChange}
+                                    name='requerimientos'
+                                >
+                                    <option value="Altos Requisitos">Altos Requisitos</option>
+                                    <option value="Medios Requisitos">Medios Requisitos</option>
+                                    <option value="Bajos Requisitos">Bajos Requisitos</option>
+                                </select>
+
+                            </div>
+
+
+
                         </div>
-                        <div className='col-md-6'>
+                        <div className='col'>
+                            <label className='mt-2'>Comprar juego:</label>
+                            <input
+                                type='text'
+                                className='form-control my-2'
+                                placeholder='https://www.instant-gaming.com/'
+                                name='comprarJuego'
+                                value={comprarJuego}
+                                onChange={onInputChange}
+                            />
+
                             <label className='mt-2'>Servidores de descarga:</label>
                             <input
                                 type='text'
                                 className='form-control my-2'
-                                placeholder='Google Drive'
-                                name='googledrive'
-                                value={googledrive}
+                                placeholder='Google Drive (Opcional)'
+                                name='googleServ'
+                                value={googleServ}
                                 onChange={onInputChange}
                             />
                             <input
                                 type='text'
                                 className='form-control my-2'
-                                placeholder='Mediafire'
+                                placeholder='Mediafire (Opcional)'
+                                name='mediafireServ'
+                                value={mediafireServ}
+                                onChange={onInputChange}
                             />
                             <input
                                 type='text'
                                 className='form-control my-2'
-                                placeholder='Torrent'
-
+                                placeholder='Torrent (Opcional)'
+                                name='torrentServ'
+                                value={torrentServ}
+                                onChange={onInputChange}
                             />
                             <input
                                 type='text'
                                 className='form-control my-2'
-                                placeholder='DDownload'
-
+                                placeholder='Torrent (Opcional)'
+                                name='ddownloadServ'
+                                value={ddownloadServ}
+                                onChange={onInputChange}
+                            />
+                            <label className='mt-2'>Observaciones:</label>
+                            <textarea
+                                type='textarea'
+                                className='form-control my-2'
+                                name='observaciones'
+                                value={observaciones}
+                                onChange={onInputChange}
                             />
                         </div>
+
+                        <input
+                            type='submit'
+                            className={`btn btn-success my-2 ${enabledButton}`}
+                            value='Agregar'
+                        />
+                    </form>
+                    <div className='col-md-4'>
+                        <form onSubmit={handleUpload}>
+
+                            <label>Título</label>
+                            <input
+                                type="text"
+                                placeholder='Header Image'
+                                className='form-control'
+                                onChange={e => setTitle(e.target.value)}
+                            />
+                            <label>Imagen</label>
+                            <input
+                                type="file"
+                                className='form-control'
+                                onChange={handleChange}
+                            />
+                            <input
+                                type='submit'
+                                className="btn btn-primary form-control my-2"
+                                value='Upload'
+                            />
+                        </form>
                     </div>
-                    <input
-                        type='submit'
-                        className='btn btn-success my-2'
-                        value='Agregar'
-                    />
-                </form>
+                </div>
             </div>
+
         </>
     )
 }

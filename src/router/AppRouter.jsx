@@ -12,7 +12,7 @@ const AppRouter = () => {
 
     useEffect(() => {
         checkAuthToken();
-      }, [])
+    }, [])
 
     return (
         <Routes>
@@ -22,13 +22,13 @@ const AppRouter = () => {
                         <>
                             <Route path='/' element={<GamesPage />} />
                             <Route path='/*' element={<Navigate to='/' />} />
-                            <Route path='/newgame' element={<AddNewGame />} />
                         </>
                     ) : (
                         <>
                             <Route path='/' element={<GamesPage />} />
                             <Route path='/auth/login' element={<LoginPage />} />
-                            <Route path="/newgame" element={<Navigate to="/auth/login" />} />
+                            <Route path='/newgame' element={<AddNewGame />} />
+                            {/* <Route path="/newgame" element={<Navigate to="/auth/login" />} /> */}
                         </>
                     )
             }

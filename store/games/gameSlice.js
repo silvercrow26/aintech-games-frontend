@@ -15,14 +15,18 @@ export const gameSlice = createSlice({
         onSetGames: (state, { payload }) => {
             state.isLoading = false;
             payload.forEach(element => {
-                const exist = state.games.some(game => game.game._id === element.game._id);
+                const exist = state.games.some(game => game._id === element._id);
                 if(!exist){
                     state.games.push(element);
                 }
             });
         },
+        onAddGame: (state, {payload}) => {
+            state.games.push(payload);
+        },
+
     }
 });
 
-export const { onLoadingGames, onSetGames, onSetDetails } = gameSlice.actions
+export const { onLoadingGames, onSetGames, onAddGame } = gameSlice.actions
 
