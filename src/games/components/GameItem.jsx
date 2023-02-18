@@ -11,9 +11,8 @@ export const GameItem = () => {
 
     useEffect(() => {
         startLoadingGames();
-
-
     }, []);
+
     return (
         <>
             <span className="d-flex justify-content-center  mt-5 flex-wrap container">{isLoading ? (<div className="text-center w-100 mt-5">

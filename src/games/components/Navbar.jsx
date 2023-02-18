@@ -2,13 +2,18 @@ import {
   faMagnifyingGlass,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../auth/hooks/useAuthStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
-  const { status } = useAuthStore();
+  const { status, startLogout, user } = useAuthStore();
+
+  const handleLogout = () => {
+    startLogout();
+
+  }
 
   return (
     <>
@@ -23,7 +28,7 @@ const Header = () => {
             href="#"
             to="/"
           >
-            AINTECH GAMES
+            AINTECH Online
           </Link>
           <button
             className="navbar-toggler"
@@ -96,27 +101,36 @@ const Header = () => {
               ) : null}
             </ul>
 
-              <form className="d-flex searchMobileQuery me-4 " role="search">
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="input"
-                    id="search"
-                    name="search"
-                    placeholder="Buscar..."
-                    autoComplete="off"
-                  />
-                  <button className="button--submit">
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <form className="d-flex searchMobileQuery me-4 " role="search">
+              <div className="input-group">
+                <input
+                  type="text"
+                  className="input"
+                  id="search"
+                  name="search"
+                  placeholder="Buscar..."
+                  autoComplete="off"
+                />
+                <button className="button--submit">
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </button>
+              </div>
+            </form>
+            {
+              status === "not-authenticated" ? (
+                <Link to="/auth/login">
+                  <button className="buttonLogin">
+                    <FontAwesomeIcon icon={faRightToBracket} /> Logearse
+                  </button>
+                </Link>
+              ) :
+                <div>
+                  <label className="text-light mx-2">Hi {user.name}!</label>
+                  <button onClick={handleLogout} className="buttonLogout">
+                    <FontAwesomeIcon icon={faRightToBracket} /> Salir
                   </button>
                 </div>
-              </form>
-
-              <Link to="/auth/login">
-                <button className="buttonLogin">
-                  <FontAwesomeIcon icon={faRightToBracket} /> Logearse
-                </button>
-              </Link>
+            }
           </div>
         </div>
       </nav>

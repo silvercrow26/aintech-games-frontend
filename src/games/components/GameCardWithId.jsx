@@ -35,6 +35,9 @@ export const GameCardWithId = () => {
             <FontAwesomeIcon icon={faGamepad} className="mx-3" />{" "}
             {gameCardId.requerimientos}
           </span>
+          <div className="gameCardIdWallpaper">
+          <img src={gameCardId?.detalle[0]?.background} />
+          </div>
           <div className="container">
             <div className="row">
               <div className="col-md-9 mt-4 col-sm-12 ">
