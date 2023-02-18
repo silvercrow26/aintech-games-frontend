@@ -39,8 +39,9 @@ export const GameCardWithId = () => {
     return (
         <div style={{
             "backgroundImage": `url(${background})`,
-            "height": "100%",
-            "width": "100%"
+            "backgroundSize": '100%',
+            "backgroundRepeat": 'no-repeat',
+            "backgroundAttachment": 'fixed'
         }}>
             {gameCardId !== undefined && (
                 <section>
@@ -90,6 +91,24 @@ export const GameCardWithId = () => {
                                         >
                                             Mediafire
                                         </a>
+                                    </div>
+                                    <div className='text-light'>
+                                    <p dangerouslySetInnerHTML={{ __html: gameCardId?.detalle[0]?.pc_requirements.minimum }}></p>
+                                    </div>
+                                    <div className='text-light'>
+                                    <p dangerouslySetInnerHTML={{ __html: gameCardId?.detalle[0]?.pc_requirements.recommended}}></p>
+                                    </div>
+                                    <div className='text-light'>
+                                    <p dangerouslySetInnerHTML={{ __html: gameCardId?.detalle[0]?.pc_requirements.minimum }}></p>
+                                    </div>
+                                    <div className='text-light'>
+                                    <p dangerouslySetInnerHTML={{ __html: gameCardId?.detalle[0]?.pc_requirements.recommended}}></p>
+                                    </div>
+                                    <div className='text-light'>
+                                    <p dangerouslySetInnerHTML={{ __html: gameCardId?.detalle[0]?.pc_requirements.minimum }}></p>
+                                    </div>
+                                    <div className='text-light'>
+                                    <p dangerouslySetInnerHTML={{ __html: gameCardId?.detalle[0]?.pc_requirements.recommended}}></p>
                                     </div>
                                 </div>
                             </div>
