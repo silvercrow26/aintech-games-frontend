@@ -6,7 +6,7 @@ import { faGamepad } from '@fortawesome/free-solid-svg-icons'
 export const GameCardWithId = () => {
     const [gameCardId, setGameCardId] = useState([])
     const params = useParams();
-
+    
     const getGameCardWithId = async() => {
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/games/${params.id}`)
         setGameCardId(res.data.msg);
@@ -14,7 +14,7 @@ export const GameCardWithId = () => {
 
     useEffect(() => {
         getGameCardWithId();
-    }, [])
+    }, []);
 
 
     return (

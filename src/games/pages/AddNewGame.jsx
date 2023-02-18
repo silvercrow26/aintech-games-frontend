@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import Header from '../components/Header'
+import Header from '../components/Navbar'
 import { ImageItem } from '../components/ImageItem'
 import { useForm } from '../hooks/useForm'
 import { useGameStore } from '../hooks/useGameStore'
@@ -33,7 +33,7 @@ export const AddNewGame = () => {
 
     const { nombre, steamId, requerimientos, observaciones, comprarJuego, googleServ, mediafireServ, torrentServ, ddownloadServ, onInputChange, formState, setFormState } = useForm(formFields);
     const [file, setFile] = useState();
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState('Header');
     const [header_image, setHeader_image] = useState('');
 
     const { startSavingGame } = useGameStore();
@@ -49,7 +49,6 @@ export const AddNewGame = () => {
         if (detalle.header_image == '' && detalle.genres == []) {
             return console.log('Verifica la id ingresada.')
         }
-        console.log(formState);
         startSavingGame(formState);
         console.log('Se ha agregado el juego: ' + nombre)
     }
@@ -77,7 +76,6 @@ export const AddNewGame = () => {
             setValidId('is-valid');
             setEnabledButton('enabled');
         } catch (error) {
-            console.log('No se encontró la id ingresada.');
             setDetalle(details);
         }
     };
@@ -231,6 +229,7 @@ export const AddNewGame = () => {
                                 placeholder='Header Image'
                                 className='form-control'
                                 onChange={e => setTitle(e.target.value)}
+                                value={title}
                             />
                             <label>Imagen</label>
                             <input
@@ -240,14 +239,14 @@ export const AddNewGame = () => {
                             />
                             <input
                                 type='submit'
-                                className="btn btn-primary form-control my-2"
+                                className={`btn btn-primary form-control my-2 ${enabledButton}`}
                                 value='Upload'
                             />
+                            <img src={header_image} className="container" />
                         </form>
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

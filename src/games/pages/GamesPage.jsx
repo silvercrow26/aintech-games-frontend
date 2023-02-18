@@ -1,6 +1,6 @@
 import { GameCardWithId } from '../components/GameCardWithId';
 import { GameItem } from '../components/GameItem'
-import Header from '../components/Header'
+import Header from '../components/Navbar'
 import './GamesPage.css';
 
 const GamesPage = () => {
