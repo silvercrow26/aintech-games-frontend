@@ -202,7 +202,7 @@ export const AddNewGame = () => {
                             <input
                                 type='text'
                                 className='form-control my-2'
-                                placeholder='Torrent (Opcional)'
+                                placeholder='ddownload (Opcional)'
                                 name='ddownloadServ'
                                 value={ddownloadServ}
                                 onChange={onInputChange}
