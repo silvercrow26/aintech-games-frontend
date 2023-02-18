@@ -28,7 +28,7 @@ const Header = () => {
             href="#"
             to="/"
           >
-            AINTECH GAMES
+            AINTECH Online
           </Link>
           <button
             className="navbar-toggler"
@@ -127,7 +127,7 @@ const Header = () => {
                 <div>
                   <label className="text-light mx-2">Hi {user.name}!</label>
                   <button onClick={handleLogout} className="buttonLogout">
-                    <FontAwesomeIcon icon={faRightToBracket} /> exit
+                    <FontAwesomeIcon icon={faRightToBracket} /> Salir
                   </button>
                 </div>
             }

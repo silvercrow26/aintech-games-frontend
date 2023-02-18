@@ -1,3 +1,4 @@
+import { Footer } from '../components/Footer';
 import { GameCardWithId } from '../components/GameCardWithId';
 import { GameItem } from '../components/GameItem'
 import Header from '../components/Navbar'
@@ -15,7 +16,7 @@ const GamesPage = () => {
       <div className='container d-flex'>
 
         <GameItem />
-       
+      
       </div>
     </main>
     </>

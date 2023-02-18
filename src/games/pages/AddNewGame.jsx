@@ -117,7 +117,7 @@ export const AddNewGame = () => {
     
     return (
         <>
-            <div className='container'>
+            <div className='container text-light'>
                 <h3 className='text-center py-3'>Agregar juego nuevo</h3>
                 <div className='row'>
 
