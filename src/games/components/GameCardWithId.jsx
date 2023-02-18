@@ -35,9 +35,8 @@ export const GameCardWithId = () => {
             <FontAwesomeIcon icon={faGamepad} className="mx-3" />{" "}
             {gameCardId.requerimientos}
           </span>
-          <div className="gameCardIdWallpaper">
+          <div >
           <img src={gameCardId?.detalle[0]?.background} />
-          </div>
           <div className="container">
             <div className="row">
               <div className="col-md-9 mt-4 col-sm-12 ">
@@ -48,11 +47,11 @@ export const GameCardWithId = () => {
                     <img
                       src={gameCardId.header_image}
                       className="w-100"
-                    />
+                      />
                     <p className="text-light small mt-3">
                       Generos:{" "}
                       {gameCardId?.detalle[0]?.genres.map((genres) => (
-                        <span className="text-light">
+                          <span className="text-light">
                           {genres.description + " | "}
                         </span>
                       ))}
@@ -67,14 +66,14 @@ export const GameCardWithId = () => {
                       className="btn btn-outline-primary mx-3"
                       href={gameCardId.googleServ}
                       target="_blank"
-                    >
+                      >
                       Google Server
                     </a>
                     <a
                       className="btn btn-outline-primary"
                       href={gameCardId.mediafireServ}
                       target="_blank"
-                    >
+                      >
                       Mediafire
                     </a>
                   </div>
@@ -84,6 +83,7 @@ export const GameCardWithId = () => {
                 <p className="text-light">columna 2</p>
               </div>
             </div>
+      </div>
           </div>
         </section>
       )}
