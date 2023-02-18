@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuthStore } from '../auth/hooks/useAuthStore';
 import LoginPage from '../auth/pages/LoginPage';
+import { Footer } from '../games/components/Footer';
 import { GameCardWithId } from '../games/components/GameCardWithId';
 import Header from '../games/components/Header';
 import { AddNewGame } from '../games/pages/AddNewGame';
@@ -40,6 +41,7 @@ const AppRouter = () => {
             }
 
         </Routes>
+             <Footer />
         </>
     )
 }
