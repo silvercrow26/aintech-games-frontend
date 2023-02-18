@@ -8,10 +8,11 @@ import { useAuthStore } from "../../auth/hooks/useAuthStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
-  const { status, startLogout } = useAuthStore();
+  const { status, startLogout, user } = useAuthStore();
 
   const handleLogout = () => {
     startLogout();
+
   }
 
   return (
@@ -115,16 +116,21 @@ const Header = () => {
                 </button>
               </div>
             </form>
-            {status === "not-authenticated" ? (
-              <Link to="/auth/login">
-                <button className="buttonLogin">
-                  <FontAwesomeIcon icon={faRightToBracket} /> Logearse
-                </button>
-              </Link>
-            ) :
-              <button onClick={handleLogout} className="buttonLogin">
-                <FontAwesomeIcon icon={faRightToBracket} /> Logout
-              </button>}
+            {
+              status === "not-authenticated" ? (
+                <Link to="/auth/login">
+                  <button className="buttonLogin">
+                    <FontAwesomeIcon icon={faRightToBracket} /> Logearse
+                  </button>
+                </Link>
+              ) :
+                <div>
+                  <label className="text-light mx-2">Hi {user.name}!</label>
+                  <button onClick={handleLogout} className="buttonLogout">
+                    <FontAwesomeIcon icon={faRightToBracket} /> exit
+                  </button>
+                </div>
+            }
           </div>
         </div>
       </nav>
