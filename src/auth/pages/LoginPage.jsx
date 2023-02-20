@@ -25,12 +25,12 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className='container  login-container w-50 border p-5 bgCardLogin'>
+      <div className='container mt-3  border p-5 bgCardLogin'>
         <Link to="/" className="volverInicio">
       <button className="btn btn-outline-light mb-5"><FontAwesomeIcon icon={faArrowLeft}/> Volver al inicio</button>
         </Link>
         <h2 className="mb-3 text-center TituloLogin text-light">Aintech Games</h2>
-        <form onSubmit={loginSubmit} >
+        <form onSubmit={loginSubmit} className="needs-validation"novalidate >
           <div className='form-group'>
             <span className="mb-3 text-light"><FontAwesomeIcon icon={faEnvelope} /> Correo:</span>
             <input
@@ -52,15 +52,18 @@ const LoginPage = () => {
               name='loginPassword'
               value={loginPassword}
               onChange={onInputChange}
+             
               required
             />
           </div>
-          <div className='mt-3'>
+          <div className='mt-3 text-center'>
     
-            <button   type="submit" className='buttonLoginAuth w-100 text-center'>Iniciar Sesión</button>
-             <button className="buttonRegistro w-100 mt-3 text-center">Registrarse</button>
+            <button   type="submit" className='buttonLoginAuth w-50 mx-5 text-center'>Iniciar Sesión</button>
+            <div className="mt-3 ">
+             <Link className="text-center text-decoration-none" to='/auth/register'><b>Crear una cuenta de aintech.online gratis</b></Link>
+            </div>
           </div>
-          <p className="text-center small text-secondary mt-5"><FontAwesomeIcon icon={faShield} /> Datos seguros y protegidos</p>
+          <p className="text-center small text-secondary mt-3"><FontAwesomeIcon icon={faShield} /> Datos seguros y protegidos</p>
         </form>
       </div>
     </>

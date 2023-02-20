@@ -1,10 +1,15 @@
-.login-container{
-    margin-top: 2%;
-}
 
 .bgCardLogin{
     box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
     border: 1px solid #6F3AFF !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 30px;
+
+  border:1px solid #5e4dcd;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
 }
 
 .bgCardLogin:hover{

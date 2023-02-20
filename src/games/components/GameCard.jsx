@@ -8,10 +8,10 @@ import { useGameStore } from "../hooks/useGameStore";
 
 export const GameCard = (item) => {
 
-
+const requirements = item.requirements.toUpperCase().replace("-", ' ');
   return (
     <>
-    <div data-aos="fade-up">
+    <div data-aos="fade-up" >
 
       {item !== null ? (
         <Link to={`juegos/${item._id}`} className="text-decoration-none">
@@ -24,17 +24,17 @@ export const GameCard = (item) => {
           {item.requerimientos === "Bajos Requisitos"
           ? (
             <span className="badge bg-success d-flex justify-content-between">
-            <FontAwesomeIcon icon={faGamepad}/> {item.requerimientos}
+            <FontAwesomeIcon icon={faGamepad}/> {requirements}
            </span>
           ) : (
             
             <span className="badge bg-danger d-flex justify-content-between text-center">
-              <FontAwesomeIcon icon={faGamepad}/> {item.requerimientos}
+              <FontAwesomeIcon icon={faGamepad}/> {requirements}
             </span>
           )}
       
           <div className="mt-2">
-            <h6 className="text-center">{item.nombre}</h6>
+            <h6 className="text-center">{item.name}</h6>
           </div>
         </div>
         </Link>

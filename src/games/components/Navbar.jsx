@@ -1,6 +1,8 @@
 import {
+  faGear,
   faMagnifyingGlass,
   faRightToBracket,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -41,9 +43,9 @@ const Header = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-              <li className="nav-item">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent" >
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item mx-1">
                 <Link
                   className="nav-link linka"
                   aria-current="page"
@@ -53,12 +55,8 @@ const Header = () => {
                   Inicio
                 </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item dropdown">
+
+              <li className="nav-item dropdown mx-1">
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -66,34 +64,32 @@ const Header = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown
+                  Requisitos
                 </a>
                 <ul className="dropdown-menu">
                   <li>
                     <a className="dropdown-item" href="#">
-                      Action
+                     Altos requisitos
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Another action
+                     Medios requisitos
                     </a>
                   </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
+
                   <li>
                     <a className="dropdown-item" href="#">
-                      Something else here
+                      Bajos requisitos
                     </a>
                   </li>
                 </ul>
               </li>
-              <li className="nav-item">
+              <li className="nav-item mx-1">
                 <a className="nav-link disabled">Peliculas(Proximamente)</a>
               </li>
               {status === "authenticated" ? (
-                <li className="nav-item">
+                <li className="nav-item mx-1">
                   <Link className="nav-link linka" to="/newgame">
                     Agregar juego
                   </Link>
@@ -124,12 +120,37 @@ const Header = () => {
                   </button>
                 </Link>
               ) :
-                <div>
-                  <label className="text-light mx-2">Hi {user.name}!</label>
-                  <button onClick={handleLogout} className="buttonLogout">
-                    <FontAwesomeIcon icon={faRightToBracket} /> Salir
-                  </button>
-                </div>
+
+                  <li className="nav-item dropdown mb-3 ">
+                <a
+                  className="nav-link dropdown-toggle text-light text-decoration-none dropdownUser"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <FontAwesomeIcon icon={faUser} /> {user.name}
+                </a>
+                <ul className="dropdown-menu text-light">
+                  <li>
+                    <a className="dropdown-item " href="#">
+                      <Link to={`/user/configuration/${user.uid}`} className="text-decoration-none">
+                      <FontAwesomeIcon icon={faGear} /> Configuración
+                      </Link>
+                    </a>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item text-danger" href="#"  onClick={handleLogout} >
+                    <FontAwesomeIcon icon={faRightToBracket}  /> Cerrar sesión
+                    </a>
+                  </li>
+                </ul>
+              </li>
+                 
+
             }
           </div>
         </div>
