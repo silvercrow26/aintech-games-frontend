@@ -30,7 +30,7 @@ const LoginPage = () => {
       <button className="btn btn-outline-light mb-5"><FontAwesomeIcon icon={faArrowLeft}/> Volver al inicio</button>
         </Link>
         <h2 className="mb-3 text-center TituloLogin text-light">Aintech Games</h2>
-        <form onSubmit={loginSubmit} className="needs-validation"novalidate >
+        <form onSubmit={loginSubmit} className="needs-validation" noValidate >
           <div className='form-group'>
             <span className="mb-3 text-light"><FontAwesomeIcon icon={faEnvelope} /> Correo:</span>
             <input

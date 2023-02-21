@@ -4,17 +4,18 @@ import Header from '../components/Navbar'
 import { ImageItem } from '../components/ImageItem'
 import { useForm } from '../hooks/useForm'
 import { useGameStore } from '../hooks/useGameStore'
+import imgApi from '../../api/imgApi'
 
 const formFields = {
-    nombre: '',
+    name: '',
     steamId: '',
-    requerimientos: 'Altos Requisitos',
-    googleServ: '',
-    mediafireServ: '',
-    torrentServ: '',
-    ddownloadServ: '',
-    comprarJuego: '',
-    observaciones: '',
+    requirements: 'altos-requisitos',
+    serverOne: '',
+    serverThree: '',
+    serverTwo: '',
+    serverFour: '',
+    buyGame: '',
+    notes: '',
 }
 
 const details = {
@@ -31,7 +32,7 @@ const details = {
 
 export const AddNewGame = () => {
 
-    const { nombre, steamId, requerimientos, observaciones, comprarJuego, googleServ, mediafireServ, torrentServ, ddownloadServ, onInputChange, formState, setFormState } = useForm(formFields);
+    const { name, steamId, requirements, notes, buyGame, serverOne, serverThree, serverTwo, serverFour, onInputChange, formState, setFormState } = useForm(formFields);
     const [file, setFile] = useState();
     const [title, setTitle] = useState('Header');
     const [header_image, setHeader_image] = useState('');
@@ -41,17 +42,17 @@ export const AddNewGame = () => {
     const [enabledButton, setEnabledButton] = useState('disabled');
     const [enabledButtonUpload, setEnabledButtonUpload] = useState('disabled');
 
-    const [detalle, setDetalle] = useState(details);
+    const [detail, setDetail] = useState(details);
    
     const onSubmit = (event) => {
         event.preventDefault();
-        if (detalle.header_image == '' && detalle.genres == []) {
+        if (detail.header_image == '' && detail.genres == []) {
             return console.log('Verifica la id ingresada.')
         }
         startSavingGame(formState);
-        console.log('Se ha agregado el juego: ' + nombre);
+        console.log('Se ha agregado el juego: ' + name);
         setFormState(formFields);
-        setDetalle(details);
+        setDetail(details);
         setHeader_image('');
         setFile();
     }
@@ -62,7 +63,7 @@ export const AddNewGame = () => {
             setEnabledButtonUpload('disabled');
             const { data: detail } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${steamId}`);
             console.log(detail.resp);
-            setDetalle({
+            setDetail({
                 genres: detail.resp.genres,
                 required_age: detail.resp.required_age,
                 short_description: detail.resp.short_description,
@@ -74,12 +75,12 @@ export const AddNewGame = () => {
             });
             setFormState({
                 ...formState,
-                "detalle": detalle,
+                "detail": detail,
             });
             setValidId('is-valid');
             setEnabledButtonUpload('enabled');
         } catch (error) {
-            setDetalle(details);
+            setDetail(details);
         }
     };
     const handleUpload = async (event) => {
@@ -95,7 +96,7 @@ export const AddNewGame = () => {
         formData.append('name', title);
         formData.append('game', steamId);
 
-        const { data } = await axios.post(`${import.meta.env.VITE_API_URL_IMG}/upload`, formData);
+        const { data } = await imgApi.post(`/upload`, formData);
         setHeader_image(data.img.url);
         setEnabledButton('enabled');
     };
@@ -128,8 +129,8 @@ export const AddNewGame = () => {
                                 type='text'
                                 className='form-control'
                                 placeholder='Nombre del videojuego'
-                                value={nombre}
-                                name='nombre'
+                                value={name}
+                                name='name'
                                 onChange={onInputChange}
                                 required
                             />
@@ -152,10 +153,10 @@ export const AddNewGame = () => {
                             <div className='col'>
                                 <label>Requisitos:</label>
                                 <select className="form-select" aria-label="Default select example"
-                                    id="requerimientos"
-                                    value={requerimientos}
+                                    id="requirements"
+                                    value={requirements}
                                     onChange={onInputChange}
-                                    name='requerimientos'
+                                    name='requirements'
                                 >
                                     <option value="Altos Requisitos">Altos Requisitos</option>
                                     <option value="Medios Requisitos">Medios Requisitos</option>
@@ -169,8 +170,8 @@ export const AddNewGame = () => {
                                 type='text'
                                 className='form-control my-2'
                                 placeholder='https://www.instant-gaming.com/'
-                                name='comprarJuego'
-                                value={comprarJuego}
+                                name='buyGame'
+                                value={buyGame}
                                 onChange={onInputChange}
                             />
 
@@ -179,40 +180,40 @@ export const AddNewGame = () => {
                                 type='text'
                                 className='form-control my-2'
                                 placeholder='Google Drive (Opcional)'
-                                name='googleServ'
-                                value={googleServ}
+                                name='serverOne'
+                                value={serverOne}
                                 onChange={onInputChange}
                             />
                             <input
                                 type='text'
                                 className='form-control my-2'
                                 placeholder='Mediafire (Opcional)'
-                                name='mediafireServ'
-                                value={mediafireServ}
+                                name='serverThree'
+                                value={serverThree}
                                 onChange={onInputChange}
                             />
                             <input
                                 type='text'
                                 className='form-control my-2'
                                 placeholder='Torrent (Opcional)'
-                                name='torrentServ'
-                                value={torrentServ}
+                                name='serverTwo'
+                                value={serverTwo}
                                 onChange={onInputChange}
                             />
                             <input
                                 type='text'
                                 className='form-control my-2'
                                 placeholder='ddownload (Opcional)'
-                                name='ddownloadServ'
-                                value={ddownloadServ}
+                                name='serverFour'
+                                value={serverFour}
                                 onChange={onInputChange}
                             />
-                            <label className='mt-2'>Observaciones:</label>
+                            <label className='mt-2'>Notas:</label>
                             <textarea
                                 type='textarea'
                                 className='form-control my-2'
-                                name='observaciones'
-                                value={observaciones}
+                                name='notes'
+                                value={notes}
                                 onChange={onInputChange}
                             />
                         </div>
