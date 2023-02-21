@@ -119,7 +119,7 @@ const Header = () => {
                     <FontAwesomeIcon icon={faRightToBracket} /> Logearse
                   </button>
                 </Link>
-              ) :
+              ) : (
 
                   <li className="nav-item dropdown mb-3 ">
                 <a
@@ -134,7 +134,14 @@ const Header = () => {
                 <ul className="dropdown-menu text-light">
                   <li>
                     <a className="dropdown-item " href="#">
-                      <Link to={`/user/configuration/${user.uid}`} className="text-decoration-none">
+                      <Link to={`/user/profile/${user.name}`} className="text-decoration-none text-light">
+                      <FontAwesomeIcon icon={faUser} />  Mi Perfil
+                      </Link>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item " href="#">
+                      <Link to={`/user/configuration/${user.uid}`} className="text-decoration-none text-light">
                       <FontAwesomeIcon icon={faGear} /> Configuración
                       </Link>
                     </a>
@@ -149,7 +156,7 @@ const Header = () => {
                   </li>
                 </ul>
               </li>
-                 
+                 )
 
             }
           </div>

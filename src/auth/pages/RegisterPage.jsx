@@ -13,18 +13,17 @@ export const RegisterPage = () => {
     const { registerName, registerEmail, registerPassword, repeatRegisterPassword, onInputChange } = useForm(loginRegisterFields);
     return (
         <div>
-            <h3 className="text-center text-light">Registro</h3>
-            <div className='container mt-3  border p-5 bgCardLogin'>
+            <div className='container mt-3  border p-5 bgCardLogin mb-5'>
         <Link to="/" className="volverInicio">
       <button className="btn btn-outline-light mb-5"><FontAwesomeIcon icon={faArrowLeft}/> Volver al inicio</button>
         </Link>
         <h2 className="mb-3 text-center TituloLogin text-light">Aintech Games</h2>
-        <form >
+        <form  autocomplete="off">
         <div className='form-group'>
             <span className="mb-3 text-light"><FontAwesomeIcon icon={faEnvelope} /> Nombre:</span>
             <input
               type="text"
-              className='form-control bg-dark w-100 text-light'
+              className='borderInputs p-2  bg-dark w-100 text-light'
               placeholder='Nombre'
               name='registerName'
               value={registerName}
@@ -36,11 +35,12 @@ export const RegisterPage = () => {
             <span className="mb-3 text-light"><FontAwesomeIcon icon={faEnvelope} /> Correo:</span>
             <input
               type="email"
-              className='form-control bg-dark w-100 text-light'
+              className='borderInputs p-2  bg-dark w-100 text-light'
               placeholder='Correo'
               name='registerEmail'
               value={registerEmail}
               onChange={onInputChange}
+
               required
             />
           </div>
@@ -48,12 +48,12 @@ export const RegisterPage = () => {
           <span className="mb-3 text-light"><FontAwesomeIcon icon={faLock} /> Contraseña:</span>
             <input
               type="password"
-              className="form-control bg-dark w-100 text-light"
+              className="borderInputs p-2  bg-dark w-100 text-light"
               placeholder="Contraseña"
               name='registerPassword'
               value={registerPassword}
               onChange={onInputChange}
-             
+
               required
             />
           </div>
@@ -62,7 +62,7 @@ export const RegisterPage = () => {
           <span className="mb-3 text-light"><FontAwesomeIcon icon={faLock} /> Repetir contraseña:</span>
             <input
               type="password"
-              className="form-control bg-dark w-100 text-light"
+              className="borderInputs p-2  bg-dark w-100 text-light"
               placeholder="Contraseña"
               name='repeatRegisterPassword'
               value={repeatRegisterPassword}

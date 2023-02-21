@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuthStore } from '../auth/hooks/useAuthStore';
 import LoginPage from '../auth/pages/LoginPage';
+import { ProfileUser } from '../auth/pages/ProfileUser';
 import { RegisterPage } from '../auth/pages/RegisterPage';
 import { UserPageId } from '../auth/pages/UserPageId';
 import { Footer } from '../games/components/Footer';
@@ -34,6 +35,7 @@ export const AppRouter = () => {
                                 <Route path='/*' element={<Navigate to='/' />} />
                                 <Route path='/newgame' element={<AddNewGame />} />
                                 <Route path='/user/configuration/:id' element={<UserPageId />} />
+                                <Route path='/user/profile/:name' element={<ProfileUser/>} />
                             </>
                         ) : (
                             <>
@@ -41,6 +43,7 @@ export const AppRouter = () => {
                                 <Route path='/auth/register' element={<RegisterPage />} />
                                 <Route path="/newgame" element={<Navigate to="/auth/login" />} />
                                 <Route path='/user/configuration/:id' element={<Navigate to="/auth/login" />} />
+                                <Route path='/user/profile/:name' element={<ProfileUser/>} />
                             </>
                         )
                 }
