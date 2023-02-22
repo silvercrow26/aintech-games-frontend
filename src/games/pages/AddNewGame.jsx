@@ -1,128 +1,47 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import Header from '../components/Navbar'
-import { ImageItem } from '../components/ImageItem'
+import React, { useEffect } from 'react'
 import { useForm } from '../hooks/useForm'
 import { useGameStore } from '../hooks/useGameStore'
-import imgApi from '../../api/imgApi'
+import { AddImage } from '../components/AddImage'
+import { getGameDetail } from '../helpers/getGameDetail'
 
 const formFields = {
     name: '',
     steamId: '',
     requirements: 'altos-requisitos',
-    serverOne: '',
-    serverThree: '',
-    serverTwo: '',
-    serverFour: '',
     buyGame: '',
     notes: '',
 }
 
-const details = {
-    genres: "",
-    required_age: "",
-    detailed_description: "",
-    developers: "",
-    publishers: "",
-    release_date: "",
-    pc_requirements: "",
-    background: "",
-}
-
-
 export const AddNewGame = () => {
 
-    const { name, steamId, requirements, notes, buyGame, serverOne, serverThree, serverTwo, serverFour, onInputChange, formState, setFormState } = useForm(formFields);
-    const [file, setFile] = useState();
-    const [title, setTitle] = useState('Header');
-    const [header_image, setHeader_image] = useState('');
+    const { name, steamId, requirements, notes, buyGame, onInputChange, formState, setFormState } = useForm(formFields);
+    const { setActiveGame, activeGame } = useGameStore();
+    const { detail, validId, handleCheck } = getGameDetail(steamId);
 
-    const { startSavingGame } = useGameStore();
-    const [validId, setValidId] = useState('');
-    const [enabledButton, setEnabledButton] = useState('disabled');
-    const [enabledButtonUpload, setEnabledButtonUpload] = useState('disabled');
-
-    const [detail, setDetail] = useState(details);
-   
-    const onSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        if (detail.header_image == '' && detail.genres == []) {
+        console.log(formState);
+        if (validId == 'is-invalid') {
             return console.log('Verifica la id ingresada.')
         }
-        startSavingGame(formState);
-        console.log('Se ha agregado el juego: ' + name);
-        setFormState(formFields);
-        setDetail(details);
-        setHeader_image('');
-        setFile();
+        setActiveGame(formState);
     }
-
-    const handleCheck = async () => {
-        try {
-            setValidId('');
-            setEnabledButtonUpload('disabled');
-            const { data: detail } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${steamId}`);
-            console.log(detail.resp);
-            setDetail({
-                genres: detail.resp.genres,
-                required_age: detail.resp.required_age,
-                short_description: detail.resp.short_description,
-                developers: detail.resp.developers,
-                publishers: detail.resp.publishers,
-                release_date: detail.resp.release_date,
-                pc_requirements: detail.resp.pc_requirements,
-                background: detail.resp.background,
-            });
-            setFormState({
-                ...formState,
-                "detail": detail,
-            });
-            setValidId('is-valid');
-            setEnabledButtonUpload('enabled');
-        } catch (error) {
-            setDetail(details);
-        }
-    };
-    const handleUpload = async (event) => {
-        event.preventDefault();
-        setEnabledButton('disabled');
-        try {
-            
-        } catch (error) {
-            
-        }
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('name', title);
-        formData.append('game', steamId);
-
-        const { data } = await imgApi.post(`/upload`, formData);
-        setHeader_image(data.img.url);
-        setEnabledButton('enabled');
-    };
-
-    const handleChange = (e) => {
-        setFile(e.target.files[0]);
-    }
-
-    useEffect(() => {
-        handleCheck();
-    }, [steamId, file]);
 
     useEffect(() => {
         setFormState({
             ...formState,
-            "header_image": header_image,
+            "detail": detail,
         })
-    }, [header_image]);
-    
+    }, [detail]);
+
     return (
         <>
-            <div className='container text-light'>
+            {(activeGame == null) ? <div className='container text-light'>
                 <h3 className='text-center py-3'>Agregar juego nuevo</h3>
                 <div className='row'>
 
-                    <form onSubmit={onSubmit} className="col">
+                    <form onSubmit={handleSubmit} className="col">
                         <div className='form-group'>
                             <label>Nombre</label>
                             <input
@@ -146,6 +65,7 @@ export const AddNewGame = () => {
                                     value={steamId}
                                     name='steamId'
                                     onChange={onInputChange}
+                                    onBlur={handleCheck}
                                     required
                                 />
 
@@ -158,9 +78,9 @@ export const AddNewGame = () => {
                                     onChange={onInputChange}
                                     name='requirements'
                                 >
-                                    <option value="Altos Requisitos">Altos Requisitos</option>
-                                    <option value="Medios Requisitos">Medios Requisitos</option>
-                                    <option value="Bajos Requisitos">Bajos Requisitos</option>
+                                    <option value="altos-requisitos">Altos Requisitos</option>
+                                    <option value="medios-requisitos">Medios Requisitos</option>
+                                    <option value="bajos-requisitos">Bajos Requisitos</option>
                                 </select>
                             </div>
                         </div>
@@ -172,40 +92,6 @@ export const AddNewGame = () => {
                                 placeholder='https://www.instant-gaming.com/'
                                 name='buyGame'
                                 value={buyGame}
-                                onChange={onInputChange}
-                            />
-
-                            <label className='mt-2'>Servidores de descarga:</label>
-                            <input
-                                type='text'
-                                className='form-control my-2'
-                                placeholder='Google Drive (Opcional)'
-                                name='serverOne'
-                                value={serverOne}
-                                onChange={onInputChange}
-                            />
-                            <input
-                                type='text'
-                                className='form-control my-2'
-                                placeholder='Mediafire (Opcional)'
-                                name='serverThree'
-                                value={serverThree}
-                                onChange={onInputChange}
-                            />
-                            <input
-                                type='text'
-                                className='form-control my-2'
-                                placeholder='Torrent (Opcional)'
-                                name='serverTwo'
-                                value={serverTwo}
-                                onChange={onInputChange}
-                            />
-                            <input
-                                type='text'
-                                className='form-control my-2'
-                                placeholder='ddownload (Opcional)'
-                                name='serverFour'
-                                value={serverFour}
                                 onChange={onInputChange}
                             />
                             <label className='mt-2'>Notas:</label>
@@ -220,36 +106,13 @@ export const AddNewGame = () => {
 
                         <input
                             type='submit'
-                            className={`btn btn-success my-2 ${enabledButton}`}
+                            className={`btn btn-success my-2 `}
                             value='Agregar'
                         />
                     </form>
-                    <div className='col-md-4'>
-                        <form onSubmit={handleUpload}>
-                            <label>Título</label>
-                            <input
-                                type="text"
-                                placeholder='Header Image'
-                                className='form-control'
-                                onChange={e => setTitle(e.target.value)}
-                                value={title}
-                            />
-                            <label>Imagen</label>
-                            <input
-                                type="file"
-                                className='form-control'
-                                onChange={handleChange}
-                            />
-                            <input
-                                type='submit'
-                                className={`btn btn-primary form-control my-2 ${enabledButtonUpload}`}
-                                value='Upload'
-                            />
-                            <img src={header_image} className="container" />
-                        </form>
-                    </div>
                 </div>
-            </div>
+            </div> 
+            : <AddImage />}
         </>
     )
 }

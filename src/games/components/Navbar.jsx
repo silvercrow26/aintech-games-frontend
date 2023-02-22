@@ -68,13 +68,20 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="#">
-                     Altos requisitos
-                    </a>
+                    <Link
+                      className="nav-link linka"
+                      aria-current="page"
+                      href="#"
+                      // to="/juegos/nivel/altos-requisitos"
+                      >
+                      
+                      Altos requisitos
+                    </Link>
+
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                     Medios requisitos
+                    <a className="dropdown-item" href="http://localhost:9001/api/games/level/medios-requisitos">
+                      Medios requisitos
                     </a>
                   </li>
 
@@ -121,36 +128,32 @@ const Header = () => {
                 </Link>
               ) :
 
-                  <li className="nav-item dropdown mb-3 ">
-                <a
-                  className="nav-link dropdown-toggle text-light text-decoration-none dropdownUser"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <FontAwesomeIcon icon={faUser} /> {user.name}
-                </a>
-                <ul className="dropdown-menu text-light">
-                  <li>
-                    <a className="dropdown-item " href="#">
+                <li className="nav-item dropdown mb-3 ">
+                  <a
+                    className="nav-link dropdown-toggle text-light text-decoration-none dropdownUser"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <FontAwesomeIcon icon={faUser} /> {user.name}
+                  </a>
+                  <ul className="dropdown-menu text-light">
+                    <li className="dropdown-item " href="#">
                       <Link to={`/user/configuration/${user.uid}`} className="text-decoration-none">
-                      <FontAwesomeIcon icon={faGear} /> Configuración
+                        <FontAwesomeIcon icon={faGear} /> Configuración
                       </Link>
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item text-danger" href="#"  onClick={handleLogout} >
-                    <FontAwesomeIcon icon={faRightToBracket}  /> Cerrar sesión
-                    </a>
-                  </li>
-                </ul>
-              </li>
-                 
-
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a className="dropdown-item text-danger" href="#" onClick={handleLogout} >
+                        <FontAwesomeIcon icon={faRightToBracket} /> Cerrar sesión
+                      </a>
+                    </li>
+                  </ul>
+                </li>
             }
           </div>
         </div>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect } from 'react'
+import { useDownloadServerStore } from '../hooks/useDownloadServerStore';
 import { useGameStore } from '../hooks/useGameStore';
 import { GameCard } from './GameCard';
 
@@ -8,9 +9,11 @@ import { GameCard } from './GameCard';
 export const GameItem = () => {
 
     const { startLoadingGames, games, isLoading} = useGameStore();
+    const {startLoadingDownloadServers} = useDownloadServerStore();
 
     useEffect(() => {
         startLoadingGames();
+        startLoadingDownloadServers();
     }, []);
 
     return (

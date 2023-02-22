@@ -1,14 +1,19 @@
-import axios from "axios";
+
 import { useDispatch, useSelector } from "react-redux"
-import { onAddGame, onLoadingGames, onSetGames } from "../../../store/games/gameSlice";
+import { onAddGame, onLoadingGames, onSetGames, onSetActiveGame } from "../../../store/games/gameSlice";
 import gamesApi from "../../api/gamesApi";
 
 
 
 export const useGameStore = () => {
-    const { games, isLoading } = useSelector(state => state.game);
+    const { games, isLoading, activeGame} = useSelector(state => state.game);
 
     const dispatch = useDispatch();
+
+
+    const setActiveGame = (game) => {
+        dispatch(onSetActiveGame(game))
+    };
 
     const startLoadingGames = async () => {
         try {
@@ -21,19 +26,21 @@ export const useGameStore = () => {
     }
 
     const startSavingGame = async (game) => {
-        const {data} = await gamesApi.post('/games/new', game);
-        dispatch(onAddGame({...game, _id: data._id}));
+        const { data } = await gamesApi.post('/games/new', game);
+        dispatch(onAddGame({ ...game, _id: data._id }));
     }
-    
+
 
     return {
         //Props
         games,
         isLoading,
+        activeGame,
 
         //Methods
         startLoadingGames,
         startSavingGame,
+        setActiveGame,
 
     }
 }

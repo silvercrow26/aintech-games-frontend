@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     games: [],
     isLoading: false,
+    activeGame: null,
 }
 
 
@@ -18,17 +19,20 @@ export const gameSlice = createSlice({
             state.isLoading = false;
             payload.forEach(element => {
                 const exist = state.games.some(game => game._id === element._id);
-                if(!exist){
+                if (!exist) {
                     state.games.push(element);
                 }
             });
         },
-        onAddGame: (state, {payload}) => {
-            state.games.push(payload);
+        onSetActiveGame: (state, { payload }) => {
+            state.activeGame = payload;
         },
-
+        onAddGame: (state, { payload }) => {
+            state.games.push(payload);
+            state.activeGame = null;
+        },
     }
 });
 
-export const { onLoadingGames, onSetGames, onAddGame } = gameSlice.actions
+export const { onLoadingGames, onSetGames, onAddGame, onSetActiveGame} = gameSlice.actions
 

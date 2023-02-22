@@ -9,10 +9,9 @@ import { useGameStore } from "../hooks/useGameStore";
 export const GameCard = (item) => {
 
 const requirements = item.requirements.toUpperCase().replace("-", ' ');
-  return (
+   return (
     <>
     <div data-aos="fade-up" >
-
       {item !== null ? (
         <Link to={`juegos/${item._id}`} className="text-decoration-none">
         <div className="text-light mb-1 bgCard mb-5 mx-1 ">
@@ -21,18 +20,18 @@ const requirements = item.requirements.toUpperCase().replace("-", ' ');
             alt="Card image cap"
             className="imagenCard"
             />
-          {item.requerimientos === "Bajos Requisitos"
+          {requirements === "BAJOS REQUISITOS"
           ? (
             <span className="badge bg-success d-flex justify-content-between">
             <FontAwesomeIcon icon={faGamepad}/> {requirements}
            </span>
-          ) : (
-            
+          ) : ( 
+
             <span className="badge bg-danger d-flex justify-content-between text-center">
               <FontAwesomeIcon icon={faGamepad}/> {requirements}
             </span>
           )}
-      
+
           <div className="mt-2">
             <h6 className="text-center">{item.name}</h6>
           </div>
