@@ -13,6 +13,7 @@ const GamesPage = () => {
     <>
   
     <main className="container">
+    <Particles />
       <h4 className="text-light mt-5">Ultimos <b>juegos de PC</b> agregados</h4>
       <hr className="text-light"/>
       <div className='container d-flex'>

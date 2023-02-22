@@ -70,22 +70,24 @@ const Header = () => {
                 <ul className="dropdown-menu">
                   <li>
                     <a className="dropdown-item" >
-                      <Link to='/juegos/level/altos-requisitos' className="text-decoration-none">
+                      <Link to='/juegos/level/altos-requisitos' className="text-decoration-none text-light">
                      Altos Requisitos
                       </Link>
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                    <Link to='/juegos/level/medios-requisitos' className="text-decoration-none">
-                     Medios requisitos
+                    <Link to='/juegos/level/medios-requisitos' className="text-decoration-none text-light">
+                     Medios Requisitos
                      </Link>
                     </a>
                   </li>
 
                   <li>
                     <a className="dropdown-item" href="#">
-                      Bajos requisitos
+                    <Link to='/juegos/level/bajos-requisitos' className="text-decoration-none text-light">
+                     Bajos Requisitos
+                     </Link>
                     </a>
                   </li>
                 </ul>

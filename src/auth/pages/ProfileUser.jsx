@@ -10,7 +10,7 @@ export const ProfileUser = () => {
     return (
         <>
         <section>
-        <Particles />
+     
             <div className="p-5 headerDetailUserId text-light">
                 <div className="container">
     <h2 className="">{user.name}</h2>

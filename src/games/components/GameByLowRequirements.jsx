@@ -1,30 +1,31 @@
 import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { useGameStore } from '../hooks/useGameStore';
 
-export const GameByMediumRequirements = () => {
+export const GameByLowRequirements = () => {
 
-    const [gameMediumRequirements, setGameMediumRequirements] = useState([]);
+    const [gameLowRequirements, setGameLowRequirements] = useState([]);
     const {games, startLoadingGames} = useGameStore();
 
-
-    const getMediumRequirements = () => {
+    const getLowRequirements = () => {
         const itemRequeriments = games.filter(
-          (item) => item.requirements === "medios-requisitos"
+          (item) => item.requirements === "bajos-requisitos"
         );
-        setGameMediumRequirements(itemRequeriments);
+        setGameLowRequirements(itemRequeriments);
       };
     
       useEffect(() => {
           startLoadingGames();
-        getMediumRequirements();
+        getLowRequirements();
       }, [games]);
+
+
     return (
         <div className="container  d-flex justify-content-center flex-wrap mt-5">
-        {gameMediumRequirements ? (
-          gameMediumRequirements.map(
+        {gameLowRequirements ? (
+          gameLowRequirements.map(
             ({ name, _id, header_image, requirements }) => (
               <div className="" key={_id}>
                 <Link to={`/juegos/${_id}`} className="text-decoration-none">

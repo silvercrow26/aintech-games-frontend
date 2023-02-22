@@ -12,12 +12,11 @@ export const GameItem = () => {
     useEffect(() => {
         startLoadingGames();
     }, []);
-
-
-
+    
+   
     return (
         <>
-            <span className="d-flex justify-content-center  mt-5 flex-wrap container">{isLoading ? (<div className="text-center w-100 mt-5">
+            <span className="d-flex justify-content-center mt-5 flex-wrap container">{isLoading ? (<div className="text-center w-100 mt-5">
 
                 <div className="loader">
                 <svg viewBox="0 0 80 80">

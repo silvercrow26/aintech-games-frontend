@@ -7,10 +7,11 @@ export const GameCard = (item) => {
 
 
 
+
 const requirements = item.requirements.toUpperCase().replace("-", ' ');
   return (
     <>
-    <div data-aos="fade-up" >
+    <div data-aos="fade-up " >
       {item !== null ? (
         <Link to={`juegos/${item._id}`} className="text-decoration-none">
         <div className="text-light mb-1 bgCard mb-5 mx-1 ">

@@ -6,6 +6,7 @@ import { ProfileUser } from '../auth/pages/ProfileUser';
 import { RegisterPage } from '../auth/pages/RegisterPage';
 import { UserPageId } from '../auth/pages/UserPageId';
 import { Footer } from '../games/components/Footer';
+import { GameByLowRequirements } from '../games/components/GameByLowRequirements';
 import { GameByMediumRequirements } from '../games/components/GameByMediumRequirements';
 import { GameCardByRequirements } from '../games/components/GameCardByRequirements';
 import { GameCardWithId } from '../games/components/GameCardWithId';
@@ -28,6 +29,7 @@ export const AppRouter = () => {
                 <Route path='/' element={<GamesPage />} />
                 <Route path='/juegos/level/altos-requisitos' element={<GameCardByRequirements />} />
                 <Route path='/juegos/level/medios-requisitos' element={<GameByMediumRequirements />} />
+                <Route path='/juegos/level/bajos-requisitos' element={<GameByLowRequirements />} />
                 <Route path='/juegos/:id' element={<GameCardWithId />} />
 
                 {
