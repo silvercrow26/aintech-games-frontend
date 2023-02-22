@@ -8,15 +8,16 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../auth/hooks/useAuthStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const Header = () => {
   const { status, startLogout, user } = useAuthStore();
-
   const handleLogout = () => {
     startLogout();
 
   }
 
+  
+  
+  
   return (
     <>
       <nav
@@ -68,13 +69,17 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="#">
-                     Altos requisitos
+                    <a className="dropdown-item" >
+                      <Link to='/juegos/level/altos-requisitos' className="text-decoration-none">
+                     Altos Requisitos
+                      </Link>
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
+                    <Link to='/juegos/level/medios-requisitos' className="text-decoration-none">
                      Medios requisitos
+                     </Link>
                     </a>
                   </li>
 

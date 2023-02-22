@@ -1,18 +1,16 @@
 import { faGamepad, faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useAuthStore } from "../../auth/hooks/useAuthStore";
-import { useGameStore } from "../hooks/useGameStore";
-
 export const GameCard = (item) => {
+  
+
+
 
 const requirements = item.requirements.toUpperCase().replace("-", ' ');
   return (
     <>
     <div data-aos="fade-up" >
-
       {item !== null ? (
         <Link to={`juegos/${item._id}`} className="text-decoration-none">
         <div className="text-light mb-1 bgCard mb-5 mx-1 ">
@@ -21,12 +19,12 @@ const requirements = item.requirements.toUpperCase().replace("-", ' ');
             alt="Card image cap"
             className="imagenCard"
             />
-          {item.requerimientos === "Bajos Requisitos"
+          {requirements === "BAJOS REQUISITOS"
           ? (
             <span className="badge bg-success d-flex justify-content-between">
             <FontAwesomeIcon icon={faGamepad}/> {requirements}
            </span>
-          ) : (
+          ) : ( 
             
             <span className="badge bg-danger d-flex justify-content-between text-center">
               <FontAwesomeIcon icon={faGamepad}/> {requirements}

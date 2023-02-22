@@ -6,6 +6,8 @@ import { ProfileUser } from '../auth/pages/ProfileUser';
 import { RegisterPage } from '../auth/pages/RegisterPage';
 import { UserPageId } from '../auth/pages/UserPageId';
 import { Footer } from '../games/components/Footer';
+import { GameByMediumRequirements } from '../games/components/GameByMediumRequirements';
+import { GameCardByRequirements } from '../games/components/GameCardByRequirements';
 import { GameCardWithId } from '../games/components/GameCardWithId';
 import Navbar from '../games/components/Navbar';
 import { AddNewGame } from '../games/pages/AddNewGame';
@@ -15,7 +17,6 @@ import GamesPage from '../games/pages/GamesPage';
 export const AppRouter = () => {
 
     const { status, checkAuthToken } = useAuthStore();
-
     useEffect(() => {
         checkAuthToken();
     }, [])
@@ -25,12 +26,14 @@ export const AppRouter = () => {
             <Navbar />
             <Routes>
                 <Route path='/' element={<GamesPage />} />
+                <Route path='/juegos/level/altos-requisitos' element={<GameCardByRequirements />} />
+                <Route path='/juegos/level/medios-requisitos' element={<GameByMediumRequirements />} />
                 <Route path='/juegos/:id' element={<GameCardWithId />} />
 
                 {
                     (status == 'authenticated') ?
-                        (
-                            <>
+                    (
+                        <>
                                 <Route path='/' element={<GamesPage />} />
                                 <Route path='/*' element={<Navigate to='/' />} />
                                 <Route path='/newgame' element={<AddNewGame />} />
