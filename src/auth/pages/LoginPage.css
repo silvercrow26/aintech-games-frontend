@@ -37,3 +37,17 @@
 .volverInicio:hover{
     color: #6F3AFF !important ;
 }
+
+
+.borderInputs {
+  border: 1px solid #6F3AFF;
+
+}
+
+.borderInputs:focus {
+  border-color: #ccc;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+}

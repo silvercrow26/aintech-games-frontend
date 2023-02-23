@@ -8,14 +8,15 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../auth/hooks/useAuthStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const Header = () => {
   const { status, startLogout, user } = useAuthStore();
-
   const handleLogout = () => {
     startLogout();
 
   }
+
+
+
 
   return (
     <>
@@ -68,27 +69,20 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link
-                      className="nav-link linka"
-                      aria-current="page"
-                      href="#"
-                      // to="/juegos/nivel/altos-requisitos"
-                      >
-                      
-                      Altos requisitos
+
+                    <Link to='/juegos/level/altos-requisitos' className="text-decoration-none text-light dropdown-item">
+                      Altos Requisitos
                     </Link>
-
                   </li>
                   <li>
-                    <a className="dropdown-item" href="http://localhost:9001/api/games/level/medios-requisitos">
-                      Medios requisitos
-                    </a>
+                    <Link to='/juegos/level/medios-requisitos' className="text-decoration-none text-light dropdown-item">
+                      Medios Requisitos
+                    </Link>
                   </li>
-
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Bajos requisitos
-                    </a>
+                    <Link to='/juegos/level/bajos-requisitos' className="text-decoration-none text-light dropdown-item">
+                      Bajos Requisitos
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -126,9 +120,9 @@ const Header = () => {
                     <FontAwesomeIcon icon={faRightToBracket} /> Logearse
                   </button>
                 </Link>
-              ) :
+              ) : (
 
-                <li className="nav-item dropdown mb-3 ">
+                <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle text-light text-decoration-none dropdownUser"
                     href="#"
@@ -154,6 +148,7 @@ const Header = () => {
                     </li>
                   </ul>
                 </li>
+              )
             }
           </div>
         </div>

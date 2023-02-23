@@ -10,17 +10,19 @@ export const DownloadServerItem = ({ gameId }) => {
 
 
   useEffect(() => {
-    startLoadingDownloadServers();
+    if (downloadServers.length <= 0) {
+      startLoadingDownloadServers();
+    }
   }, [downloadServers]);
 
   return (
     <div>
       <label>Servidor: </label>
       {element.map((element) => (
-          <a className='mx-2' key={element._id} href={element.url}
-            target="_blank">
-            {element.name}
-          </a>
+        <a className='mx-2' key={element._id} href={element.url}
+          target="_blank">
+          {element.name}
+        </a>
       ))
       }
     </div>
