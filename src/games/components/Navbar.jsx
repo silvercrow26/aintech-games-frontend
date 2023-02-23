@@ -15,9 +15,6 @@ const Header = () => {
 
   }
 
-
-
-
   return (
     <>
       <nav

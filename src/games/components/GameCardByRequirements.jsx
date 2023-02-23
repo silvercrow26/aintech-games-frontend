@@ -20,7 +20,9 @@ export const GameCardByRequirements = () => {
   };
 
   useEffect(() => {
+    if(games.length == 0){
       startLoadingGames();
+    }
     getHighRequirements();
   }, [games]);
 

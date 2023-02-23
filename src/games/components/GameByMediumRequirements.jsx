@@ -18,7 +18,9 @@ export const GameByMediumRequirements = () => {
       };
     
       useEffect(() => {
+        if(games.length == 0){
           startLoadingGames();
+        }
         getMediumRequirements();
       }, [games]);
     return (

@@ -12,17 +12,18 @@ export const GameItem = () => {
     const { startLoadingDownloadServers, downloadServers } = useDownloadServerStore();
 
     useEffect(() => {
-        if (downloadServers.length <= 0) {
+        if (downloadServers == 0) {
             startLoadingDownloadServers();
         }
-        if (games.length <= 0) {
+        if (games.length == 0) {
             startLoadingGames();
         }
-    }, []);
+    }, [games]);
 
 
     return (
         <>
+
             <span className="d-flex justify-content-center mt-5 flex-wrap container">{isLoading ? (<div className="text-center w-100 mt-5">
 
                 <div className="loader">
@@ -47,12 +48,12 @@ export const GameItem = () => {
 
             ) :
                 games.length === 0 ? "No hay juegos disponibles en este momento." : games.map(item => (
-
-                    <GameCard key={item._id}
-                        {...item}
-                    />
+                        <GameCard key={item._id}
+                            {...item}
+                        />
                 ))
             }</span>
+
         </>
     )
 }

@@ -17,7 +17,9 @@ export const GameByLowRequirements = () => {
       };
     
       useEffect(() => {
+        if(games.length == 0){
           startLoadingGames();
+        }
         getLowRequirements();
       }, [games]);
 
