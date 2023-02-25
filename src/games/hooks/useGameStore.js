@@ -29,7 +29,7 @@ export const useGameStore = () => {
         const { data } = await gamesApi.post('/games/new', game);
         dispatch(onAddGame({ ...game, _id: data._id }));
     }
-
+ 
 
     return {
         //Props

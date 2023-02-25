@@ -13,6 +13,8 @@ import Navbar from '../games/components/Navbar';
 import { AddNewGame } from '../games/pages/AddNewGame';
 import GamesPage from '../games/pages/GamesPage';
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { AdminPanel } from '../games/components/AdminPanel';
+import { AdminGameDatabase } from '../games/components/AdminGameDatabase';
 
 
 
@@ -36,11 +38,13 @@ export const AppRouter = () => {
                 <Route path="/*" element={<Navigate to="/" />} />
 
                 {
-                    (status == 'authenticated') ?
+                    (status === 'authenticated') ?
                     (
                         <>
                                 <Route path='/' element={<GamesPage />} />
                                 <Route path='/newgame' element={<AddNewGame />} />
+                                <Route path='/admin/hub' element={<AdminPanel />} />    
+                                <Route path='/admin/gamedatabase' element={<AdminGameDatabase />} />
                                 <Route path='/user/configuration/:id' element={<UserPageId />} />
                                 <Route path='/user/profile/:name' element={<ProfileUser/>} />
                             </>

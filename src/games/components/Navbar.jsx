@@ -2,6 +2,7 @@ import {
   faGear,
   faMagnifyingGlass,
   faRightToBracket,
+  faScrewdriver,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect } from "react";
@@ -90,11 +91,14 @@ const Header = () => {
                 <a className="nav-link disabled">Peliculas(Proximamente)</a>
               </li>
               {status === "authenticated" ? (
+
+
                 <li className="nav-item mx-1">
                   <Link className="nav-link linka" onClick={() => setActiveGame(null)} to="/newgame">
                     Agregar juego
                   </Link>
                 </li>
+         
               ) : null}
             </ul>
 
@@ -133,8 +137,13 @@ const Header = () => {
                     <FontAwesomeIcon icon={faUser} /> {user.name}
                   </a>
                   <ul className="dropdown-menu text-light">
+                      <Link to={'/admin/hub'} className="text-decoration-none">
+                  <li className="dropdown-item  text-warning " href="#">
+                        <FontAwesomeIcon icon={faScrewdriver} /> <b>Dashboard</b>
+                    </li>
+                      </Link>
                     <li className="dropdown-item " href="#">
-                      <Link to={`/user/configuration/${user.name}`} className="text-decoration-none">
+                      <Link to={`/user/configuration/${user.uid}`} className="text-decoration-none text-light">
                         <FontAwesomeIcon icon={faGear} /> Configuración
                       </Link>
                     </li>
