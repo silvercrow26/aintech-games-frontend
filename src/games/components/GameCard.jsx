@@ -11,7 +11,7 @@ export const GameCard = (item) => {
       {item !== null ? (
         
           <Link to={`juegos/${item._id}`} className="text-decoration-none">
-            <div className="text-light mb-1 bgCard mb-5 mx-1 ">
+            <div className="text-light mb-1 bgCard mb-5  ">
               <img
                 src={item.header_image}
                 alt="Card image cap"

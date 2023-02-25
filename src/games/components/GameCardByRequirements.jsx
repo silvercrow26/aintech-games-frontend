@@ -40,7 +40,7 @@ export const GameCardByRequirements = () => {
                     alt="Card image cap"
                     className="imagenCard"
                   />
-                  {requirements === "BAJOS REQUISITOS" ? (
+                  {requirements === "bajos-requisitos" ? (
                     <span className="badge bg-success d-flex justify-content-between">
                       <FontAwesomeIcon icon={faGamepad} /> {requirements.toUpperCase().replace("-", ' ')}
                     </span>

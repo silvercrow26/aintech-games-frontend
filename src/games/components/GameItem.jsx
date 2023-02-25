@@ -20,11 +20,11 @@ export const GameItem = () => {
         }
     }, [games]);
 
-
+    
     return (
         <>
 
-            <span className="d-flex justify-content-center mt-5 flex-wrap container">{isLoading ? (<div className="text-center w-100 mt-5">
+            <span className="d-flex mt-5 flex-wrap ">{isLoading ? (<div className="text-center w-100 mt-5">
 
                 <div className="loader">
                     <svg viewBox="0 0 80 80">
@@ -48,9 +48,11 @@ export const GameItem = () => {
 
             ) :
                 games.length === 0 ? "No hay juegos disponibles en este momento." : games.map(item => (
+                    <div className="w-50 p-2">
                         <GameCard key={item._id}
                             {...item}
-                        />
+                            />
+                            </div>
                 ))
             }</span>
 
