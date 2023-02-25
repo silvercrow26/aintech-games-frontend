@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect } from 'react'
-import { useDownloadServerStore } from '../hooks/useDownloadServerStore';
 import { useGameStore } from '../hooks/useGameStore';
 import { GameCard } from './GameCard';
 
@@ -8,18 +7,13 @@ import { GameCard } from './GameCard';
 
 export const GameItem = () => {
 
-    const { startLoadingGames, games, isLoading } = useGameStore();
-    const { startLoadingDownloadServers, downloadServers } = useDownloadServerStore();
+    const { games, isLoading, startLoadingGames } = useGameStore();
 
     useEffect(() => {
-        if (downloadServers == 0) {
-            startLoadingDownloadServers();
-        }
         if (games.length == 0) {
             startLoadingGames();
         }
     }, [games]);
-
 
     return (
         <>
@@ -48,9 +42,9 @@ export const GameItem = () => {
 
             ) :
                 games.length === 0 ? "No hay juegos disponibles en este momento." : games.map(item => (
-                        <GameCard key={item._id}
-                            {...item}
-                        />
+                    <GameCard key={item._id}
+                        {...item}
+                    />
                 ))
             }</span>
 

@@ -6,11 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 
 export const GameCardByRequirements = () => {
-  const [gameHighRequirements, setGameHighRequirements] = useState([]);
-  const {games, startLoadingGames} = useGameStore();
-  const navigate = useNavigate();
 
- 
+  const [gameHighRequirements, setGameHighRequirements] = useState([]);
+  const { games, startLoadingGames } = useGameStore();
+  const navigate = useNavigate();
 
   const getHighRequirements = () => {
     const itemRequeriments = games.filter(
@@ -20,7 +19,7 @@ export const GameCardByRequirements = () => {
   };
 
   useEffect(() => {
-    if(games.length == 0){
+    if (games.length == 0) {
       startLoadingGames();
     }
     getHighRequirements();

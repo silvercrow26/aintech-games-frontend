@@ -31,7 +31,7 @@ export const AddNewGame = () => {
     useEffect(() => {
         setFormState({
             ...formState,
-            "detail": detail,
+            "detail": [detail],
         })
     }, [detail]);
 
@@ -106,13 +106,13 @@ export const AddNewGame = () => {
 
                         <input
                             type='submit'
-                            className={`btn btn-success my-2 `}
+                            className={`btn btn-success form-control my-2 `}
                             value='Agregar'
                         />
                     </form>
                 </div>
-            </div> 
-            : <AddImage />}
+            </div>
+                : <AddImage />}
         </>
     )
 }

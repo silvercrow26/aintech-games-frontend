@@ -8,8 +8,11 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../auth/hooks/useAuthStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useGameStore } from "../hooks/useGameStore";
+
 const Header = () => {
   const { status, startLogout, user } = useAuthStore();
+  const { setActiveGame } = useGameStore();
   const handleLogout = () => {
     startLogout();
 
@@ -88,7 +91,7 @@ const Header = () => {
               </li>
               {status === "authenticated" ? (
                 <li className="nav-item mx-1">
-                  <Link className="nav-link linka" to="/newgame">
+                  <Link className="nav-link linka" onClick={() => setActiveGame(null)} to="/newgame">
                     Agregar juego
                   </Link>
                 </li>
@@ -131,7 +134,7 @@ const Header = () => {
                   </a>
                   <ul className="dropdown-menu text-light">
                     <li className="dropdown-item " href="#">
-                      <Link to={`/user/configuration/${user.uid}`} className="text-decoration-none">
+                      <Link to={`/user/configuration/${user.name}`} className="text-decoration-none">
                         <FontAwesomeIcon icon={faGear} /> Configuración
                       </Link>
                     </li>

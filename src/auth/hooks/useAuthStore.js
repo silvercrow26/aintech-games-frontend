@@ -16,7 +16,7 @@ export const useAuthStore = () => {
             console.log(data)
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
-            dispatch(onLogin({ name: data.name, uid: data.uid, email: data.email  }));
+            dispatch(onLogin({ name: data.name, uid: data.uid, email: data.email }));
 
         } catch (error) {
             dispatch(onLogout('Credenciales incorrectas'));
@@ -26,19 +26,18 @@ export const useAuthStore = () => {
         }
     }
 
-    const checkAuthToken = async() => {
+    const checkAuthToken = async () => {
         const token = localStorage.getItem('token');
-        if(!token) return dispatch( onLogout() );
-
+        if (!token) return dispatch(onLogout());
         try {
-            const {data} = await gamesApi.get('/auth/renew');
+            const { data } = await gamesApi.get('/auth/renew');
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
-            dispatch(onLogin({ name: data.name, uid: data.uid, email: data.email}));
+            dispatch(onLogin(data.user));
 
         } catch (error) {
             localStorage.clear();
-            dispatch( onLogout() );
+            dispatch(onLogout());
         }
     }
 

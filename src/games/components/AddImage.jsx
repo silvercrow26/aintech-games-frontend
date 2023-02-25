@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import imgApi from '../../api/imgApi';
 import { useGameStore } from '../hooks/useGameStore';
+import { AddDownloadServer } from './AddDownloadServer';
 
 export const AddImage = () => {
 
@@ -8,9 +9,8 @@ export const AddImage = () => {
     const [title, setTitle] = useState('Header');
     const [header_image, setHeader_image] = useState('');
 
-    const { activeGame, setActiveGame, startSavingGame } = useGameStore();
+    const { activeGame, setActiveGame, startSavingGame, startLoadingGames } = useGameStore();
     const { steamId, name } = activeGame;
-
 
     const handleUpload = async (event) => {
         event.preventDefault();
@@ -20,6 +20,7 @@ export const AddImage = () => {
         formData.append('game', steamId);
         try {
             const { data } = await imgApi.post(`/upload`, formData);
+
             setHeader_image(data.img.url);
 
         } catch (error) {
@@ -28,13 +29,14 @@ export const AddImage = () => {
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
         await startSavingGame(activeGame);
     }
 
     const handleChange = (e) => {
         setFile(e.target.files[0]);
     }
+
 
     useEffect(() => {
         if (header_image !== '') {
@@ -74,16 +76,12 @@ export const AddImage = () => {
                     className={`btn btn-primary form-control my-2`}
                     onClick={handleUpload}> Upload
                 </button>
-
-
                 <img src={header_image} className="container" />
                 <button
                     type="submit"
                     className={`btn btn-primary form-control my-2`}
                     onClick={handleSubmit}> Guardar Juego
                 </button>
-
-
             </form>
         </div>
     )
