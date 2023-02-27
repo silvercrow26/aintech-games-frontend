@@ -1,4 +1,5 @@
 import {
+    faMagnifyingGlass,
   faPencilAlt,
   faPenSquare,
   faPlus,
@@ -11,7 +12,8 @@ import { useGameStore } from "../hooks/useGameStore";
 
 export const AdminGameDatabase = () => {
   const { games, startLoadingGames } = useGameStore();
-
+  const [gameSearch, setGameSearch] = useState("");
+  const filterData = games.filter((game) => game.name.toLowerCase().includes(gameSearch.toLowerCase())).reverse();
   return (
     <section className="container">
       <div>
@@ -22,8 +24,11 @@ export const AdminGameDatabase = () => {
         </Link>
         </div>
         <p className="text-center">Juegos totales: {games.length}</p>
+        <div>
+<input  type="text" className="w-100 mb-5 p-2 bg-dark borderInputs" placeholder="Buscar juego..." value={gameSearch} name="search" onChange={(e) => setGameSearch(e.target.value)}/>
+        </div>
       </div>
-      <table className="table table-dark table-hover text-light container backgroundAdminSideBar">
+      <table className="table table-dark table-hover table-responsive text-light container backgroundAdminSideBar">
         <thead>
           <tr>
             <th>Id</th>
@@ -34,7 +39,7 @@ export const AdminGameDatabase = () => {
           </tr>
         </thead>
         <tbody>
-          {games.map((game) => (
+          {filterData.map((game) => (
             <tr>
               <td>{game._id}</td>
               <td>{game.name}</td>
@@ -51,6 +56,7 @@ export const AdminGameDatabase = () => {
               </td>
             </tr>
           ))}
+         
         </tbody>
       </table>
     </section>

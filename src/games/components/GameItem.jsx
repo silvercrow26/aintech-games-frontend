@@ -47,7 +47,7 @@ export const GameItem = () => {
                             {...item}
                         />
                     </div>
-                ))
+                )).reverse()
             }</span>
 
         </>
