@@ -2,8 +2,11 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useForm } from '../hooks/useForm'
 import { useGameStore } from '../hooks/useGameStore'
-import { AddImage } from '../components/AddImage'
+import { AddImage } from './AddImage'
 import { getGameDetail } from '../helpers/getGameDetail'
+import { AddDownloadServer } from './AddDownloadServer'
+import { useDownloadServerStore } from '../hooks/useDownloadServerStore'
+
 
 const formFields = {
     name: '',
@@ -18,6 +21,7 @@ export const AddNewGame = () => {
     const { name, steamId, requirements, notes, buyGame, onInputChange, formState, setFormState } = useForm(formFields);
     const { setActiveGame, activeGame } = useGameStore();
     const { detail, validId, handleCheck } = getGameDetail(steamId);
+    const { downloadServers } = useDownloadServerStore();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -25,6 +29,7 @@ export const AddNewGame = () => {
         if (validId == 'is-invalid') {
             return console.log('Verifica la id ingresada.')
         }
+        console.log(formState);
         setActiveGame(formState);
     }
 
@@ -32,8 +37,9 @@ export const AddNewGame = () => {
         setFormState({
             ...formState,
             "detail": [detail],
+            "downloadserver": downloadServers,
         })
-    }, [detail]);
+    }, [detail, downloadServers]);
 
     return (
         <>
@@ -103,7 +109,7 @@ export const AddNewGame = () => {
                                 onChange={onInputChange}
                             />
                         </div>
-
+                        <AddDownloadServer />
                         <input
                             type='submit'
                             className={`btn btn-success form-control my-2 `}

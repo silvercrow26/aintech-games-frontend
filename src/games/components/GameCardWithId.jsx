@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useFetcher, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGamepad } from "@fortawesome/free-solid-svg-icons";
-import { DownloadServerItem } from "./DownloadServerItem";
 import { useGameStore } from "../hooks/useGameStore";
 
 export const GameCardWithId = () => {
@@ -145,8 +144,7 @@ export const GameCardWithId = () => {
                           {activeGame && activeGame.notes}
                         </p>
                       </div>
-                      <div className="">
-                        <DownloadServerItem gameId={activeGame._id} />
+                      <div>
                       </div>
                     </div>
                   </div>

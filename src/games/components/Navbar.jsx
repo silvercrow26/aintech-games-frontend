@@ -16,7 +16,6 @@ const Header = () => {
   const { setActiveGame } = useGameStore();
   const handleLogout = () => {
     startLogout();
-
   }
 
   return (

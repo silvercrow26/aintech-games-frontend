@@ -1,12 +1,12 @@
 
 import { useDispatch, useSelector } from "react-redux"
-import { onAddDownloadServer, onLoadingDownloadServer, onSetActiveDownloadServer, onSetDownloadServer } from "../../../store/games/downloadServerSlice";
+import { onAddDownloadServer, onDeleteDownloadServer, onLoadingDownloadServer, onSetActiveDownloadServer, onSetDownloadServer } from "../../../store/games/downloadServerSlice";
 import gamesApi from "../../api/gamesApi";
 
 
 
 export const useDownloadServerStore = () => {
-    const { downloadServers, activeDownloadServers} = useSelector(state => state.downloadServer);
+    const { downloadServers, activeDownloadServers } = useSelector(state => state.downloadServer);
 
     const dispatch = useDispatch();
 
@@ -15,22 +15,18 @@ export const useDownloadServerStore = () => {
         dispatch(onSetActiveDownloadServer(downloadServer))
     };
 
-    const startLoadingDownloadServers = async () => {
-        try {
-            dispatch(onLoadingDownloadServer());
-            const { data } = await gamesApi.get('/download');
-            dispatch(onSetDownloadServer(data.msg));
-
-        } catch (error) {
-            console.log(error);
-        }
+    const setDownloadServers = (downloadServer) => {
+        dispatch(onSetDownloadServer(downloadServer))
     }
 
-    const startSavingDownloadServer = async (downloadServer) => {
-        const { data } = await gamesApi.post('/download', downloadServer);
-        dispatch(onAddDownloadServer({ ...downloadServer, _id: data._id }))
+    const startSavingServer = (downloadServer) => {
+        dispatch(onAddDownloadServer({ ...downloadServer }))
     }
-    
+
+    const startDeleteServer = async (game) => {
+        dispatch(onDeleteDownloadServer(game));
+    }
+
     return {
         //Props
         // games,
@@ -38,10 +34,9 @@ export const useDownloadServerStore = () => {
         downloadServers,
 
         // //Methods
-        // startLoadingGames,
-        // startSavingGame,
         setActiveDownloadServer,
-        startLoadingDownloadServers,
-        startSavingDownloadServer
+        startSavingServer,
+        startDeleteServer,
+        setDownloadServers,
     }
 }
