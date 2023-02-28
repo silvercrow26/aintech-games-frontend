@@ -564,9 +564,26 @@ li {
   box-sizing: border-box;
 }
 
+.backgroundMostWantedCard{
+  background-color: #111315 !important;
+  border: solid 1px #6441a5;
+  box-sizing: border-box;
+}
+
+.imgMostDownloaded {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .backgroundEvent {
   text-shadow: 0 0 5px #b831ed, 0 0 10px #b831ed, 0 0 20px #b831ed,
-    0 0 40px #ffffff, 0 0 80px #ffffff, 0 0 90px #ffffff, 0 0 100px #b831ed;
+    0 0 40px #ffffff, 0 0 80px #ffffff, 0 0 90px #ffffff, 0 0 100px #b831ed ;
+}
+
+.backgroundIndexMostWantedCard{
+  text-shadow: 0 0 5px #b831ed, 0 0 10px #b831ed, 0 0 20px #b831ed,
+  0 0 40px #b831ed, 0 0 80px #b831ed, 0 0 90px #b831ed, 0 0 100px #b831ed !important;
 }
 
 .backGroundCardsDashboard {
@@ -574,21 +591,28 @@ li {
   background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
 }
 
-.backgroundAdminButtons{
+.backgroundAdminButtons {
   background-color: #11131527;
-  border: 1px solid  #5e4dcd;
+  border: 1px solid #5e4dcd;
   cursor: pointer;
   color: #5e4dcd;
 }
 
-.backgroundAdminButtons:hover{
+.backgroundAdminButtons:hover {
   color: #a799ff;
 }
 
-
-.backgroundAdminSideBar{
+.backgroundAdminSideBar {
   background-color: #11131527;
   border: 1px solid #a799ff;
   cursor: pointer;
+}
+
+.imagenMostWanted{
+  transition: 0.3s;
+  object-fit: cover;
+}
+.imagenMostWanted:hover{
+  transform: scale(1.1);
  
 }

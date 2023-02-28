@@ -43,7 +43,7 @@ export const GameItem = () => {
             ) :
                 games.length === 0 ? "No hay juegos disponibles en este momento." : games.map(item => (
                     <div className="w-50 p-2">
-                        <GameCard key={item._id}
+                        <GameCard
                             {...item}
                         />
                     </div>

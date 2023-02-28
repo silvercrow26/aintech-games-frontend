@@ -11,11 +11,12 @@ const formFields = {
     requirements: 'altos-requisitos',
     buyGame: '',
     notes: '',
+    mostDownloaded: 'false'
 }
 
 export const AddNewGame = () => {
 
-    const { name, steamId, requirements, notes, buyGame, onInputChange, formState, setFormState } = useForm(formFields);
+    const { name, steamId, requirements, notes, buyGame, mostDownloaded, onInputChange, formState, setFormState } = useForm(formFields);
     const { setActiveGame, activeGame } = useGameStore();
     const { detail, validId, handleCheck } = getGameDetail(steamId);
 
@@ -85,6 +86,18 @@ export const AddNewGame = () => {
                             </div>
                         </div>
                         <div className='col'>
+                        <div className='col'>
+                                <label>Mas Descargado:</label>
+                                <select className="form-select" aria-label="Default select example"
+                                    id="requirements"
+                                    value={mostDownloaded}
+                                    onChange={onInputChange}
+                                    name='mostDownloaded'
+                                >
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
                             <label className='mt-2'>Comprar juego:</label>
                             <input
                                 type='text'

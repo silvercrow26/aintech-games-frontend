@@ -7,7 +7,7 @@ import { useGameStore } from '../hooks/useGameStore';
 export const GameByMediumRequirements = () => {
 
     const [gameMediumRequirements, setGameMediumRequirements] = useState([]);
-    const {games, startLoadingGames} = useGameStore();
+    const {games, startLoadingGames, setActiveGame} = useGameStore();
 
 
     const getMediumRequirements = () => {
@@ -15,6 +15,7 @@ export const GameByMediumRequirements = () => {
           (item) => item.requirements === "medios-requisitos"
         );
         setGameMediumRequirements(itemRequeriments);
+        setActiveGame(null)
       };
     
       useEffect(() => {

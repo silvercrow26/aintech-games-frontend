@@ -7,17 +7,18 @@ import { useGameStore } from '../hooks/useGameStore';
 export const GameByLowRequirements = () => {
 
     const [gameLowRequirements, setGameLowRequirements] = useState([]);
-    const {games, startLoadingGames} = useGameStore();
+    const {games, startLoadingGames, setActiveGame} = useGameStore();
 
     const getLowRequirements = () => {
         const itemRequeriments = games.filter(
           (item) => item.requirements === "bajos-requisitos"
         );
         setGameLowRequirements(itemRequeriments);
+        setActiveGame(null)
       };
     
       useEffect(() => {
-        if(games.length == 0){
+        if(games.length === 0){
           startLoadingGames();
         }
         getLowRequirements();

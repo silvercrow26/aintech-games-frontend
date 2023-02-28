@@ -8,7 +8,7 @@ import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 export const GameCardByRequirements = () => {
 
   const [gameHighRequirements, setGameHighRequirements] = useState([]);
-  const { games, startLoadingGames } = useGameStore();
+  const { games, startLoadingGames, setActiveGame } = useGameStore();
   const navigate = useNavigate();
 
   const getHighRequirements = () => {
@@ -16,6 +16,8 @@ export const GameCardByRequirements = () => {
       (item) => item.requirements === "altos-requisitos"
     );
     setGameHighRequirements(itemRequeriments);
+
+    setActiveGame(null)
   };
 
   useEffect(() => {
