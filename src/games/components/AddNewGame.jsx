@@ -1,12 +1,7 @@
-import axios from 'axios'
-import React, { useEffect } from 'react'
-import { useForm } from '../hooks/useForm'
-import { useGameStore } from '../hooks/useGameStore'
-import { AddImage } from './AddImage'
-import { getGameDetail } from '../helpers/getGameDetail'
-import { AddDownloadServer } from './AddDownloadServer'
-import { useDownloadServerStore } from '../hooks/useDownloadServerStore'
-
+import React, { useEffect } from 'react';
+import { useForm, useGameStore, AddImage, getGameDetail, AddDownloadServer, useDownloadServerStore } from '../index';
+import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const formFields = {
     name: '',
@@ -23,14 +18,33 @@ export const AddNewGame = () => {
     const { setActiveGame, activeGame } = useGameStore();
     const { detail, validId, handleCheck } = getGameDetail(steamId);
     const { downloadServers } = useDownloadServerStore();
+    const { games } = useGameStore();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
+        const game = games.find(game => game.steamId === steamId);
+        if (game != undefined) {
+            Swal.fire({
+                title: '<strong>¡Ya existe!</strong>',
+                icon: 'info',
+                html:
+                    'El <b>videojuego</b>: ' +
+                    `<a href="/juegos/${game._id}">${game.name}</a> ` +
+                    'ya existe en la base de datos.',
+                showCloseButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                    `Aceptar`,
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                cancelButtonText:
+                    '<i className="fa fa-thumbs-down"></i>',
+                cancelButtonAriaLabel: 'Thumbs down'
+            })
+            return console.log('Ya existe ese juego en la base de datos.')
+        }
         if (validId == 'is-invalid') {
             return console.log('Verifica la id ingresada.')
         }
-        console.log(formState);
         setActiveGame(formState);
     }
 
@@ -95,7 +109,6 @@ export const AddNewGame = () => {
                         <div className='col'>
                                 <label>Mas Descargado:</label>
                                 <select className="form-select" aria-label="Default select example"
-                                    id="requirements"
                                     value={mostDownloaded}
                                     onChange={onInputChange}
                                     name='mostDownloaded'

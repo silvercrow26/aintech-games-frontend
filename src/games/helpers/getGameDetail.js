@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 
-
 const details = {
     genres: "",
     required_age: "",
@@ -17,8 +16,8 @@ export const getGameDetail = (steamId) => {
     //Game usestate
     const [validId, setValidId] = useState('');
     const [detail, setDetail] = useState(details);
-    
-    
+
+
     const handleCheck = async () => {
         const { data } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${steamId}`);
         setValidId('');
@@ -45,7 +44,6 @@ export const getGameDetail = (steamId) => {
         detail,
         validId,
         handleCheck,
-
     }
 
 }

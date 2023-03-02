@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { onClearErrorMessage, onChecking, onLogin, onLogout } from "../../../store/auth/authSlice";
+import { onClearErrorMessage, onChecking, onLogin, onLogout } from "../../../store/index";
 import gamesApi from "../../api/gamesApi";
 
 
@@ -13,7 +13,7 @@ export const useAuthStore = () => {
         try {
 
             const { data } = await gamesApi.post('/auth/login', { email, password });
-            console.log(data)
+            console.log(data);
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(onLogin(data.user));

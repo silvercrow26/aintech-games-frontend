@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import imgApi from '../../api/imgApi';
-import { useGameStore } from '../hooks/useGameStore';
-import { AddDownloadServer } from './AddDownloadServer';
+import React, { useEffect, useState } from 'react';
+import { useGameStore } from '../index';
 
 export const AddImage = () => {
 
-    const [file, setFile] = useState();
+    const [file, setFile] = useState(null);
     const [title, setTitle] = useState('Header');
     const [header_image, setHeader_image] = useState('');
 
-    const { activeGame, setActiveGame, startSavingGame, startLoadingGames } = useGameStore();
+    const { activeGame, setActiveGame, startSavingGame, startSavingImage, setActiveImage, activeImage } = useGameStore();
     const { steamId, name } = activeGame;
+
+    const types = ['image/png', 'image/jpeg'];
 
     const handleUpload = async (event) => {
         event.preventDefault();
@@ -19,9 +19,7 @@ export const AddImage = () => {
         formData.append('name', title);
         formData.append('game', steamId);
         try {
-            const { data } = await imgApi.post(`/upload`, formData);
-            setHeader_image(data.img.url);
-
+            await startSavingImage(formData);
         } catch (error) {
             console.log(error);
         }
@@ -33,14 +31,24 @@ export const AddImage = () => {
     }
 
     const handleChange = (e) => {
-        setFile(e.target.files[0]);
+        let selected = e.target.files[0];
+
+        if (selected && types.includes(selected.type)) {
+            setFile(selected);
+        } else {
+            setFile(null);
+            console.log('Elige una imagen por favor (png o jpeg).')
+        }
     }
 
     useEffect(() => {
-        if (header_image !== '') {
-            setActiveGame({ ...activeGame, header_image: header_image });
+        if (activeImage !== null) {
+            if (activeGame.header_image != activeImage.url) {
+                setActiveGame({ ...activeGame, header_image: activeImage.url });
+            }
+            setHeader_image(activeImage.url);
         }
-    }, [header_image]);
+    }, [activeImage]);
 
     return (
         <div className='container col-md-6'>
@@ -48,7 +56,7 @@ export const AddImage = () => {
                 <button
                     type="button"
                     className={`btn btn-primary my-2`}
-                    onClick={() => setActiveGame(null)}> volver
+                    onClick={() => { setActiveGame(null); setActiveImage(null) }}> volver
                 </button>
                 <div className='text-center'>
                     <h2>Agrega una imagen para: </h2>
@@ -74,7 +82,9 @@ export const AddImage = () => {
                     className={`btn btn-primary form-control my-2`}
                     onClick={handleUpload}> Upload
                 </button>
-                <img src={header_image} className="container" />
+
+                <img src={header_image} />
+
                 <button
                     type="submit"
                     className={`btn btn-primary form-control my-2`}

@@ -1,19 +1,20 @@
+import { useEffect } from 'react';
 import Particles from '../../Particles';
 import { Carousel } from '../components/Carousel';
 import { Footer } from '../components/Footer';
 import { GameCardWithId } from '../components/GameCardWithId';
 import { GameItem } from '../components/GameItem'
 import { GamesMostDownloaded } from '../components/GamesMostDownloaded';
-import Header from '../components/Navbar'
+import { Loader } from '../components/Loader';
+import { useGameStore } from '../hooks/useGameStore';
+
 import './GamesPage.css';
 
-const GamesPage = () => {
-
-
+export const GamesPage = () => {
+  const { games, isLoading } = useGameStore();
 
   return (
     <>
-
       <main className="container">
         <Particles />
         <Carousel />
@@ -23,18 +24,18 @@ const GamesPage = () => {
           <div className="col-md-8 col-sm-12">
 
 
-        <div className="">
-          <GameItem />
-        </div>
+            {
+              (isLoading) ? <Loader /> :
+                games.length === 0 ? "No hay juegos disponibles en este momento." : <GameItem games={games} />
+            }
 
           </div>
           <div className="col-md-4 col-sm-12">
           <GamesMostDownloaded />
+
           </div>
         </div>
       </main>
     </>
   )
 }
-
-export default GamesPage

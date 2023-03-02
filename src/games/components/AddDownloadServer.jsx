@@ -1,7 +1,5 @@
 import React from 'react'
-import { useDownloadServerStore } from '../hooks/useDownloadServerStore';
-
-import { useForm } from '../hooks/useForm'
+import { useForm, useDownloadServerStore } from '../index'
 
 
 const formFields = {
@@ -17,10 +15,11 @@ export const AddDownloadServer = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const server = downloadServers.filter(server => server.name == formState.name);
-    if (server.length === 0) {
+    console.log(formState);
+    if (server.length === 0 && formState.name !== '' && formState.url !== '') {
       return startSavingServer(formState);
     }
-    console.log('Ya existe.')
+    console.log('Ocurrió un error al intentar agrear este servidor de descarga.')
   }
 
   const handleDelete = (server) => {
@@ -54,7 +53,7 @@ export const AddDownloadServer = () => {
         Agregar servidor
       </button>
       <div>
-        {(downloadServers.length == 0) ? (<p></p>) :
+        {(downloadServers.length === 0) ? (<p></p>) :
           downloadServers.map(server => (
             <div key={server.name}>
               <label>Name: {server.name} URL: {server.url}</label>

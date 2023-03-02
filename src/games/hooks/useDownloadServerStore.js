@@ -1,15 +1,10 @@
-
 import { useDispatch, useSelector } from "react-redux"
 import { onAddDownloadServer, onDeleteDownloadServer, onLoadingDownloadServer, onSetActiveDownloadServer, onSetDownloadServer } from "../../../store/games/downloadServerSlice";
-import gamesApi from "../../api/gamesApi";
-
-
 
 export const useDownloadServerStore = () => {
     const { downloadServers, activeDownloadServers } = useSelector(state => state.downloadServer);
 
     const dispatch = useDispatch();
-
 
     const setActiveDownloadServer = (downloadServer) => {
         dispatch(onSetActiveDownloadServer(downloadServer))
@@ -29,11 +24,10 @@ export const useDownloadServerStore = () => {
 
     return {
         //Props
-        // games,
         activeDownloadServers,
         downloadServers,
 
-        // //Methods
+        //Methods
         setActiveDownloadServer,
         startSavingServer,
         startDeleteServer,
