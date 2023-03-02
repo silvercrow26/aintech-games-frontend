@@ -1,8 +1,8 @@
+import React, { useState, useEffect } from 'react'
 import { faCloudArrowUp, faDatabase, faGamepad, faServer, faSignal, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from 'react'
-import { useGameStore } from '../hooks/useGameStore';
+import { useGameStore } from '../index';
 
 export const AdminPanel = () => {
 
@@ -37,8 +37,6 @@ export const AdminPanel = () => {
     getHighRequirements();
     getMediumRequirements();
   }, [])
-
-
 
   return (
     <section className="container text-center mt-2 p-3 pb-5 mb-5">

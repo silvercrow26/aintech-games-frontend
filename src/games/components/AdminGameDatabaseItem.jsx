@@ -1,13 +1,9 @@
-import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Modal from 'react-modal'
 import React, { useEffect, useState } from 'react'
+import Modal from 'react-modal'
 import Swal from 'sweetalert2';
-import { useGameStore } from '../hooks/useGameStore';
-import { useUiStore } from '../hooks/useUiStore';
-import { useDownloadServerStore } from '../hooks/useDownloadServerStore';
-import { AddDownloadServer } from './AddDownloadServer';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useGameStore, useUiStore, useDownloadServerStore, AddDownloadServer } from '../index';
 
 const customStyles = {
     content: {
@@ -22,11 +18,11 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-
 export const AdminGameDatabaseItem = ({ game }) => {
-    const { setActiveGame, startDeleteGame, startSavingGame, activeGame } = useGameStore();
+
     const { isDateModalOpen, closeDateModal, openDateModal } = useUiStore();
-    const { setDownloadServers, downloadServers } = useDownloadServerStore();
+    const { downloadServers, setDownloadServers } = useDownloadServerStore();
+    const { activeGame, setActiveGame, startDeleteGame, startSavingGame } = useGameStore();
 
     const [formValues, setFormValues] = useState({
         name: "",
@@ -39,7 +35,6 @@ export const AdminGameDatabaseItem = ({ game }) => {
         openDateModal();
         setActiveGame(game);
         setDownloadServers(game.downloadserver);
-
     }
 
     const onInputChange = ({ target }) => {
@@ -86,7 +81,6 @@ export const AdminGameDatabaseItem = ({ game }) => {
     return (
         <>
             <tr>
-
                 <td>{game._id}</td>
                 <td>{game.name}</td>
                 <td>{game.steamId}</td>
@@ -101,7 +95,6 @@ export const AdminGameDatabaseItem = ({ game }) => {
                     </button>
                 </td>
             </tr>
-
             <Modal
                 isOpen={isDateModalOpen}
                 onRequestClose={closeDateModal}
@@ -122,7 +115,6 @@ export const AdminGameDatabaseItem = ({ game }) => {
                         onChange={onInputChange}
                         value={formValues.name}
                     />
-
                     <label>Requerimientos:</label>
                     <input
                         type='text'
@@ -132,7 +124,6 @@ export const AdminGameDatabaseItem = ({ game }) => {
                         onChange={onInputChange}
                         value={formValues.requirements}
                     />
-
                     <label>Comprar juego:</label>
                     <input
                         type='text'
@@ -152,10 +143,8 @@ export const AdminGameDatabaseItem = ({ game }) => {
                         onChange={onInputChange}
                         value={formValues.notes}
                     />
-
                     <label className='mt-2'> Server </label>
                     <AddDownloadServer />
-
                     <button
                         type="submit"
                         className={`btn btn-primary form-control my-2`}
@@ -163,11 +152,7 @@ export const AdminGameDatabaseItem = ({ game }) => {
                     > Guardar Juego
                     </button>
                 </form>
-
-
-
             </Modal>
         </>
-
     )
 }

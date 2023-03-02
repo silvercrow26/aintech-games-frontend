@@ -5,15 +5,15 @@ import {
   faScrewdriver,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useAuthStore } from "../../auth/hooks/useAuthStore";
+import { useAuthStore } from "../../auth/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useGameStore } from "../hooks/useGameStore";
 
-const Header = () => {
+
+export const Navbar = () => {
   const { status, startLogout, user } = useAuthStore();
-  const { setActiveGame } = useGameStore();
+
   const handleLogout = () => {
     startLogout();
   }
@@ -89,16 +89,6 @@ const Header = () => {
               <li className="nav-item mx-1">
                 <a className="nav-link disabled">Peliculas(Proximamente)</a>
               </li>
-              {status === "authenticated" ? (
-
-
-                <li className="nav-item mx-1">
-                  <Link className="nav-link linka" onClick={() => setActiveGame(null)} to="/newgame">
-                    Agregar juego
-                  </Link>
-                </li>
-         
-              ) : null}
             </ul>
 
             <form className="d-flex searchMobileQuery me-4 " role="search">
@@ -164,5 +154,3 @@ const Header = () => {
     </>
   );
 };
-
-export default Header;

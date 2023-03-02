@@ -18,7 +18,7 @@ export const RegisterPage = () => {
       <button className="btn btn-outline-light mb-5"><FontAwesomeIcon icon={faArrowLeft}/> Volver al inicio</button>
         </Link>
         <h2 className="mb-3 text-center TituloLogin text-light">Aintech Games</h2>
-        <form  autocomplete="off">
+        <form  autoComplete="off">
         <div className='form-group'>
             <span className="mb-3 text-light"><FontAwesomeIcon icon={faEnvelope} /> Nombre:</span>
             <input

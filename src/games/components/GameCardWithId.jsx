@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGamepad } from "@fortawesome/free-solid-svg-icons";
-import { useGameStore } from "../hooks/useGameStore";
+import { useGameStore } from "../index";
 
 export const GameCardWithId = () => {
   const params = useParams();
-  const store = useGameStore();
-
-  const { games, startLoadingGames, activeGame, setActiveGame } = useGameStore();
+  const { games, activeGame, setActiveGame } = useGameStore();
 
 
   useEffect(() => {
-    if (games.length == 0) {
-      startLoadingGames();
-    }
     if (activeGame == null && games.length > 0) {
       const { 0: game } = games.filter(game => game._id == params.id);
       setActiveGame(game);
-      console.log(1);
     }
   }, [games]);
 
@@ -144,8 +137,12 @@ export const GameCardWithId = () => {
                           {activeGame && activeGame.notes}
                         </p>
                       </div>
-                      <div>
-                      </div>
+                      <h4>Servidores de descarga</h4>
+                      {activeGame.downloadserver.map(server => (
+                        <div key={server.name}>
+                          <a target="_blank" href={`${server.url}`}>{server.name}</a>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   <div className="col-md-3 col-sm-12 mt-4">

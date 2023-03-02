@@ -1,4 +1,4 @@
-import { useDownloadServerStore } from "../hooks/useDownloadServerStore";
+import { useDownloadServerStore } from "../index";
 
 
 export const getDownloadServersByGame = (gameId) => {

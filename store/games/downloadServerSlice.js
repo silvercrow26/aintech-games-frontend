@@ -6,8 +6,6 @@ const initialState = {
     activeDownloadServer: null,
 }
 
-
-
 export const downloadServerSlice = createSlice({
     name: 'downloadServer',
     initialState,

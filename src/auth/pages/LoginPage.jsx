@@ -12,7 +12,7 @@ const loginFormFields = {
   loginPassword: ''
 }
 
-const LoginPage = () => {
+export const LoginPage = () => {
 
 
   const { loginEmail, loginPassword, onInputChange } = useForm(loginFormFields);
@@ -70,4 +70,3 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage

@@ -1,59 +1,65 @@
 import React, { useEffect } from 'react'
-import { useAuthStore } from '../auth/hooks/useAuthStore';
-import LoginPage from '../auth/pages/LoginPage';
-import { ProfileUser } from '../auth/pages/ProfileUser';
-import { RegisterPage } from '../auth/pages/RegisterPage';
-import { UserPageId } from '../auth/pages/UserPageId';
-import { GameByLowRequirements } from '../games/components/GameByLowRequirements';
-import { GameByMediumRequirements } from '../games/components/GameByMediumRequirements';
-import { GameCardByRequirements } from '../games/components/GameCardByRequirements';
-import { GameCardWithId } from '../games/components/GameCardWithId';
-import Navbar from '../games/components/Navbar';
-import { AddNewGame } from '../games/components/AddNewGame';
-import GamesPage from '../games/pages/GamesPage';
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { AdminPanel } from '../games/components/AdminPanel';
-import { AdminGameDatabase } from '../games/components/AdminGameDatabase';
-
-
+import { useAuthStore, ProfileUser, RegisterPage, UserPageId, LoginPage } from '../auth/index'
+import {
+    LowRequirementsPage,
+    MediumRequirementsPage,
+    HighRequirementsPage,
+    AdminGameDatabase,
+    AdminPanel, AddNewGame, Navbar,
+    GameCardWithId, GamesPage, useGameStore
+} from '../games/index';
 
 export const AppRouter = () => {
 
     const { status, checkAuthToken } = useAuthStore();
+    const { games, startLoadingGames } = useGameStore();
+
     useEffect(() => {
         checkAuthToken();
     }, []);
 
+    useEffect(() => {
+        if (games.length == 0) {
+            startLoadingGames();
+        }
+    }, [games])
+
+    if (status === 'checking') {
+        return (
+            <>
+            </>
+        )
+    }
 
     return (
         <>
             <Navbar />
             <Routes>
                 <Route path='/' element={<GamesPage />} />
-                <Route path='/juegos/level/altos-requisitos' element={<GameCardByRequirements />} />
-                <Route path='/juegos/level/medios-requisitos' element={<GameByMediumRequirements />} />
-                <Route path='/juegos/level/bajos-requisitos' element={<GameByLowRequirements />} />
+                <Route path='/juegos/level/altos-requisitos' element={<HighRequirementsPage />} />
+                <Route path='/juegos/level/medios-requisitos' element={<MediumRequirementsPage />} />
+                <Route path='/juegos/level/bajos-requisitos' element={<LowRequirementsPage />} />
                 <Route path='/juegos/:id' element={<GameCardWithId />} />
                 <Route path="/*" element={<Navigate to="/" />} />
 
                 {
                     (status === 'authenticated') ?
-                    (
-                        <>
+                        (
+                            <>
                                 <Route path='/' element={<GamesPage />} />
                                 <Route path='/newgame' element={<AddNewGame />} />
-                                <Route path='/admin/hub' element={<AdminPanel />} />    
+                                <Route path='/admin/hub' element={<AdminPanel />} />
                                 <Route path='/admin/gamedatabase' element={<AdminGameDatabase />} />
                                 <Route path='/user/configuration/:id' element={<UserPageId />} />
-                                <Route path='/user/profile/:name' element={<ProfileUser/>} />
+                                <Route path='/user/profile/:name' element={<ProfileUser />} />
                             </>
                         ) : (
                             <>
                                 <Route path='/auth/login' element={<LoginPage />} />
                                 <Route path='/auth/register' element={<RegisterPage />} />
-                                <Route path="/newgame" element={<Navigate to="/auth/login" />} />
                                 <Route path='/user/configuration/:id' element={<Navigate to="/auth/login" />} />
-                                <Route path='/user/profile/:name' element={<ProfileUser/>} />
+                                <Route path='/user/profile/:name' element={<ProfileUser />} />
                             </>
                         )
                 }

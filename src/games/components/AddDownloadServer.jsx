@@ -1,7 +1,5 @@
 import React from 'react'
-import { useDownloadServerStore } from '../hooks/useDownloadServerStore';
-
-import { useForm } from '../hooks/useForm'
+import { useForm, useDownloadServerStore } from '../index'
 
 
 const formFields = {

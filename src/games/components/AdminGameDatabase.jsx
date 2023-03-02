@@ -1,24 +1,24 @@
-import {
-  faPencilAlt,
-  faPenSquare,
-  faPlus,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect } from "react";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useGameStore } from "../hooks/useGameStore";
-import { AdminGameDatabaseItem } from "./AdminGameDatabaseItem";
+import { useDownloadServerStore, useGameStore, AdminGameDatabaseItem } from '../index';
 
 export const AdminGameDatabase = () => {
-  const { games } = useGameStore();
+  const { games, setActiveGame } = useGameStore();
+  const { setDownloadServers } = useDownloadServerStore();
+
+  const handleNewGame = () => {
+    setDownloadServers([]);
+    setActiveGame(null);
+  }
 
   return (
     <section className="container">
       <div>
         <h3 className="text-center mt-5 mb-5">Administración de juegos</h3>
         <div className="text-center mb-5">
-          <Link to="/newgame" className="text-decoration-none">
+          <Link to="/newgame" className="text-decoration-none" onClick={handleNewGame}>
             <span className="backgroundAdminButtons p-3"><FontAwesomeIcon icon={faPlus} /> Agregar Juego</span>
           </Link>
         </div>
