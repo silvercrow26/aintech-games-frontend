@@ -26,7 +26,7 @@ export const GameModal = () => {
         name: "",
         requirements: "",
         buyGame: "",
-        notes: ""
+        notes: "",
     });
 
     const onInputChange = ({ target }) => {
@@ -69,15 +69,19 @@ export const GameModal = () => {
                     onChange={onInputChange}
                     value={formValues.name}
                 />
-                <label>Requerimientos:</label>
-                <input
-                    type='text'
-                    className='form-control'
-                    autoComplete='off'
-                    name='requirements'
-                    onChange={onInputChange}
-                    value={formValues.requirements}
-                />
+                <div className='col'>
+                    <label>Requisitos:</label>
+                    <select className="form-select" aria-label="Default select example"
+                        id="requirements"
+                        value={formValues.requirements}
+                        onChange={onInputChange}
+                        name='requirements'
+                    >
+                        <option value="altos-requisitos">Altos Requisitos</option>
+                        <option value="medios-requisitos">Medios Requisitos</option>
+                        <option value="bajos-requisitos">Bajos Requisitos</option>
+                    </select>
+                </div>
                 <label>Comprar juego:</label>
                 <input
                     type='text'

@@ -1,3 +1,5 @@
+import { faPlus, faTrash, faX } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { useForm, useDownloadServerStore } from '../index'
 
@@ -15,10 +17,11 @@ export const AddDownloadServer = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const server = downloadServers.filter(server => server.name == formState.name);
-    if (server.length == 0) {
+    console.log(formState);
+    if (server.length == 0 && formState.name != '' && formState.url != '') {
       return startSavingServer(formState);
     }
-    console.log('Ya existe.')
+    console.log('Ocurrió un error al intentar agrear este servidor de descarga.')
   }
 
   const handleDelete = (server) => {
@@ -27,38 +30,62 @@ export const AddDownloadServer = () => {
   }
 
   return (
-    <div>
-      <input
-        className='mx-2'
-        type='text'
-        name='name'
-        placeholder='Nombre'
-        value={name}
-        onChange={onInputChange}
-        autoComplete='off'
-      />
-      <input
-        type='text'
-        name='url'
-        placeholder='URL'
-        value={url}
-        onChange={onInputChange}
-        autoComplete='off'
-      />
-      <button
-        type="button"
-        className={`btn btn-primary`}
-        onClick={handleSubmit}>
-        Agregar servidor
-      </button>
+    <div className='row'>
+      <div className='d-flex'>
+
+        <input
+          className='form-control w-25'
+          type='text'
+          name='name'
+          placeholder='Nombre'
+          value={name}
+          onChange={onInputChange}
+          autoComplete='off'
+        />
+
+
+        <input
+          className='form-control'
+          type='text'
+          name='url'
+          placeholder='URL'
+          value={url}
+          onChange={onInputChange}
+          autoComplete='off'
+        />
+
+
+        <button className='btn' onClick={handleSubmit}>
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
+
+      </div>
+
       <div>
-        {(downloadServers.length == 0) ? (<p></p>) :
-          downloadServers.map(server => (
-            <div key={server.name}>
-              <label>Name: {server.name} URL: {server.url}</label>
-              <button type='button' onClick={() => handleDelete(server)}>X</button>
-            </div>
-          ))}
+        <table className='table table-sm'>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>URL</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(downloadServers.length == 0) ? (<tr><td></td></tr>) :
+              downloadServers.map(server => (
+                <tr>
+                  <td> {server.name} </td>
+                  <td> {server.url} </td>
+                  <td className="">
+                    <button onClick={() => handleDelete(server)} className="btn btn-outline-danger mt-2">
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+
       </div>
     </div>
   )
