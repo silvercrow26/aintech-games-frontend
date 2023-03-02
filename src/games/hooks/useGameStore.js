@@ -1,12 +1,12 @@
 
 import { useDispatch, useSelector } from "react-redux"
-import { onAddGame, onLoadingGames, onSetGames, onSetActiveGame } from "../../../store/games/gameSlice";
+import { onAddGame, onLoadingGames, onSetGames, onSetActiveGame, onDeleteGame, onUpdateGame } from "../../../store/games/gameSlice";
 import gamesApi from "../../api/gamesApi";
 
 
 
 export const useGameStore = () => {
-    const { games, isLoading, activeGame} = useSelector(state => state.game);
+    const { games, isLoading, activeGame } = useSelector(state => state.game);
 
     const dispatch = useDispatch();
 
@@ -26,10 +26,28 @@ export const useGameStore = () => {
     }
 
     const startSavingGame = async (game) => {
-        const { data } = await gamesApi.post('/games/new', game);
-        dispatch(onAddGame({ ...game, _id: data._id }));
+        try {
+            if(game._id){
+                await gamesApi.put(`/games/${game._id}`, game);
+                dispatch(onUpdateGame(game));
+                return;
+            }
+            const { data } = await gamesApi.post('/games/new', game);
+            dispatch(onAddGame({ ...game, _id: data._id }));
+        } catch (error) {
+            console.log(error);
+        }
     }
- 
+
+    const startDeleteGame = async(game) => {
+        try {
+            await gamesApi.delete(`/games/${game._id}`);
+            dispatch(onDeleteGame());
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     return {
         //Props
@@ -40,6 +58,7 @@ export const useGameStore = () => {
         //Methods
         startLoadingGames,
         startSavingGame,
+        startDeleteGame,
         setActiveGame,
 
     }

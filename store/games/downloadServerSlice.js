@@ -15,15 +15,6 @@ export const downloadServerSlice = createSlice({
         onLoadingDownloadServer: (state) => {
             state.isLoading = true;
         },
-        onSetDownloadServer: (state, { payload }) => {
-            state.isLoading = false;
-            payload.forEach(element => {
-                const exist = state.downloadServers.some(game => game._id === element._id);
-                if (!exist) {
-                    state.downloadServers.push(element);
-                }
-            });
-        },
         onSetActiveDownloadServer: (state, { payload }) => {
             state.activeDownloadServer = payload;
         },
@@ -31,7 +22,15 @@ export const downloadServerSlice = createSlice({
             state.downloadServers.push(payload);
             state.activeDownloadServer = null;
         },
+        onDeleteDownloadServer: (state) => {
+            if(state.downloadServers) {
+                state.downloadServers = state.downloadServers.filter(server => server.name !== state.activeDownloadServer.name);
+            }
+        },
+        onSetDownloadServer: (state, { payload }) => {
+            state.downloadServers = payload;
+        },
     }
 });
 
-export const { onLoadingDownloadServer, onSetDownloadServer, onAddDownloadServer, onSetActiveDownloadServer } = downloadServerSlice.actions
+export const { onLoadingDownloadServer, onSetDownloadServer, onAddDownloadServer, onSetActiveDownloadServer, onDeleteDownloadServer } = downloadServerSlice.actions

@@ -7,7 +7,7 @@ export const GamesMostDownloaded = () => {
 
 
         const handleAddGameMostDownloaded = () => {
-            const filterMostDownloaded = games.filter((item) => item.mostDownloaded === true);
+            const filterMostDownloaded = games.filter((item) => item.mostDownloaded === false);
             setGameMostDownloaded(filterMostDownloaded);
             setActiveGame(null);
         }

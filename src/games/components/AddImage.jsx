@@ -20,7 +20,6 @@ export const AddImage = () => {
         formData.append('game', steamId);
         try {
             const { data } = await imgApi.post(`/upload`, formData);
-
             setHeader_image(data.img.url);
 
         } catch (error) {
@@ -29,14 +28,13 @@ export const AddImage = () => {
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         await startSavingGame(activeGame);
     }
 
     const handleChange = (e) => {
         setFile(e.target.files[0]);
     }
-
 
     useEffect(() => {
         if (header_image !== '') {

@@ -31,8 +31,21 @@ export const gameSlice = createSlice({
             state.games.push(payload);
             state.activeGame = null;
         },
+        onUpdateGame: (state, {payload}) => {
+            state.games = state.games.map(game => {
+                if(game._id === payload._id){
+                    return payload
+                }
+                return game;
+            })
+        },
+        onDeleteGame: (state) => {
+            if(state.activeGame) {
+                state.games = state.games.filter(game => game._id !== state.activeGame._id);
+            }
+        }
     }
 });
 
-export const { onLoadingGames, onSetGames, onAddGame, onSetActiveGame} = gameSlice.actions
+export const { onLoadingGames, onSetGames, onAddGame, onSetActiveGame, onUpdateGame, onDeleteGame} = gameSlice.actions
 

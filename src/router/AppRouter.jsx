@@ -4,13 +4,12 @@ import LoginPage from '../auth/pages/LoginPage';
 import { ProfileUser } from '../auth/pages/ProfileUser';
 import { RegisterPage } from '../auth/pages/RegisterPage';
 import { UserPageId } from '../auth/pages/UserPageId';
-import { Footer } from '../games/components/Footer';
 import { GameByLowRequirements } from '../games/components/GameByLowRequirements';
 import { GameByMediumRequirements } from '../games/components/GameByMediumRequirements';
 import { GameCardByRequirements } from '../games/components/GameCardByRequirements';
 import { GameCardWithId } from '../games/components/GameCardWithId';
 import Navbar from '../games/components/Navbar';
-import { AddNewGame } from '../games/pages/AddNewGame';
+import { AddNewGame } from '../games/components/AddNewGame';
 import GamesPage from '../games/pages/GamesPage';
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { AdminPanel } from '../games/components/AdminPanel';

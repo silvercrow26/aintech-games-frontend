@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDownloadServerStore } from '../hooks/useDownloadServerStore';
+
 import { useForm } from '../hooks/useForm'
 
 
@@ -7,41 +9,60 @@ const formFields = {
   url: '',
 }
 
+export const AddDownloadServer = () => {
 
-export const AddDownloadServer = (game) => {
+  const { name, url, onInputChange, formState } = useForm(formFields);
+  const { startSavingServer, setActiveDownloadServer, startDeleteServer, downloadServers, activeDownloadServer } = useDownloadServerStore();
 
-  const { name, url, onInputChange } = useForm(formFields);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const server = downloadServers.filter(server => server.name == formState.name);
+    if (server.length === 0) {
+      return startSavingServer(formState);
+    }
+    console.log('Ya existe.')
+  }
 
-  const handleSubmit = () => {
-    console.log(game);
+  const handleDelete = (server) => {
+    setActiveDownloadServer(server);
+    startDeleteServer(activeDownloadServer);
   }
 
   return (
-    <>
-      <form>
-        <label>Nombre:</label>
-        <input
-          type='text'
-          name='name'
-          value={name}
-          onChange={onInputChange}
-          required
-        />
-        <label>URL:</label>
-        <input
-          type='text'
-          name='url'
-          value={url}
-          onChange={onInputChange}
-          required
-        />
-        <button
-          type="submit"
-          className={`btn btn-primary form-control my-2`}
-          onClick={handleSubmit}> Save
-        </button>
-      </form>
-    </>
+    <div>
+      <input
+        className='mx-2'
+        type='text'
+        name='name'
+        placeholder='Nombre'
+        value={name}
+        onChange={onInputChange}
+        autoComplete='off'
+      />
+      <input
+        type='text'
+        name='url'
+        placeholder='URL'
+        value={url}
+        onChange={onInputChange}
+        autoComplete='off'
+      />
+      <button
+        type="button"
+        className={`btn btn-primary`}
+        onClick={handleSubmit}>
+        Agregar servidor
+      </button>
+      <div>
+        {(downloadServers.length == 0) ? (<p></p>) :
+          downloadServers.map(server => (
+            <div key={server.name}>
+              <label>Name: {server.name} URL: {server.url}</label>
+              <button type='button' onClick={() => handleDelete(server)}>X</button>
+            </div>
+          ))}
+      </div>
+    </div>
   )
 
 }
