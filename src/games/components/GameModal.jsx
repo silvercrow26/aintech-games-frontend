@@ -103,7 +103,19 @@ export const GameModal = () => {
           <option value="false">false</option>
           <option value="true">true</option>
         </select>
-
+                <div className='col'>
+                    <label>Requisitos:</label>
+                    <select className="form-select" aria-label="Default select example"
+                        id="requirements"
+                        value={formValues.requirements}
+                        onChange={onInputChange}
+                        name='requirements'
+                    >
+                        <option value="altos-requisitos">Altos Requisitos</option>
+                        <option value="medios-requisitos">Medios Requisitos</option>
+                        <option value="bajos-requisitos">Bajos Requisitos</option>
+                    </select>
+                </div>
         <label>Notas:</label>
         <input
           type="text"
