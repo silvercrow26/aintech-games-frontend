@@ -16,6 +16,7 @@ export * from './components/GameItem';
 export * from './components/AddNewGame';
 export * from './components/Navbar';
 export * from './components/GameCardWithId';
+export * from './components/GameModal';
 
 //pages
 export * from './pages/HighRequirementsPage';

@@ -28,10 +28,10 @@ export const useUiStore = () => {
     }
 
     return {
-        //*Propiedades
+        //Props
         isDateModalOpen,
 
-        //*Métodos
+        //Methods
         openDateModal,
         closeDateModal,
         toggleDateModal,

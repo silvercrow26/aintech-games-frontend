@@ -24,11 +24,10 @@ export const useDownloadServerStore = () => {
 
     return {
         //Props
-        // games,
         activeDownloadServers,
         downloadServers,
 
-        // //Methods
+        //Methods
         setActiveDownloadServer,
         startSavingServer,
         startDeleteServer,

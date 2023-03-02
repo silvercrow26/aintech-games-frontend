@@ -1,53 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import Modal from 'react-modal'
+import React from 'react'
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useGameStore, useUiStore, useDownloadServerStore, AddDownloadServer } from '../index';
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: '60%',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
-
-Modal.setAppElement('#root');
+import { useGameStore, useUiStore, useDownloadServerStore, GameModal } from '../index';
 
 export const AdminGameDatabaseItem = ({ game }) => {
 
-    const { isDateModalOpen, closeDateModal, openDateModal } = useUiStore();
-    const { downloadServers, setDownloadServers } = useDownloadServerStore();
-    const { activeGame, setActiveGame, startDeleteGame, startSavingGame } = useGameStore();
+    const { openDateModal } = useUiStore();
+    const { setDownloadServers } = useDownloadServerStore();
+    const { setActiveGame, startDeleteGame } = useGameStore();
 
-    const [formValues, setFormValues] = useState({
-        name: "",
-        requirements: "",
-        buyGame: "",
-        notes: ""
-    });
+
 
     const handleEdit = () => {
         openDateModal();
         setActiveGame(game);
         setDownloadServers(game.downloadserver);
-    }
-
-    const onInputChange = ({ target }) => {
-        setFormValues({
-            ...formValues,
-            [target.name]: target.value
-        })
-    }
-
-    const handleSave = (event) => {
-        event.preventDefault();
-        startSavingGame(formValues);
-        closeDateModal();
     }
 
     const handleDelete = () => {
@@ -72,12 +40,6 @@ export const AdminGameDatabaseItem = ({ game }) => {
         })
     }
 
-    useEffect(() => {
-        if (activeGame !== null) {
-            setFormValues({ ...activeGame, "downloadserver": downloadServers })
-        }
-    }, [activeGame, downloadServers]);
-
     return (
         <>
             <tr>
@@ -95,64 +57,7 @@ export const AdminGameDatabaseItem = ({ game }) => {
                     </button>
                 </td>
             </tr>
-            <Modal
-                isOpen={isDateModalOpen}
-                onRequestClose={closeDateModal}
-                style={customStyles}
-                className="modal"
-                overlayClassName="modal-fondo"
-                closeTimeoutMS={1000}
-            >
-                <h1> Editar juego </h1>
-                <hr />
-                <form className='container'>
-                    <label>Nombre:</label>
-                    <input
-                        type='text'
-                        className='form-control'
-                        autoComplete='off'
-                        name='name'
-                        onChange={onInputChange}
-                        value={formValues.name}
-                    />
-                    <label>Requerimientos:</label>
-                    <input
-                        type='text'
-                        className='form-control'
-                        autoComplete='off'
-                        name='requirements'
-                        onChange={onInputChange}
-                        value={formValues.requirements}
-                    />
-                    <label>Comprar juego:</label>
-                    <input
-                        type='text'
-                        className='form-control'
-                        autoComplete='off'
-                        name='buyGame'
-                        onChange={onInputChange}
-                        value={formValues.buyGame}
-                    />
-
-                    <label>Notas:</label>
-                    <input
-                        type='text'
-                        className='form-control'
-                        autoComplete='off'
-                        name='notes'
-                        onChange={onInputChange}
-                        value={formValues.notes}
-                    />
-                    <label className='mt-2'> Server </label>
-                    <AddDownloadServer />
-                    <button
-                        type="submit"
-                        className={`btn btn-primary form-control my-2`}
-                        onClick={handleSave}
-                    > Guardar Juego
-                    </button>
-                </form>
-            </Modal>
+            <GameModal />
         </>
     )
 }
