@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Particles from '../../Particles';
+import { Ads } from '../components/Ads';
 import { Carousel } from '../components/Carousel';
 import { Footer } from '../components/Footer';
 import { GameCardWithId } from '../components/Game/GameCardWithId';
@@ -15,12 +16,7 @@ export const GamesPage = () => {
 
   return (
     <>
-      <ins className="adsbygoogle"
-        style={{display:"block"}}
-        data-ad-client="ca-pub-4288271666568125"
-        data-ad-slot="8298384110"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
+      <Ads/>
 
       <main className="container">
         <Particles />

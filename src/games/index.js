@@ -18,7 +18,7 @@ export * from './components/Navbar/Navbar';
 export * from './components/Navbar/NavbarGenre';
 export * from './components/Game/GameCardWithId';
 export * from './components/Game/GameModal';
-
+export * from './components/Ads'
 //pages
 export * from './pages/HighRequirementsPage';
 export * from './pages/MediumRequirementsPage';
