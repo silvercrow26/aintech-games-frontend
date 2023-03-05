@@ -91,7 +91,7 @@ export const Navbar = () => {
 
 
               <li className="nav-item mx-1">
-                <a className="nav-link disabled">Películass</a>
+                <a className="nav-link disabled">Películas</a>
               </li>
             </ul>
 
