@@ -116,7 +116,8 @@ export const GameCardWithId = () => {
                           {activeGame && activeGame.notes}
                         </p>
                       </div>
-                      <h4>Servidores de descarga</h4>
+                      {(activeGame.downloadserver.length === 0) ? <></> : <h4>Servidores de descarga</h4>}
+
                       {activeGame.downloadserver.map(server => (
                         <div key={server.name}>
                           <a target="_blank" href={`${server.url}`}>{server.name}</a>

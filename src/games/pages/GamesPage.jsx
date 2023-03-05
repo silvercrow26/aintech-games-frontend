@@ -16,7 +16,7 @@ export const GamesPage = () => {
 
   return (
     <>
-      
+
 
       <main className="container">
         <Particles />
@@ -24,7 +24,7 @@ export const GamesPage = () => {
         <h4 className="text-light mt-5">Ultimos <b>juegos de PC</b> agregados</h4>
         <hr className="text-light" />
         <div className='row'>
-          <div className="gamesPageCard col-md-8 col-sm-12">
+          <div className="gamesPageCard col">
             {
               (isLoading) ? <Loader /> :
                 games.length === 0 ? <p className='ms-5'>No hay juegos disponibles en este momento.</p> :
@@ -32,9 +32,12 @@ export const GamesPage = () => {
             }
 
           </div>
-          <div className="col-md-4 col-sm-12 mostdownloaded">
-            <GamesMostDownloaded />
+          <div className="col-md-4 ">
+            <GamesMostDownloaded className="mostdownloaded" />
+            <div style={{width:'100%'}}>
             <Ads/>
+
+            </div>
           </div>
         </div>
       </main>

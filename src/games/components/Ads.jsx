@@ -13,13 +13,11 @@ export const Ads = () => {
     return (
         <>
             <ins className="adsbygoogle"
-                style={{display:'block'}}
-                data-ad-format="fluid"
-                data-ad-layout-key="-bt-23+1f+e1-k3"
+                style={{ display: 'block' }}
                 data-ad-client="ca-pub-4288271666568125"
-                data-ad-slot="2204313702">
-
-            </ins>
+                data-ad-slot="8298384110"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
         </>
     )
 }
