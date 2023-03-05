@@ -15,6 +15,13 @@ export const GamesPage = () => {
 
   return (
     <>
+      <ins className="adsbygoogle"
+        style={{display:"block"}}
+        data-ad-client="ca-pub-4288271666568125"
+        data-ad-slot="8298384110"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+
       <main className="container">
         <Particles />
         <Carousel />
@@ -24,7 +31,7 @@ export const GamesPage = () => {
           <div className="gamesPageCard col-md-8 col-sm-12">
             {
               (isLoading) ? <Loader /> :
-                games.length === 0 ? <p className='ms-5'>No hay juegos disponibles en este momento.</p> : 
+                games.length === 0 ? <p className='ms-5'>No hay juegos disponibles en este momento.</p> :
                   <GameItem games={games} style={"w-50"} />
             }
 
