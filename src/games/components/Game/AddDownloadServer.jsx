@@ -1,7 +1,8 @@
 import { faPlus, faTrash, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { left } from '@popperjs/core';
 import React from 'react'
-import { useForm, useDownloadServerStore } from '../index'
+import { useForm, useDownloadServerStore } from '../../index'
 
 
 const formFields = {
@@ -9,7 +10,7 @@ const formFields = {
   url: '',
 }
 
-export const AddDownloadServer = () => {
+export const AddDownloadServer = ({ color }) => {
 
   const { name, url, onInputChange, formState } = useForm(formFields);
   const { startSavingServer, setActiveDownloadServer, startDeleteServer, downloadServers, activeDownloadServer } = useDownloadServerStore();
@@ -17,7 +18,6 @@ export const AddDownloadServer = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const server = downloadServers.filter(server => server.name == formState.name);
-    console.log(formState);
     if (server.length === 0 && formState.name !== '' && formState.url !== '') {
       return startSavingServer(formState);
     }
@@ -31,21 +31,18 @@ export const AddDownloadServer = () => {
 
   return (
     <div className='row'>
-      <div className='d-flex'>
-
+      <div className='d-flex '>
+          <input
+            className='form-control w-25 me-4'
+            type='text'
+            name='name'
+            placeholder='Nombre'
+            value={name}
+            onChange={onInputChange}
+            autoComplete='off'
+          />
         <input
-          className='form-control w-25'
-          type='text'
-          name='name'
-          placeholder='Nombre'
-          value={name}
-          onChange={onInputChange}
-          autoComplete='off'
-        />
-
-
-        <input
-          className='form-control'
+          className='form-control '
           type='text'
           name='url'
           placeholder='URL'
@@ -53,16 +50,14 @@ export const AddDownloadServer = () => {
           onChange={onInputChange}
           autoComplete='off'
         />
-
-
-        <button className='btn' onClick={handleSubmit}>
+        <button className='btn btn-outline-success ms-3' onClick={handleSubmit}>
           <FontAwesomeIcon icon={faPlus} />
         </button>
 
       </div>
 
       <div>
-        <table className='table table-sm'>
+        <table className={`table mt-2 ${color}`}>
           <thead>
             <tr>
               <th>Nombre</th>
@@ -71,13 +66,13 @@ export const AddDownloadServer = () => {
             </tr>
           </thead>
           <tbody>
-            {(downloadServers.length == 0) ? (<tr><td></td></tr>) :
+            {(downloadServers.length == 0) ? (<tr><td colSpan={'3'}></td></tr>) :
               downloadServers.map(server => (
-                <tr>
+                <tr key={server.name}>
                   <td> {server.name} </td>
                   <td> {server.url} </td>
                   <td className="">
-                    <button onClick={() => handleDelete(server)} className="btn btn-outline-danger mt-2">
+                    <button onClick={() => handleDelete(server)} className="btn btn-outline-danger">
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
                   </td>

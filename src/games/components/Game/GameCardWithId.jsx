@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGamepad } from "@fortawesome/free-solid-svg-icons";
-import { useGameStore } from "../index";
+import { Loader, useGameStore } from "../../index";
+import { DiscussionEmbed } from "disqus-react";
 
 export const GameCardWithId = () => {
   const params = useParams();
   const { games, activeGame, setActiveGame } = useGameStore();
-
+  const url = `http://localhost:5173/juegos/${params.id}`;
 
   useEffect(() => {
     if (activeGame == null && games.length > 0) {
@@ -19,29 +20,7 @@ export const GameCardWithId = () => {
 
   return (
     <>
-      {(activeGame == null) ? (<div className="text-center w-100 mt-5">
-
-        <div className="loader">
-          <svg viewBox="0 0 80 80">
-            <circle id="test" cx="40" cy="40" r="32"></circle>
-          </svg>
-        </div>
-
-        <div className="loader triangle">
-          <svg viewBox="0 0 86 80">
-            <polygon points="43 8 79 72 7 72"></polygon>
-          </svg>
-        </div>
-
-        <div className="loader">
-          <svg viewBox="0 0 80 80">
-            <rect x="8" y="8" width="64" height="64"></rect>
-          </svg>
-        </div>
-        <h6 className="text-light small">Cargando juego</h6>
-      </div>
-
-      ) :
+      {(activeGame == null) ? <Loader /> :
         <div
           style={{
             backgroundImage: `url(${activeGame.detail[0].background})`,
@@ -152,6 +131,20 @@ export const GameCardWithId = () => {
               </div>
             </section>
           }
+          {/* <div className="text-light container">
+            <DiscussionEmbed
+              shortname='aintechonline'
+              config={
+                {
+                  url: url,
+                  identifier: params.id,
+                  title: activeGame.name,
+                  language: 'es_ES', //e.g. for Traditional Chinese (Taiwan)
+
+                }
+              }
+            />
+          </div> */}
         </div>
       }
     </>);

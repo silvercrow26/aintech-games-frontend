@@ -13,7 +13,6 @@ export const useAuthStore = () => {
         try {
 
             const { data } = await gamesApi.post('/auth/login', { email, password });
-            console.log(data);
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(onLogin(data.user));

@@ -2,7 +2,7 @@ import { faGamepad, faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import React from "react";
-import { useGameStore } from "../index";
+import { useGameStore } from "../../index";
 
 export const GameCard = (item) => {
   const requirements = item.requirements.toUpperCase().replace("-", ' ');
@@ -19,7 +19,7 @@ export const GameCard = (item) => {
       {item !== null ? (
 
         <Link to={`/juegos/${item._id}`} className="text-decoration-none">
-          <div onClick={handleSubmit} className="text-light mb-1 bgCard mb-5 mx-1 ">
+          <div onClick={handleSubmit} className="text-light bgCard mb-2 mx-1 ">
             <img
               src={item.header_image}
               alt="Card image cap"

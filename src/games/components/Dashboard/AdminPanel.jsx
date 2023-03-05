@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { faCloudArrowUp, faDatabase, faGamepad, faServer, faSignal, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
-import { useGameStore } from '../index';
+import { useGameStore } from '../../index';
 
 export const AdminPanel = () => {
 

@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import Particles from '../../Particles';
 import { Carousel } from '../components/Carousel';
 import { Footer } from '../components/Footer';
-import { GameCardWithId } from '../components/GameCardWithId';
-import { GameItem } from '../components/GameItem'
-import { GamesMostDownloaded } from '../components/GamesMostDownloaded';
+import { GameCardWithId } from '../components/Game/GameCardWithId';
+import { GameItem } from '../components/Game/GameItem'
+import { GamesMostDownloaded } from '../components/Game/GamesMostDownloaded';
 import { Loader } from '../components/Loader';
 import { useGameStore } from '../hooks/useGameStore';
 
@@ -21,18 +21,16 @@ export const GamesPage = () => {
         <h4 className="text-light mt-5">Ultimos <b>juegos de PC</b> agregados</h4>
         <hr className="text-light" />
         <div className='row'>
-          <div className="col-md-8 col-sm-12">
-
-
+          <div className="gamesPageCard col-md-8 col-sm-12">
             {
               (isLoading) ? <Loader /> :
-                games.length === 0 ? "No hay juegos disponibles en este momento." : <GameItem games={games} />
+                games.length === 0 ? "No hay juegos disponibles en este momento." : 
+                  <GameItem games={games} style={"w-50"} />
             }
 
           </div>
-          <div className="col-md-4 col-sm-12">
-          <GamesMostDownloaded />
-
+          <div className="col-md-4 col-sm-12 mostdownloaded">
+            <GamesMostDownloaded />
           </div>
         </div>
       </main>

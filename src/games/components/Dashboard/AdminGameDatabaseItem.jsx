@@ -2,7 +2,7 @@ import React from 'react'
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useGameStore, useUiStore, useDownloadServerStore, GameModal } from '../index';
+import { useGameStore, useUiStore, useDownloadServerStore, GameModal } from '../../index';
 
 export const AdminGameDatabaseItem = ({ game }) => {
 

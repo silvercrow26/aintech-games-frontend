@@ -1,22 +1,26 @@
 import React from 'react'
 import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getGamesByRequirements, useGameStore, Loader } from '../index'
+import { getGamesByRequirements, useGameStore, Loader, setLastUpdate } from '../index'
 import { GameItem } from '../index';
 
 export const MediumRequirementsPage = () => {
   const { req } = getGamesByRequirements('medios-requisitos');
   const { isLoading } = useGameStore();
-
+  const lastUpdate = setLastUpdate(req);
+  
   return (
     <>
       <div className='container'>
         <h4 className="text-light mt-5">Medios Requisitos</h4>
+        <p>Last Update: {lastUpdate}</p>
         <hr className="text-light" />
-        {
-          (isLoading) ? <Loader /> :
-            req.length === 0 ? "No hay juegos disponibles en este momento." : <GameItem games={req} />
-        }
+        <div className='gamesPageCard'>
+          {
+            (isLoading) ? <Loader /> :
+              req.length === 0 ? "No hay juegos disponibles en este momento." : <GameItem games={req} style={"w-25"} />
+          }
+        </div>
       </div>
     </>
   )

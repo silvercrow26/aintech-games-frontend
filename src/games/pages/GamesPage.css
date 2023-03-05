@@ -1,30 +1,52 @@
-.card {
-    margin-top: 5px;
-    border-radius: 10px;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.03);
+@media (max-width: 992px) and (min-width: 580px) {
+    .gamesPageCard .w-25 {
+        width: 50% !important;
+    }
+    .bgCard {
+        margin-bottom: 0rem !important;
+    }
+}
+
+
+@media (max-width: 580px) and (min-width: 100px) {
+    .imagenMostWanted {
+        width: 85%;
+    }
+    .mostdownloaded{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .gamesPageCard {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        margin: 0px !important;
+    }
+    .bgCard {
+        margin-bottom: 0px !important;
+    }
+
+    .gamesPageCard .w-50 {
+        width: 90% !important;
+        margin-bottom: 0rem;
+    }
+
+    .gamesPageCard .w-25 {
+        width: 90% !important;
+    }
+}
+
+.gamesPageCard {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 0;
     display: flex;
-    flex-direction: column;
-    height: 300px;  
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    overflow: hidden;
-    width: 200px;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
 }
 
-.card img{
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    object-position: center center;
-}
-
-.card-body{
-    --bs-card-spacer-y: 0.2rem;
-    --bs-card-spacer-x: 0.2rem;
-    
-}
-
-.card h5{
-    font-size: 1rem;
-}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useGameStore } from "../index";
 
 export const getGamesByRequirements = (requirements) => {
-    const { games, startLoadingGames } = useGameStore();
+    const { games } = useGameStore();
     const [req, setReq] = useState('')
 
     const validRequirement = ['altos-requisitos', 'medios-requisitos', 'bajos-requisitos'];

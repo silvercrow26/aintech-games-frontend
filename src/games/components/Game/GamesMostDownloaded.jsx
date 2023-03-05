@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useGameStore } from '../hooks/useGameStore';
+import { useGameStore } from '../../hooks/useGameStore';
 import { Link } from "react-router-dom";
 export const GamesMostDownloaded = () => {
     const [gameMostDownloaded, setGameMostDownloaded,] = useState([]);

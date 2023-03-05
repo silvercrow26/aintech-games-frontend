@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useGameStore } from '../index';
+import { updateGenresData, useGameStore } from '../../index';
 
 export const AddImage = () => {
 
@@ -7,9 +7,9 @@ export const AddImage = () => {
     const [title, setTitle] = useState('Header');
     const [header_image, setHeader_image] = useState('');
 
-    const { activeGame, setActiveGame, startSavingGame, startSavingImage, setActiveImage, activeImage } = useGameStore();
+    const { activeGame, setActiveGame, startSavingGame, startSavingImage, setActiveImage, startSavingGenre, activeImage } = useGameStore();
     const { steamId, name } = activeGame;
-
+    const genres = updateGenresData(activeGame);
     const types = ['image/png', 'image/jpeg'];
 
     const handleUpload = async (event) => {
@@ -28,6 +28,11 @@ export const AddImage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await startSavingGame(activeGame);
+        if (genres.length !== 0) {
+            genres.forEach(async (item) => {
+                await startSavingGenre(item.description);
+            })
+        }
     }
 
     const handleChange = (e) => {

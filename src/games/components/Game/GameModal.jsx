@@ -4,7 +4,7 @@ import {
   useDownloadServerStore,
   useGameStore,
   useUiStore,
-} from "../index";
+} from "../../index";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -40,9 +40,9 @@ export const GameModal = () => {
     });
   };
 
-  const handleSave = (event) => {
+  const handleSave = async(event) => {
     event.preventDefault();
-    startSavingGame(formValues);
+    await startSavingGame(formValues);
     closeDateModal();
   };
 
@@ -61,8 +61,8 @@ export const GameModal = () => {
       overlayClassName="modal-fondo"
       closeTimeoutMS={1000}
     >
-      <h1> Editar juego </h1>
-      <hr />
+      <h2 className="text-center pt-1"> Editar juego </h2>
+      <hr className=""/>
       <form className="container">
         <label>Nombre:</label>
         <input
@@ -72,15 +72,6 @@ export const GameModal = () => {
           name="name"
           onChange={onInputChange}
           value={formValues.name}
-        />
-        <label>Requerimientos:</label>
-        <input
-          type="text"
-          className="form-control"
-          autoComplete="off"
-          name="requirements"
-          onChange={onInputChange}
-          value={formValues.requirements}
         />
         <label>Comprar juego:</label>
         <input
@@ -117,7 +108,7 @@ export const GameModal = () => {
                     </select>
                 </div>
         <label>Notas:</label>
-        <input
+        <textarea
           type="text"
           className="form-control"
           autoComplete="off"

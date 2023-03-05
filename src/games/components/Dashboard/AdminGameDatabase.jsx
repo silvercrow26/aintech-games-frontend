@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { useDownloadServerStore, useGameStore, AdminGameDatabaseItem } from '../index';
+import { useDownloadServerStore, useGameStore, AdminGameDatabaseItem } from '../../index';
 
 export const AdminGameDatabase = () => {
   const {
     games,
-    startLoadingGames,
-    activeGame,
     setActiveGame,
   } = useGameStore();
   const [gameSearch, setGameSearch] = useState('');
@@ -18,7 +16,7 @@ export const AdminGameDatabase = () => {
   const getSearchData = () => {
     const filterData = games.filter((game) => game.name.toLowerCase().includes(gameSearch.toLowerCase())).reverse();
     if(gameSearch.trim() === ''){
-      setElementSearch([]);
+      setElementSearch(games);
     }else{
       setElementSearch(filterData)
     }
@@ -26,7 +24,7 @@ export const AdminGameDatabase = () => {
 
   useEffect(() => {
     getSearchData();
-  }, [gameSearch]);
+  }, [gameSearch, games]);
 
   const { setDownloadServers } = useDownloadServerStore();
 

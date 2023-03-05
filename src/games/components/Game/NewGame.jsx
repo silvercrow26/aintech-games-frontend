@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useForm, useGameStore, AddImage, getGameDetail, AddDownloadServer, useDownloadServerStore } from '../index';
+import { useForm, useGameStore, AddImage, getGameDetail, AddDownloadServer, useDownloadServerStore, updateGenresData } from '../../index';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -12,7 +12,7 @@ const formFields = {
     mostDownloaded: 'false'
 }
 
-export const AddNewGame = () => {
+export const NewGame = () => {
 
     const { name, steamId, requirements, notes, buyGame, mostDownloaded, onInputChange, formState, setFormState } = useForm(formFields);
     const { setActiveGame, activeGame } = useGameStore();
@@ -42,8 +42,13 @@ export const AddNewGame = () => {
             })
             return console.log('Ya existe ese juego en la base de datos.')
         }
-        if (validId == 'is-invalid') {
-            return console.log('Verifica la id ingresada.')
+        if (validId == 'is-invalid' || validId == '') {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '¡Verifica la ID ingresada!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
         }
         setActiveGame(formState);
     }
@@ -106,7 +111,7 @@ export const AddNewGame = () => {
                             </div>
                         </div>
                         <div className='col'>
-                        <div className='col'>
+                            <div className='col'>
                                 <label>Mas Descargado:</label>
                                 <select className="form-select" aria-label="Default select example"
                                     value={mostDownloaded}
@@ -135,7 +140,10 @@ export const AddNewGame = () => {
                                 onChange={onInputChange}
                             />
                         </div>
-                        <AddDownloadServer />
+                        <h4>Servidores de descarga: </h4>
+                        <div className='text-light'>
+                            <AddDownloadServer color={'table-dark'} />
+                        </div>
                         <input
                             type='submit'
                             className={`btn btn-success form-control my-2 `}

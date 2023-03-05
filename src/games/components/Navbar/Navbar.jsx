@@ -7,8 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuthStore } from "../../auth/index";
+import { useAuthStore } from "../../../auth/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NavbarGenre } from "../../index";
 
 
 export const Navbar = () => {
@@ -70,22 +71,25 @@ export const Navbar = () => {
                 <ul className="dropdown-menu">
                   <li>
 
-                    <Link to='/juegos/level/altos-requisitos' className="text-decoration-none text-light dropdown-item">
+                    <Link to='/juegos/nivel/altos-requisitos' className="text-decoration-none text-light dropdown-item">
                       Altos Requisitos
                     </Link>
                   </li>
                   <li>
-                    <Link to='/juegos/level/medios-requisitos' className="text-decoration-none text-light dropdown-item">
+                    <Link to='/juegos/nivel/medios-requisitos' className="text-decoration-none text-light dropdown-item">
                       Medios Requisitos
                     </Link>
                   </li>
                   <li>
-                    <Link to='/juegos/level/bajos-requisitos' className="text-decoration-none text-light dropdown-item">
+                    <Link to='/juegos/nivel/bajos-requisitos' className="text-decoration-none text-light dropdown-item">
                       Bajos Requisitos
                     </Link>
                   </li>
                 </ul>
               </li>
+              <NavbarGenre/>
+
+
               <li className="nav-item mx-1">
                 <a className="nav-link disabled">Peliculas(Proximamente)</a>
               </li>
@@ -114,7 +118,6 @@ export const Navbar = () => {
                   </button>
                 </Link>
               ) : (
-
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle text-light text-decoration-none dropdownUser"
