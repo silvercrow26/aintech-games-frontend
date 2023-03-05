@@ -24,7 +24,7 @@ export const GamesPage = () => {
           <div className="gamesPageCard col-md-8 col-sm-12">
             {
               (isLoading) ? <Loader /> :
-                games.length === 0 ? "No hay juegos disponibles en este momento." : 
+                games.length === 0 ? <p className='ms-5'>No hay juegos disponibles en este momento.</p> : 
                   <GameItem games={games} style={"w-50"} />
             }
 
