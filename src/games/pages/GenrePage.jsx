@@ -24,7 +24,7 @@ export const GenrePage = () => {
             <div className='gamesPageCard'>
                 {
                     (isLoading) ? <Loader /> :
-                        games.length === 0 ? "No hay juegos disponibles en este momento." : <GameItem games={games} style={"w-25"}/>
+                        games.length === 0 ? <p>No hay juegos disponibles en este momento.</p> : <GameItem games={games} style={"w-25"}/>
                 }
             </div>
         </div>

@@ -21,9 +21,10 @@ export const GameCardWithId = () => {
   return (
     <>
       {(activeGame == null) ? <Loader /> :
-        <div
+        <div 
           style={{
-            backgroundImage: `url(${activeGame.detail[0].background})`,
+            backgroundImage:`linear-gradient(to bottom, rgba(79, 78, 77, 0.6), rgba(31, 30, 29, 0.5)), 
+            url(${activeGame.detail[0].background})`,
             backgroundSize: "100%",
             backgroundRepeat: "no-repeat",
             backgroundAttachment: "fixed",
