@@ -58,6 +58,7 @@ export const AppRouter = () => {
                                 <Route path='/admin/gamedatabase' element={<AdminGameDatabase />} />
                                 <Route path='/user/configuration/:id' element={<UserPageId />} />
                                 <Route path='/user/profile/:name' element={<ProfileUser />} />
+                                <Route path='/auth/login' element={<Navigate to="/" />} />
                             </>
                         ) : (
                             <>

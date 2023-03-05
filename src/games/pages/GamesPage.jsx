@@ -16,7 +16,7 @@ export const GamesPage = () => {
 
   return (
     <>
-      <Ads/>
+      
 
       <main className="container">
         <Particles />
@@ -34,6 +34,7 @@ export const GamesPage = () => {
           </div>
           <div className="col-md-4 col-sm-12 mostdownloaded">
             <GamesMostDownloaded />
+            <Ads/>
           </div>
         </div>
       </main>
