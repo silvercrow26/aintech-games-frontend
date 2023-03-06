@@ -486,31 +486,6 @@ ul {
   cursor: pointer;
 }
 
-@media (max-width: 991px){
-  .gameCardBuy {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    padding: 20px;
-    justify-content: center;
-  }
-  .iconBuy{
-    padding: 5px;
-  }
-  .btnBuy{
-    width: 80%;
-    display: flex;
-  }
-  .gameIdCol{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .w-25{
-    width: 50% !important;
-  }
-}
-
 .cardDetailUser {
   background: linear-gradient(
     135deg,

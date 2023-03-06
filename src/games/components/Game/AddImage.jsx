@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { updateGenresData, useGameStore } from '../../index';
 
 export const AddImage = () => {
@@ -11,6 +13,7 @@ export const AddImage = () => {
     const { steamId, name } = activeGame;
     const genres = updateGenresData(activeGame);
     const types = ['image/png', 'image/jpeg'];
+    let navigate = useNavigate();
 
     const handleUpload = async (event) => {
         event.preventDefault();
@@ -27,12 +30,20 @@ export const AddImage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await startSavingGame(activeGame);
+        const data = await startSavingGame(activeGame);
         if (genres.length !== 0) {
             genres.forEach(async (item) => {
                 await startSavingGenre(item.description);
             })
         }
+        navigate(`/juegos/${data._id}`);
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Se ha agregado con éxito.',
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
 
     const handleChange = (e) => {

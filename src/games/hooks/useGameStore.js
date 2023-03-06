@@ -30,6 +30,7 @@ export const useGameStore = () => {
             }
             const { data } = await gamesApi.post('/games/new', game);
             dispatch(onAddGame({ ...data, _id: data._id }));
+            return data;
         } catch (error) {
             console.log(error);
         }

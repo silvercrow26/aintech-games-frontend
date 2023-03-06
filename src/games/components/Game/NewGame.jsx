@@ -61,6 +61,10 @@ export const NewGame = () => {
         })
     }, [detail, downloadServers]);
 
+    useEffect(()=> {
+        setActiveGame(null);
+    },[])
+
     return (
         <>
             {(activeGame == null) ? <div className='container text-light'>
