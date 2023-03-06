@@ -32,7 +32,7 @@ export const GamesPage = () => {
             }
 
           </div>
-          <div className="col-md-4 mt-5">
+          <div className="col-md-4 mostWanted mt-5">
             <GamesMostDownloaded className="mostdownloaded" />
             <div style={{width:'100%'}}>
             <Ads/>
