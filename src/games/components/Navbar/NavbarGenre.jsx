@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { useGameStore } from '../../index'
+import { useGenreStore } from '../../index'
 
 export const NavbarGenre = () => {
 
-    const { genres } = useGameStore();
+    const { genres } = useGenreStore();
 
     if (genres.length === 0) {
         return (<li className="nav-item dropdown mx-1">
@@ -48,6 +48,5 @@ export const NavbarGenre = () => {
                 )}
             </ul>
         </li>
-
     )
 }

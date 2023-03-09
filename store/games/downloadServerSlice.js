@@ -21,7 +21,7 @@ export const downloadServerSlice = createSlice({
             state.activeDownloadServer = null;
         },
         onDeleteDownloadServer: (state) => {
-            if(state.downloadServers) {
+            if (state.downloadServers) {
                 state.downloadServers = state.downloadServers.filter(server => server.name !== state.activeDownloadServer.name);
             }
         },

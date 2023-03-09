@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
-import { faGamepad } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getGamesByRequirements, useGameStore, Loader, setLastUpdate } from '../index'
-import { GameItem } from '../index';
+import React from 'react'
+import { getGamesByRequirements, useGameStore, Loader, setLastUpdate, GameItem } from '../index'
+
 
 export const HighRequirementsPage = () => {
   const { req } = getGamesByRequirements('altos-requisitos');
@@ -20,7 +18,6 @@ export const HighRequirementsPage = () => {
             (isLoading) ? <Loader /> :
               req.length === 0 ? "No hay juegos disponibles en este momento." : <GameItem games={req} style={"w-25"} />
           }
-
         </div>
       </div>
     </>

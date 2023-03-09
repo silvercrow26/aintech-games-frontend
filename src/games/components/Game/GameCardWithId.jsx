@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGamepad } from "@fortawesome/free-solid-svg-icons";
-import { Loader, useGameStore } from "../../index";
-import { DiscussionEmbed } from "disqus-react";
+import { Disqus, Loader, useGameStore } from "../../index";
 
 export const GameCardWithId = () => {
   const params = useParams();
   const { games, activeGame, setActiveGame } = useGameStore();
+  const url = `${import.meta.env.VITE_API_HOST}/juegos/${params.id}`;
 
   useEffect(() => {
     if (activeGame == null && games.length > 0) {
@@ -135,20 +135,7 @@ export const GameCardWithId = () => {
               </div>
             </section>
           }
-          {/* <div className="text-light container">
-            <DiscussionEmbed
-              shortname='aintechonline'
-              config={
-                {
-                  url: url,
-                  identifier: params.id,
-                  title: activeGame.name,
-                  language: 'es_ES', //e.g. for Traditional Chinese (Taiwan)
-
-                }
-              }
-            />
-          </div> */}
+          <Disqus url={url} id={params.id} name={activeGame.name}/>
         </div>
       }
     </>);

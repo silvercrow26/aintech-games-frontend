@@ -34,13 +34,11 @@ body {
   transition: all 0.3s;
   line-height: 1.4em;
   border: 2px solid var(--green);
-  background: linear-gradient(
-    to right,
-    rgba(95, 27, 253, 0.1) 1%,
-    transparent 40%,
-    transparent 60%,
-    rgba(121, 27, 253, 0.1) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(95, 27, 253, 0.1) 1%,
+      transparent 40%,
+      transparent 60%,
+      rgba(121, 27, 253, 0.1) 100%);
   color: var(--green);
   box-shadow: inset 0 0 10px rgba(132, 27, 253, 0.4),
     0 0 9px 3px rgba(76, 27, 253, 0.1);
@@ -60,13 +58,11 @@ body {
   height: 100%;
   top: 0;
   transition: transform 0.4s ease-in-out;
-  background: linear-gradient(
-    to right,
-    transparent 1%,
-    rgba(121, 27, 253, 0.323) 40%,
-    rgba(95, 27, 253, 0.392) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to right,
+      transparent 1%,
+      rgba(121, 27, 253, 0.323) 40%,
+      rgba(95, 27, 253, 0.392) 60%,
+      transparent 100%);
 }
 
 .buttonLogin:hover:before {
@@ -87,13 +83,11 @@ body {
   transition: all 0.3s;
   line-height: 1.4em;
   border: 2px solid var(--green);
-  background: linear-gradient(
-    to right,
-    rgba(253, 27, 27, 0.1) 1%,
-    transparent 40%,
-    transparent 60%,
-    rgba(253, 27, 27, 0.1) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(253, 27, 27, 0.1) 1%,
+      transparent 40%,
+      transparent 60%,
+      rgba(253, 27, 27, 0.1) 100%);
   color: var(--green);
   box-shadow: inset 0 0 10px rgba(253, 27, 27, 0.4),
     0 0 9px 3px rgba(253, 27, 27, 0.1);
@@ -113,13 +107,11 @@ body {
   height: 100%;
   top: 0;
   transition: transform 0.4s ease-in-out;
-  background: linear-gradient(
-    to right,
-    transparent 1%,
-    rgba(253, 27, 27, 0.323) 40%,
-    rgba(253, 27, 27, 0.392) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to right,
+      transparent 1%,
+      rgba(253, 27, 27, 0.323) 40%,
+      rgba(253, 27, 27, 0.392) 60%,
+      transparent 100%);
 }
 
 .buttonLogout:hover:before {
@@ -140,13 +132,11 @@ body {
   transition: all 0.3s;
   line-height: 1.4em;
   border: 2px solid var(--green);
-  background: linear-gradient(
-    to right,
-    rgba(27, 253, 35, 0.1) 1%,
-    transparent 40%,
-    transparent 60%,
-    rgba(27, 253, 53, 0.1) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(27, 253, 35, 0.1) 1%,
+      transparent 40%,
+      transparent 60%,
+      rgba(27, 253, 53, 0.1) 100%);
   color: var(--green);
   box-shadow: inset 0 0 10px rgba(27, 253, 65, 0.4),
     0 0 9px 3px rgba(27, 253, 46, 0.1);
@@ -166,13 +156,11 @@ body {
   height: 100%;
   top: 0;
   transition: transform 0.4s ease-in-out;
-  background: linear-gradient(
-    to right,
-    transparent 1%,
-    rgba(27, 253, 91, 0.323) 40%,
-    rgba(27, 253, 91, 0.392) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to right,
+      transparent 1%,
+      rgba(27, 253, 91, 0.323) 40%,
+      rgba(27, 253, 91, 0.392) 60%,
+      transparent 100%);
 }
 
 .buttonLoginAuth:hover:before {
@@ -193,13 +181,11 @@ body {
   transition: all 0.3s;
   line-height: 1.4em;
   border: 2px solid var(--green);
-  background: linear-gradient(
-    to right,
-    rgba(253, 181, 27, 0.1) 1%,
-    transparent 40%,
-    transparent 60%,
-    rgba(253, 200, 27, 0.1) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(253, 181, 27, 0.1) 1%,
+      transparent 40%,
+      transparent 60%,
+      rgba(253, 200, 27, 0.1) 100%);
   color: var(--green);
   box-shadow: inset 0 0 10px rgba(253, 181, 27, 0.4),
     0 0 9px 3px rgba(253, 155, 27, 0.1);
@@ -219,13 +205,11 @@ body {
   height: 100%;
   top: 0;
   transition: transform 0.4s ease-in-out;
-  background: linear-gradient(
-    to right,
-    transparent 1%,
-    rgba(253, 200, 27, 0.323) 40%,
-    rgba(242, 253, 27, 0.392) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to right,
+      transparent 1%,
+      rgba(253, 200, 27, 0.323) 40%,
+      rgba(242, 253, 27, 0.392) 60%,
+      transparent 100%);
 }
 
 .buttonRegistro:hover:before {
@@ -272,8 +256,7 @@ ul {
   top: 37px;
   left: 19px;
   transform: translate(-18px, -18px);
-  animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
+  animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
 
 .loader svg {
@@ -295,8 +278,7 @@ ul {
 .loader svg polygon {
   stroke-dasharray: 145 76 145 76;
   stroke-dashoffset: 0;
-  animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
+  animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
 
 .loader svg rect {
@@ -308,8 +290,7 @@ ul {
 .loader svg circle {
   stroke-dasharray: 150 50 150 50;
   stroke-dashoffset: 75;
-  animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
+  animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
 
 .loader.triangle {
@@ -319,8 +300,7 @@ ul {
 .loader.triangle:before {
   left: 21px;
   transform: translate(-10px, -18px);
-  animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
+  animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
 
 @keyframes pathTriangle {
@@ -473,11 +453,9 @@ ul {
 }
 
 .gameCardBuy {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 30px;
@@ -487,11 +465,9 @@ ul {
 }
 
 .cardDetailUser {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 30px;
@@ -521,11 +497,9 @@ ul {
 .bgCardConfiguration {
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
   border: 1px solid #6f3aff !important;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 30px;
@@ -563,7 +537,7 @@ li {
   box-sizing: border-box;
 }
 
-.backgroundMostWantedCard{
+.backgroundMostWantedCard {
   background-color: #111315 !important;
   border: solid 1px #6441a5;
   box-sizing: border-box;
@@ -577,12 +551,12 @@ li {
 
 .backgroundEvent {
   text-shadow: 0 0 5px #b831ed, 0 0 10px #b831ed, 0 0 20px #b831ed,
-    0 0 40px #ffffff, 0 0 80px #ffffff, 0 0 90px #ffffff, 0 0 100px #b831ed ;
+    0 0 40px #ffffff, 0 0 80px #ffffff, 0 0 90px #ffffff, 0 0 100px #b831ed;
 }
 
-.backgroundIndexMostWantedCard{
+.backgroundIndexMostWantedCard {
   text-shadow: 0 0 5px #b831ed, 0 0 10px #b831ed, 0 0 20px #b831ed,
-  0 0 40px #b831ed, 0 0 80px #b831ed, 0 0 90px #b831ed, 0 0 100px #b831ed !important;
+    0 0 40px #b831ed, 0 0 80px #b831ed, 0 0 90px #b831ed, 0 0 100px #b831ed !important;
 }
 
 .backGroundCardsDashboard {
@@ -607,15 +581,17 @@ li {
   cursor: pointer;
 }
 
-.imagenMostWanted{
+.imagenMostWanted {
   transition: 0.3s;
   object-fit: cover;
 }
-.imagenMostWanted:hover{
+
+.imagenMostWanted:hover {
   transform: scale(1.1);
 }
+
 /* Modal */
-.ReactModalPortal > div{
+.ReactModalPortal>div {
   opacity: 0;
 }
 
@@ -655,9 +631,54 @@ li {
   padding: 10px;
 }
 
-.botones{
+.botones {
   width: 35px !important;
   height: 35px !important;
   padding: 1px;
-  
+
+}
+
+/* Loader */
+.spinner {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4.5px solid #0000;
+  border-radius: 50%;
+  border-color: #dbdcef #0000;
+  animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2.2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.spinner::before {
+  border-color: #474bff #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+
+.spinner::after {
+  margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.authloader {
+  display: flex;
+  margin-top: 20% !important;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

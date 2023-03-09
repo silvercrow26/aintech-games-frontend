@@ -1,0 +1,15 @@
+p {
+    font-size: 1rem;
+    padding: 5px;
+    width: 95%;
+    margin: 10px auto;
+    text-align: justify;
+}
+
+.cardDetailGame {
+    padding: 30px;
+    border: 1px solid #5e4dcd;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    cursor: pointer;
+    user-select: none ;
+}

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
-import { onAddGame, onLoadingGames, onSetGames, onSetActiveGame, onDeleteGame, onUpdateGame, onSetActiveImage, onSetGenres, onAddGenre } from "../../../store/games/gameSlice";
+import { onAddGame, onLoadingGames, onSetGames, onSetActiveGame, onDeleteGame, onUpdateGame, onSetError, onClearError } from "../../../store/games/gameSlice";
 import gamesApi from "../../api/gamesApi";
 
 export const useGameStore = () => {
-    const { games, genres, isLoading, activeGame, activeImage } = useSelector(state => state.game);
+    const { games, isLoading, activeGame, errorMessage } = useSelector(state => state.game);
     const dispatch = useDispatch();
 
     //Games
@@ -20,7 +20,6 @@ export const useGameStore = () => {
             console.log(error);
         }
     }
-
     const startSavingGame = async (game) => {
         try {
             if (game._id) {
@@ -40,61 +39,34 @@ export const useGameStore = () => {
         try {
             await gamesApi.delete(`/games/${game._id}`);
             dispatch(onDeleteGame());
+            const steamId = game.steamId;
+            await gamesApi.delete(`/images/`, { data: { steamId } });
         } catch (error) {
-            console.log(error);
-        }
-    }
-    //Image
-    const setActiveImage = (image) => {
-        dispatch(onSetActiveImage(image))
-    };
+            dispatch(onSetError(error.response.data.msg));
 
-    const startSavingImage = async (image) => {
-        try {
-            const { data } = await gamesApi.post(`/images/upload`, image);
-            dispatch(onSetActiveImage(data.img));
-        } catch (error) {
-            console.log(error);
+            setTimeout(() => {
+                dispatch(onClearError());
+            }, 10);
         }
-    };
 
-    //Genre
-    const startLoadingGenres = async () => {
-        try {
-            const { data } = await gamesApi.get('/genres');
-            dispatch(onSetGenres(data.msg));
-        } catch (error) {
-            console.log(error);
-        }
     }
-    const startSavingGenre = async (genre) => {
-        try {
-            const { data } = await gamesApi.post('/genres', {name: genre});
-            console.log(data);
-            dispatch(onAddGenre({...data.genre, _id: data.genre._id, updatedAt: data.genre.updatedAt}));
-        } catch (error) {
-            console.log(error);
-        }
-    }
+
 
 
     return {
         //Props
         games,
-        genres,
         isLoading,
         activeGame,
-        activeImage,
+        errorMessage,
 
         //Methods
         startLoadingGames,
         startSavingGame,
         startDeleteGame,
         setActiveGame,
-        startSavingImage,
-        setActiveImage,
-        startLoadingGenres,
-        startSavingGenre,
+
+
     }
 }
 

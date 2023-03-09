@@ -4,14 +4,12 @@ export const GameItem = ({ games, style }) => {
 
     return (
         <>
-
             {games.map(item => (
-                <div key={item._id} className={`${style} p-2`}>
+                <div data-aos="fade-up" data-aos-duration="500" key={item._id} className={`${style} p-2`}>
                     <GameCard {...item} />
                 </div>
             )).reverse()
             }
-
         </>
     )
 }

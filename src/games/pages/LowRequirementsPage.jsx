@@ -1,14 +1,11 @@
 import React from 'react'
-import { faGamepad } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getGamesByRequirements, useGameStore, Loader, setLastUpdate } from '../index'
-import { GameItem } from '../index';
+import { getGamesByRequirements, useGameStore, Loader, setLastUpdate, GameItem } from '../index'
 
 export const LowRequirementsPage = () => {
   const { req } = getGamesByRequirements('bajos-requisitos');
   const { isLoading } = useGameStore();
   const lastUpdate = setLastUpdate(req);
-  
+
   return (
     <>
       <div className='container'>

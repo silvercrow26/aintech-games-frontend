@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useForm, useGameStore, AddImage, getGameDetail, AddDownloadServer, useDownloadServerStore, updateGenresData } from '../../index';
+import { useForm, useGameStore, AddImage, getGameDetail, AddDownloadServer, useDownloadServerStore } from '../../index';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -25,7 +25,7 @@ export const NewGame = () => {
         const game = games.find(game => game.steamId === steamId);
         if (game != undefined) {
             Swal.fire({
-                title: '<strong>¡Ya existe!</strong>',
+                title: '<b>¡Ya existe!</b>',
                 icon: 'info',
                 html:
                     'El <b>videojuego</b>: ' +

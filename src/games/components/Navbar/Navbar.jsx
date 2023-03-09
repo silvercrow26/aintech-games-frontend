@@ -11,13 +11,13 @@ import { useAuthStore } from "../../../auth/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavbarGenre } from "../../index";
 
-
 export const Navbar = () => {
   const { status, startLogout, user } = useAuthStore();
 
   const handleLogout = () => {
     startLogout();
   }
+
 
   return (
     <>
@@ -87,7 +87,7 @@ export const Navbar = () => {
                   </li>
                 </ul>
               </li>
-              <NavbarGenre/>
+              <NavbarGenre />
 
 
               <li className="nav-item mx-1">
@@ -126,14 +126,14 @@ export const Navbar = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <FontAwesomeIcon icon={faUser} /> {user.name}
+                    <FontAwesomeIcon icon={faUser} /> {user.username}
                   </a>
                   <ul className="dropdown-menu text-light">
-                      <Link to={'/admin/hub'} className="text-decoration-none">
-                  <li className="dropdown-item  text-warning " href="#">
+                    <Link to={'/admin/hub'} className="text-decoration-none">
+                      <li className="dropdown-item  text-warning " href="#">
                         <FontAwesomeIcon icon={faScrewdriver} /> <b>Dashboard</b>
-                    </li>
-                      </Link>
+                      </li>
+                    </Link>
                     <li className="dropdown-item " href="#">
                       <Link to={`/user/configuration/${user.uid}`} className="text-decoration-none text-light">
                         <FontAwesomeIcon icon={faGear} /> Configuración

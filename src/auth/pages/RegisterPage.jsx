@@ -3,23 +3,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../games/hooks/useForm'
+
 const loginRegisterFields = {
-    registerName: '',
-    registerEmail: '',
-    registerPassword: '',
-    repeatRegisterPassword: '',
-  }
+  registerName: '',
+  registerEmail: '',
+  registerPassword: '',
+  repeatRegisterPassword: '',
+}
+
 export const RegisterPage = () => {
-    const { registerName, registerEmail, registerPassword, repeatRegisterPassword, onInputChange } = useForm(loginRegisterFields);
-    return (
-        <div>
-            <div className='container mt-3  border p-5 bgCardLogin mb-5'>
+  const { registerName, registerEmail, registerPassword, repeatRegisterPassword, onInputChange } = useForm(loginRegisterFields);
+  return (
+    <div>
+      <div className='container mt-3  border p-5 bgCardLogin mb-5'>
         <Link to="/" className="volverInicio">
-      <button className="btn btn-outline-light mb-5"><FontAwesomeIcon icon={faArrowLeft}/> Volver al inicio</button>
+          <button className="btn btn-outline-light mb-5"><FontAwesomeIcon icon={faArrowLeft} /> Volver al inicio</button>
         </Link>
         <h2 className="mb-3 text-center TituloLogin text-light">Aintech Games</h2>
-        <form  autoComplete="off">
-        <div className='form-group'>
+        <form autoComplete="off">
+          <div className='form-group'>
             <span className="mb-3 text-light"><FontAwesomeIcon icon={faEnvelope} /> Nombre:</span>
             <input
               type="text"
@@ -45,7 +47,7 @@ export const RegisterPage = () => {
             />
           </div>
           <div className='form-group mt-2'>
-          <span className="mb-3 text-light"><FontAwesomeIcon icon={faLock} /> Contraseña:</span>
+            <span className="mb-3 text-light"><FontAwesomeIcon icon={faLock} /> Contraseña:</span>
             <input
               type="password"
               className="borderInputs p-2  bg-dark w-100 text-light"
@@ -59,7 +61,7 @@ export const RegisterPage = () => {
           </div>
 
           <div className='form-group mt-2'>
-          <span className="mb-3 text-light"><FontAwesomeIcon icon={faLock} /> Repetir contraseña:</span>
+            <span className="mb-3 text-light"><FontAwesomeIcon icon={faLock} /> Repetir contraseña:</span>
             <input
               type="password"
               className="borderInputs p-2  bg-dark w-100 text-light"
@@ -67,21 +69,21 @@ export const RegisterPage = () => {
               name='repeatRegisterPassword'
               value={repeatRegisterPassword}
               onChange={onInputChange}
-             
+
               required
             />
           </div>
 
           <div className='mt-3 text-center'>
-    
-            <button   type="submit" className='buttonRegistro w-50 mx-5 text-center'>Registrarse</button>
+
+            <button type="submit" className='buttonRegistro w-50 mx-5 text-center'>Registrarse</button>
             <div className="mt-3 ">
-             <Link className="text-center text-light text-decoration-none" to='/auth/login'><b>¿Ya tienes una cuenta? <span className="text-primary">Conectar</span></b></Link>
+              <Link className="text-center text-light text-decoration-none" to='/auth/login'><b>¿Ya tienes una cuenta? <span className="text-primary">Conectar</span></b></Link>
             </div>
           </div>
           <p className="text-center small text-secondary mt-3"><FontAwesomeIcon icon={faShield} /> Datos seguros y protegidos</p>
         </form>
       </div>
-        </div>
-    )
+    </div>
+  )
 }

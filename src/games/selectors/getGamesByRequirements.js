@@ -17,5 +17,5 @@ export const getGamesByRequirements = (requirements) => {
         }
     }, [games])
 
-    return {req}
+    return { req }
 }

@@ -7,15 +7,16 @@ import {
     HighRequirementsPage,
     AdminGameDatabase,
     AdminPanel, NewGame, Navbar,
-    GameCardWithId, GamesPage, useGameStore, GenrePage, ErrorPage
+    GameCardWithId, GamesPage, useGameStore, GenrePage, ErrorPage, useGenreStore, PrivacyPolicy, TermsAndConditions
 } from '../games/index';
-
+import '../App.css';
 
 
 export const AppRouter = () => {
 
     const { status, checkAuthToken } = useAuthStore();
-    const { games, genres, startLoadingGames, startLoadingGenres } = useGameStore();
+    const { games, startLoadingGames } = useGameStore();
+    const { genres, startLoadingGenres } = useGenreStore();
 
     useEffect(() => {
         checkAuthToken();
@@ -25,7 +26,7 @@ export const AppRouter = () => {
         if (games.length === 0) {
             startLoadingGames();
         }
-        if(genres.length === 0){
+        if (genres.length === 0) {
             startLoadingGenres();
         }
     }, [games])
@@ -33,20 +34,28 @@ export const AppRouter = () => {
     if (status === 'checking') {
         return (
             <>
+                <Navbar />
+                <div className='container mt-3 authloader'>
+                    <div className="spinner"></div>
+                    <div>Cargando</div>
+                </div>
             </>
         )
-    }
+    };
     return (
         <>
             <Navbar />
             <Routes>
                 <Route path='/' element={<GamesPage />} />
+                <Route path='/politica-de-privacidad' element={<PrivacyPolicy />} />
+                <Route path='/terminos-y-condiciones' element={<TermsAndConditions />} />
+
                 <Route path='/juegos/generos/:genero' element={<GenrePage />} />
                 <Route path='/juegos/nivel/altos-requisitos' element={<HighRequirementsPage />} />
                 <Route path='/juegos/nivel/medios-requisitos' element={<MediumRequirementsPage />} />
                 <Route path='/juegos/nivel/bajos-requisitos' element={<LowRequirementsPage />} />
                 <Route path='/juegos/:id' element={<GameCardWithId />} />
-                <Route path="/*" element={<ErrorPage/>} />
+                <Route path="/*" element={<ErrorPage />} />
 
                 {
                     (status === 'authenticated') ?

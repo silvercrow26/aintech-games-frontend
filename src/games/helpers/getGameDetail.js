@@ -10,6 +10,7 @@ const details = {
     release_date: "",
     pc_requirements: "",
     background: "",
+    screenshots:""
 }
 
 export const getGameDetail = (steamId) => {
@@ -17,9 +18,8 @@ export const getGameDetail = (steamId) => {
     const [validId, setValidId] = useState('');
     const [detail, setDetail] = useState(details);
 
-
     const handleCheck = async () => {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_STEAM_URL}=${steamId}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/games/apisteam/?appids=${steamId}`);
         setValidId('');
         try {
             const { resp } = await data;
@@ -32,6 +32,7 @@ export const getGameDetail = (steamId) => {
                 release_date: resp.release_date,
                 pc_requirements: resp.pc_requirements,
                 background: resp.background,
+                screenshots: resp.screenshots,
             });
             setValidId('is-valid');
         } catch (error) {

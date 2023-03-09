@@ -2,10 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     games: [],
-    genres:[],
     isLoading: false,
     activeGame: null,
-    activeImage: null,
+    errorMessage: undefined,
 }
 
 export const gameSlice = createSlice({
@@ -45,22 +44,15 @@ export const gameSlice = createSlice({
                 state.games = state.games.filter(game => game._id !== state.activeGame._id);
             }
         },
-        onSetActiveImage: (state, { payload }) => {
-            state.activeImage = payload;
+        onSetError: (state, { payload }) => {
+            state.errorMessage = payload;
         },
-        onSetGenres: (state, { payload }) => {
-            payload.forEach(element => {
-                const exist = state.genres.some(genre => genre._id === element._id);
-                if (!exist) {
-                    state.genres.push(element);
-                }
-            });
+        onClearError: (state) => {
+            state.errorMessage = undefined;
         },
-        onAddGenre: (state, { payload }) => {
-            state.genres.push(payload);
-        },
+
     }
 });
 
-export const { onLoadingGames, onSetGames, onAddGame, onSetActiveGame, onUpdateGame, onDeleteGame, onSetActiveImage, onSetGenres, onAddGenre } = gameSlice.actions
+export const { onLoadingGames, onSetGames, onAddGame, onSetActiveGame, onUpdateGame, onDeleteGame, onSetError, onClearError } = gameSlice.actions
 

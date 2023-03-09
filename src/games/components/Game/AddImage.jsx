@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useGenreStore } from '../../hooks/useGenreStore';
 import { updateGenresData, useGameStore } from '../../index';
 
 export const AddImage = () => {
@@ -8,8 +9,11 @@ export const AddImage = () => {
     const [file, setFile] = useState(null);
     const [title, setTitle] = useState('Header');
     const [header_image, setHeader_image] = useState('');
+    const [enableButton, setEnableButton] = useState('disabled')
 
-    const { activeGame, setActiveGame, startSavingGame, startSavingImage, setActiveImage, startSavingGenre, activeImage } = useGameStore();
+    const { activeGame, setActiveGame, startSavingGame, } = useGameStore();
+    const { activeImage, startSavingImage, setActiveImage, startSavingGenre } = useGenreStore();
+
     const { steamId, name } = activeGame;
     const genres = updateGenresData(activeGame);
     const types = ['image/png', 'image/jpeg'];
@@ -23,6 +27,7 @@ export const AddImage = () => {
         formData.append('game', steamId);
         try {
             await startSavingImage(formData);
+            setEnableButton('enabled');
         } catch (error) {
             console.log(error);
         }
@@ -43,7 +48,7 @@ export const AddImage = () => {
             title: 'Se ha agregado con éxito.',
             showConfirmButton: false,
             timer: 1500
-          })
+        })
     }
 
     const handleChange = (e) => {
@@ -103,7 +108,7 @@ export const AddImage = () => {
 
                 <button
                     type="submit"
-                    className={`btn btn-primary form-control my-2`}
+                    className={`btn btn-primary form-control my-2 ${enableButton}`}
                     onClick={handleSubmit}> Guardar Juego
                 </button>
             </form>

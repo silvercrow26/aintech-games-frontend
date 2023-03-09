@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useGameStore, useUiStore, useDownloadServerStore, GameModal } from '../../index';
 
+
 export const AdminGameDatabaseItem = ({ game }) => {
 
     const { openDateModal } = useUiStore();
     const { setDownloadServers } = useDownloadServerStore();
-    const { setActiveGame, startDeleteGame } = useGameStore();
+    const { setActiveGame, startDeleteGame, errorMessage } = useGameStore();
 
 
     const handleDelete = () => {
@@ -24,20 +25,21 @@ export const AdminGameDatabaseItem = ({ game }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 startDeleteGame(game);
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
             }
         })
     }
 
-  const handleEdit = () => {
-    openDateModal();
-    setActiveGame(game);
-    setDownloadServers(game.downloadserver);
-  };
+    const handleEdit = () => {
+        openDateModal();
+        setActiveGame(game);
+        setDownloadServers(game.downloadserver);
+    };
+
+    useEffect(() => {
+        if (errorMessage != undefined) {
+            Swal.fire('Ocurrió un error', errorMessage, 'error');
+        }
+    }, [errorMessage])
 
     return (
         <>

@@ -5,23 +5,23 @@ import gamesApi from "../../api/gamesApi";
 
 export const useAuthStore = () => {
 
-    const { status, user, error } = useSelector(state => state.auth);
+    const { status, user, errorMessage } = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
     const startLogin = async ({ email, password }) => {
-        dispatch(onChecking());
+            dispatch(onChecking());
         try {
-
             const { data } = await gamesApi.post('/auth/login', { email, password });
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(onLogin(data.user));
-
         } catch (error) {
-            dispatch(onLogout('Credenciales incorrectas'));
+            setTimeout(() => {
+                dispatch(onLogout('Credenciales incorrectas'));
+            }, 3000);
             setTimeout(() => {
                 dispatch(onClearErrorMessage());
-            }, 10);
+            }, 3100);
         }
     }
 
@@ -33,10 +33,11 @@ export const useAuthStore = () => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(onLogin(data.user));
-
         } catch (error) {
             localStorage.clear();
-            dispatch(onLogout());
+            setTimeout(() => {
+                dispatch(onLogout());
+            }, 3000);
         }
     }
 
@@ -50,7 +51,7 @@ export const useAuthStore = () => {
         //* Propiedades
         status,
         user,
-        error,
+        errorMessage,
 
         //* Métodos
         startLogin,

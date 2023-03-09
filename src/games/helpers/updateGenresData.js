@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useGameStore } from "../index"
+import { useGenreStore } from "../hooks/useGenreStore";
 
 export const updateGenresData = (state) => {
     const [data, setData] = useState([])
-    const { genres } = useGameStore();
+    const { genres } = useGenreStore();
     const arrayTemp = [];
 
     useEffect(() => {
