@@ -501,6 +501,21 @@ ul {
   cursor: pointer;
 }
 
+.cardDetailGame {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.624)
+  );
+ 
+ 
+  padding: 30px;
+  border: 1px solid #5e4dcd;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  cursor: pointer;
+}
+
+
 .gameCardBuy:hover {
   filter: grayscale(60%);
   border: 2px solid #5e4dcd;
@@ -661,4 +676,37 @@ li {
   height: 35px !important;
   padding: 1px;
   
+}
+
+.carouselBorder{
+  border: 1px solid #6441a5 ;
+}
+
+.imgCarousel{
+  height: 100% !important;
+  object-fit: cover !important;
+  
+}
+
+.bgFooter {
+  background-color: #111315 !important;
+}
+
+
+.iconsFooter{
+  background-color: #232324 !important;
+}
+.iconsFooter:hover{
+ /* background-color: #23232464 !important; */
+ cursor: pointer;
+ background-color: #5e4dcd !important;
+}
+
+.buttonDMCA{
+  border:  1px solid  #232324;
+  
+}
+.buttonDMCA:hover{
+  border: 1px solid #5e4dcd;
+  cursor: pointer;
 }
