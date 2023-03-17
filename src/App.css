@@ -478,13 +478,11 @@ ul {
 }
 
 .cardDetailGame {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.624)
-  );
- 
- 
+  background: linear-gradient(135deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.624));
+
+
   padding: 30px;
   border: 1px solid #5e4dcd;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -698,37 +696,30 @@ li {
   flex-direction: column;
   align-items: center;
 }
-  
 
-.carouselBorder{
-  border: 1px solid #6441a5 ;
-}
 
-.imgCarousel{
-  height: 100% !important;
-  object-fit: cover !important;
-  
-}
 
 .bgFooter {
   background-color: #111315 !important;
 }
 
 
-.iconsFooter{
+.iconsFooter {
   background-color: #232324 !important;
 }
-.iconsFooter:hover{
- /* background-color: #23232464 !important; */
- cursor: pointer;
- background-color: #5e4dcd !important;
+
+.iconsFooter:hover {
+  /* background-color: #23232464 !important; */
+  cursor: pointer;
+  background-color: #5e4dcd !important;
 }
 
-.buttonDMCA{
-  border:  1px solid  #232324;
-  
+.buttonDMCA {
+  border: 1px solid #232324;
+
 }
-.buttonDMCA:hover{
+
+.buttonDMCA:hover {
   border: 1px solid #5e4dcd;
   cursor: pointer;
 }

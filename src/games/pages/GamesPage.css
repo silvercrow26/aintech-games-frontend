@@ -4,11 +4,11 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+
     .w-25 {
         width: 33% !important;
     }
 }
-
 
 @media (max-width: 767px) and (min-width: 576px) {
     .gamesPageCard {
@@ -16,6 +16,7 @@
         height: 100%;
         align-items: center;
     }
+
     .gamesPageCard .w-50 {
         width: 50% !important;
     }
@@ -38,17 +39,21 @@
         display: flex;
         justify-content: center
     }
+
     .gamesPageCard .w-25 {
         width: 80% !important;
     }
+
     .gamesPageCard .w-50 {
         width: 80% !important;
     }
+
     .mostWanted {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     .imagenMostWanted {
         width: 60%;
     }
@@ -85,4 +90,37 @@
         display: flex;
         justify-content: center;
     }
+
+
+}
+
+
+@media (min-width: 992px) {
+
+    .carouselBorder {
+        height: 45vh;
+        border: 1px solid #6441a5;
+        width: 100%;
+      }
+      
+      .imgCarousel {
+        height: 44.8vh;
+        object-fit: fill !important;
+        width: 100% !important;
+      }
+}
+
+@media (max-width:992px){
+        /* carousel */
+        .carouselBorder {
+            border: 1px solid #6441a5;
+            width: 100%;
+            height: 30vh;
+        }
+    
+        .imgCarousel {
+            height: 29.8vh;
+            object-fit: fill !important;
+            width: 100% !important;
+        }
 }

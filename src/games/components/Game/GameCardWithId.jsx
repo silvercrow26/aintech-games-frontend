@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGamepad } from "@fortawesome/free-solid-svg-icons";
-import { useGameStore } from "../../index";
+import { Disqus, useGameStore } from "../../index";
 
 
 export const GameCardWithId = () => {
   const params = useParams();
   const { games, activeGame, setActiveGame } = useGameStore();
-  console.log();
+  const url = `${import.meta.env.VITE_API_HOST}/juegos/${params.id}`;
 
   useEffect(() => {
     if (activeGame == null && games.length > 0) {
@@ -55,7 +55,7 @@ export const GameCardWithId = () => {
           {
             <section className="">
               {activeGame.requirements.toUpperCase().replace("-", " ") ===
-              "BAJOS REQUISITOS" ? (
+                "BAJOS REQUISITOS" ? (
                 <span className="badge bg-success d-flex justify-content-center p-3">
                   <FontAwesomeIcon icon={faGamepad} className="mx-3" />{" "}
                   {activeGame.requirements.toUpperCase().replace("-", " ")}
@@ -81,8 +81,14 @@ export const GameCardWithId = () => {
                             {activeGame?.detail[0]?.release_date?.date}
                           </p>
                           <p className="text-light">
-                            <b>Desarrolladores:</b>{" "}
-                            {activeGame?.detail[0]?.developers}
+                            <b>Desarrolladores:</b> {" "}
+                            {activeGame?.detail[0]?.developers.map((dev, i) => {
+                              if (activeGame?.detail[0]?.developers.length - 1 <= i) {
+                                return <span key={dev} className="text-warning"> {dev}</span>
+                              }
+                              return <span key={dev} className="text-warning"> {dev}<span className="text-light"> | </span></span>
+                            }
+                            )}
                           </p>
                         </div>
                         <img
@@ -111,11 +117,12 @@ export const GameCardWithId = () => {
                               activeGame.detail[0]?.screenshots.map((i) => (
                                 <button
                                   type="button"
+                                  key={i.id}
                                   data-bs-target="#carouselIndice"
-                                  data-bs-slide-to={i}
-                                  className="active"
+                                  data-bs-slide-to={i.id}
+                                  className={(i.id === 0)?`active`:``}
                                   aria-current="true"
-                                  aria-label={`"Slide ${i + 1}"`}
+                                  aria-label={`"Slide ${i.id + 1}"`}
                                 ></button>
                               ))}
                           </div>
@@ -210,28 +217,29 @@ export const GameCardWithId = () => {
                       </div>
 
                       <div className="mt-5">
-                      <h4 className="text-center mt-3 mb-3  ">Servidores de descarga</h4>
-                      <hr />
-                      {activeGame.downloadserver.map((server) => (
-                        <div key={server.name}>
-                          <button className="btn btn-primary w-100 mb-5">
-                            <a
-                              target="_blank"
-                              className="text-decoration-none text-light mb-5"
-                              href={`${server.url}`}
+                        <h4 className="text-center mt-3 mb-3  ">Servidores de descarga</h4>
+                        <hr />
+                        {activeGame.downloadserver.map((server) => (
+                          <div key={server.name}>
+                            <button className="btn btn-primary w-100 mb-5">
+                              <a
+                                target="_blank"
+                                className="text-decoration-none text-light mb-5"
+                                href={`${server.url}`}
                               >
-                              {server.name}
-                            </a>
-                          </button>
-                        </div>
-                      ))}
-                    </div>
+                                {server.name}
+                              </a>
+                            </button>
+                          </div>
+                        ))}
                       </div>
+                    </div>
                   </div>
                   <div className="col-md-3 col-sm-12 mt-4">
                     <p className="text-light">columna 2</p>
                   </div>
                 </div>
+                <Disqus url={url} id={params.id} name={activeGame.name} />
               </div>
             </section>
           }
