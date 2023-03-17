@@ -13,6 +13,7 @@ html{
   min-height: 100%;
 }
 
+
 .nav-link .linka {
   all: unset;
   cursor: pointer;
@@ -728,39 +729,9 @@ li {
   border: 1px solid #5e4dcd;
   cursor: pointer;
 }
-footer{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height:250px;
-  background:#ccc;
-}
 
-.accordion-button{
-  background-color: #232324 !important;
-  color: white;
-  border: 0px;
+footer {
+  min-height: calc(100vh - 1000px);
 }
-
-.accordion-button:focus {
-  border-color: #262729;
-  box-shadow: none;
-  color: #474bff;
-}
-
-.accordion-button:hover {
-  color: #474bff !important;
-}
-
-.accordion-button.collapsed {
-  color: white;
-}
-
-.accordion-body{
-  background-color: #262729;
-  color: white;
-}
-
 /* BOTON COMPRAR JUEGO  */
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { faTowerCell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './FAQPage.scss';
 export const FAQPage = () => {
     return (
         <>
@@ -11,7 +12,7 @@ export const FAQPage = () => {
                         <FontAwesomeIcon icon={faTowerCell} /> FAQ
                     </div>
                 </h2>
-                <div className="accordion accordion-flush" id="accordionFlushExample">
+                <div className="accordion accordion-flush text-light" id="accordionFlushExample">
                     <div className="accordion-item ">
                         <h2 className="accordion-header" id="flush-headingOne">
                             <button className="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
