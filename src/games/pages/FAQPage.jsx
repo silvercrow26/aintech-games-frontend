@@ -2,6 +2,7 @@ import React from "react";
 import { faTowerCell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../SASS/FAQPage.scss';
+
 export const FAQPage = () => {
     return (
         <>
