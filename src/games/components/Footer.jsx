@@ -18,27 +18,26 @@ export const Footer = () => {
         <div className="col-md-4 col-sm-12"> 
           <ul className="small">
             <p className="text-light small">Navegación</p>
-            <li>
+            <li className="mb-2">
               <Link to="/" className="text-decoration-none text-secondary">
                 Inicio
                 
               </Link>
             </li>
-            <li>
-              <Link to="/" className="text-decoration-none text-secondary">
+            <li className="mb-2">
+              <Link to="/" className="text-decoration-none text-secondary ">
                 Requisitos
               </Link>
             </li>
             <Link to="/" className="text-decoration-none text-secondary">
-            <li>Generos</li>
+            <li className="mb-2">Generos</li>
             </Link>
-            <li className="text-secondary">Peliculas</li>
+            <li className="text-secondary mb-2">Peliculas</li>
           </ul>
         </div>
         <div className="col-md-4 col-sm-12">
           <p className="small mt-5 text-center text-secondary">
-            © Derechos de autor Aintech Online. Todos los derechos reservados
-            2023
+            Sitio web desarrollado por AINTECH Online
           </p>
           <div className="gap-2 flex-wrap">
             <div >
@@ -59,7 +58,7 @@ export const Footer = () => {
               icon={faInstagram}
               size="1x"
               className=" p-2 rounded-3 text-light iconsFooter "
-            />
+              />
             <FontAwesomeIcon
               icon={faYoutube}
               size="1x "

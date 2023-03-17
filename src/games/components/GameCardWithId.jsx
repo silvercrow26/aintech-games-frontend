@@ -188,11 +188,11 @@ export const GameCardWithId = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="mt-5 mx-1 mb-5">
+                      <div className="mt-5 mx-1 mb-5 text-center">
                         <a
                           href={activeGame.buyGame}
                           target="_blank"
-                          className="text-light gameCardBuy text-decoration-none"
+                          className="text-light btn btn-success p-3 text-decoration-none"
                         >
                           <FontAwesomeIcon
                             icon={faCartShopping}
@@ -207,21 +207,25 @@ export const GameCardWithId = () => {
                           {activeGame && activeGame.notes}
                         </p>
                       </div>
-                      <h4>Servidores de descarga</h4>
+
+                      <div className="mt-5">
+                      <h4 className="text-center mt-3 mb-3  ">Servidores de descarga</h4>
+                      <hr />
                       {activeGame.downloadserver.map((server) => (
                         <div key={server.name}>
-                          <button className="btn btn-danger w-100">
+                          <button className="btn btn-primary w-100 mb-5">
                             <a
                               target="_blank"
                               className="text-decoration-none text-light mb-5"
                               href={`${server.url}`}
-                            >
+                              >
                               {server.name}
                             </a>
                           </button>
                         </div>
                       ))}
                     </div>
+                      </div>
                   </div>
                   <div className="col-md-3 col-sm-12 mt-4">
                     <p className="text-light">columna 2</p>

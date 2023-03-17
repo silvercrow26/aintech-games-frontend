@@ -8,7 +8,7 @@ export const UserPageId = () => {
   console.log(user);
   return (
     <>
-      <section className="mt-5 text-light container  cardDetailUser">
+      <section className="mt-5 text-light container  cardDetailUser mb-5">
             <button className="btn btn-danger d-flex justify-content- mb-5">  <FontAwesomeIcon icon={faTowerCell} className="fa-x3"/> Centro de soporte</button>
       <div className="p-3 text-light text-center w-100 mb-3 ">
         <h3>Detalles de la cuenta</h3>
