@@ -124,3 +124,30 @@
             width: 100% !important;
         }
 }
+
+/* Accordion */
+.accordion-button{
+    background-color: #232324 !important;
+    color: white;
+    /* border: 1px solid #5e4dcd !important; */
+  }
+  
+  .accordion-button:focus {
+    border-color: #262729;
+    box-shadow: none;
+    color: #474bff;
+  }
+  
+  .accordion-button:hover {
+    color: #474bff !important;
+  }
+  
+  .accordion-button.collapsed {
+    color: white;
+  }
+  
+  .accordion-body{
+    background-color: #262729;
+    color: white;
+    border-bottom-color: #262729;
+  }

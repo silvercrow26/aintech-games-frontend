@@ -67,7 +67,7 @@ export const Footer = () => {
               />
             <FontAwesomeIcon
               icon={faYoutube}
-              size="1x "
+              size="1x"
               className=" p-2 rounded-3 text-light iconsFooter"
             />
             <FontAwesomeIcon

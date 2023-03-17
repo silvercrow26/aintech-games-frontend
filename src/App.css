@@ -737,6 +737,30 @@ footer{
   background:#ccc;
 }
 
+.accordion-button{
+  background-color: #232324 !important;
+  color: white;
+  border: 0px;
+}
+
+.accordion-button:focus {
+  border-color: #262729;
+  box-shadow: none;
+  color: #474bff;
+}
+
+.accordion-button:hover {
+  color: #474bff !important;
+}
+
+.accordion-button.collapsed {
+  color: white;
+}
+
+.accordion-body{
+  background-color: #262729;
+  color: white;
+}
 
 /* BOTON COMPRAR JUEGO  */
 

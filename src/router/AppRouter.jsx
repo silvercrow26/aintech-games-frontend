@@ -8,7 +8,7 @@ import {
     HighRequirementsPage,
     AdminGameDatabase,
     AdminPanel, NewGame, Navbar,
-    GameCardWithId, GamesPage, useGameStore, GenrePage, ErrorPage, useGenreStore, PrivacyPolicy, TermsAndConditions, DMCA
+    GameCardWithId, GamesPage, useGameStore, GenrePage, ErrorPage, useGenreStore, PrivacyPolicy, TermsAndConditions, DMCA, FAQPage
 } from '../games/index';
 import '../App.css';
 import { Wrapper } from '../Wrapper';
@@ -50,6 +50,7 @@ export const AppRouter = () => {
             <Navbar />
             <Routes>
                 <Route path='/' element={<GamesPage />} />
+                <Route path='/ayuda' element={<FAQPage />} />
                 <Route path='/politica-de-privacidad' element={<PrivacyPolicy />} />
                 <Route path='/dmca' element={<DMCA />} />
                 <Route path='/terminos-y-condiciones' element={<TermsAndConditions />} />

@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { Disqus, useGameStore } from "../../index";
-
+import { useNavigate } from "react-router-dom";
 
 export const GameCardWithId = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { games, activeGame, setActiveGame } = useGameStore();
   const url = `${import.meta.env.VITE_API_HOST}/juegos/${params.id}`;
@@ -17,7 +18,9 @@ export const GameCardWithId = () => {
     }
   }, [games]);
 
-  console.log(games);
+  const handleClick = (genre) => {
+    navigate(`/juegos/generos/${genre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(' ').join('-')}`);
+  }
 
   return (
     <>
@@ -95,7 +98,17 @@ export const GameCardWithId = () => {
                           src={activeGame.header_image}
                           className=" gameCardIdWallpaper"
                         />
-                        <p className="text-light  mt-3">Generos: </p>
+                        <p className="text-light  mt-3">
+                          <b>Géneros:</b> {" "}
+                          {activeGame?.detail[0]?.genres.map((dev, i) => {
+                            if (activeGame?.detail[0]?.genres.length - 1 <= i) {
+
+                              return <span key={dev.id} className="text-warning" onClick={() => handleClick(dev.description)}> {dev.description}</span>
+                            }
+                            return <span key={dev.id} className="text-warning" onClick={() => handleClick(dev.description)}> {dev.description}<span className="text-light"> | </span></span>
+                          }
+                          )}
+                        </p>
                         <div className="text-light mb-5 cardDetailGame">
                           <h4>Descripción del juego: </h4>
                           <p
@@ -120,7 +133,7 @@ export const GameCardWithId = () => {
                                   key={i.id}
                                   data-bs-target="#carouselIndice"
                                   data-bs-slide-to={i.id}
-                                  className={(i.id === 0)?`active`:``}
+                                  className={(i.id === 0) ? `active` : ``}
                                   aria-current="true"
                                   aria-label={`"Slide ${i.id + 1}"`}
                                 ></button>

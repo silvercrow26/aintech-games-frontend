@@ -28,7 +28,7 @@ export const GamesPage = () => {
             }
 
           </div>
-          <div data-aos="fade-left" data-aos-duration="1000" className="col-md-4 mostWanted">
+          <div className="col-md-4 mostWanted">
             <GamesMostDownloaded className="mostdownloaded" />
             <Ads />
           </div>
