@@ -77,11 +77,11 @@ export const NewGame = () => {
                 <div className='row'>
 
                     <form onSubmit={handleSubmit} className="col">
-                        <div className='form-group'>
+                        <div className='form-group '>
                             <label>Nombre</label>
                             <input
                                 type='text'
-                                className='form-control'
+                                className='w-100 mb-2 p-2 bg-dark borderInputs text-light'
                                 placeholder='Nombre del videojuego'
                                 value={name}
                                 name='name'
@@ -95,7 +95,7 @@ export const NewGame = () => {
 
                                 <input
                                     type='number'
-                                    className={`form-control ${validId}`}
+                                    className={`w-100 mb-2 p-2 bg-dark borderInputs text-light ${validId}`}
                                     placeholder='15'
                                     value={steamId}
                                     name='steamId'
@@ -107,7 +107,7 @@ export const NewGame = () => {
                             </div>
                             <div className='col'>
                                 <label>Requisitos:</label>
-                                <select className="form-select" aria-label="Default select example"
+                                <select className="form-select w-100 mb-2 p-2 bg-dark borderInputs text-light" aria-label="Default select example"
                                     id="requirements"
                                     value={requirements}
                                     onChange={onInputChange}
@@ -122,7 +122,7 @@ export const NewGame = () => {
                         <div className='col'>
                             <div className='col'>
                                 <label>Mas Descargado:</label>
-                                <select className="form-select" aria-label="Default select example"
+                                <select className="form-select w-100 mb-2 p-2 bg-dark borderInputs text-light" aria-label="Default select example"
                                     value={mostDownloaded}
                                     onChange={onInputChange}
                                     name='mostDownloaded'
@@ -134,7 +134,7 @@ export const NewGame = () => {
                             <label className='mt-2'>Comprar juego:</label>
                             <input
                                 type='text'
-                                className='form-control my-2'
+                                className='w-100 mb-2 p-2 bg-dark borderInputs text-light'
                                 placeholder='https://www.instant-gaming.com/'
                                 name='buyGame'
                                 value={buyGame}
@@ -143,7 +143,7 @@ export const NewGame = () => {
                             <label className='mt-2'>Notas:</label>
                             <textarea
                                 type='textarea'
-                                className='form-control my-2'
+                                className='w-100 mb-2 p-2 bg-dark borderInputs text-light'
                                 name='notes'
                                 value={notes}
                                 onChange={onInputChange}

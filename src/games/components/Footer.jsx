@@ -12,12 +12,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
-    <div className="bg-dark p-3 text-center text-light bgFooter">
+    <footer className="bg-dark p-3 text-center text-light bgFooter">
       <div className=" row mb-5">
       <div className="d-flex justify-content-between flex-wrap">
         <div className="col-md-4 col-sm-12"> 
           <ul className="small">
-            <p className="text-light small">Navegación</p>
+            <p className="text-light small text-center">Navegación</p>
             <li className="mb-2">
               <Link to="/" className="text-decoration-none text-secondary">
                 Inicio
@@ -41,18 +41,24 @@ export const Footer = () => {
           </p>
           <div className="gap-2 flex-wrap">
             <div >
+            <Link to="/dmca" className="text-decoration-none text-secondary">
               <p className="buttonDMCA p-1 text-secondary small">DMCA</p>
+              </Link>
             </div>
             <div  >
+              <Link to="/politica-de-privacidad" className="text-decoration-none text-secondary">
               <p className="buttonDMCA p-1 text-secondary small">Política de privacidad</p>
+              </Link>
             </div>
             <div >
+              <Link to="/terminos-y-condiciones" className="text-decoration-none text-secondary">
               <p className="buttonDMCA p-1 text-secondary small">Términos y condiciones</p>
+              </Link>
             </div>
           </div>
         </div>
         <div className="col-md-4 col-sm-12 ">
-          <p className="small">Redes Sociales</p>
+          <p className="small text-center">Redes Sociales</p>
           <ul className=" d-flex justify-content-center flex-wrap gap-4 ">
             <FontAwesomeIcon
               icon={faInstagram}
@@ -78,6 +84,6 @@ export const Footer = () => {
         </div>
       </div>
       </div>
-    </div>
+    </footer>
   );
 };

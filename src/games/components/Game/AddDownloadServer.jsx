@@ -33,7 +33,7 @@ export const AddDownloadServer = ({ color }) => {
     <div className='row'>
       <div className='d-flex '>
           <input
-            className='form-control w-25 me-4'
+            className='w-100 mb-2 p-2 bg-dark borderInputs text-light me-4'
             type='text'
             name='name'
             placeholder='Nombre'
@@ -42,7 +42,7 @@ export const AddDownloadServer = ({ color }) => {
             autoComplete='off'
           />
         <input
-          className='form-control '
+          className='w-100 mb-2 p-2 bg-dark borderInputs text-light '
           type='text'
           name='url'
           placeholder='URL'

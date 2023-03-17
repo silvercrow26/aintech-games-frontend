@@ -5,6 +5,7 @@ body {
   overflow-x: hidden !important;
   background-color: #262729;
   color: white;
+
 }
 
 .nav-link .linka {
@@ -730,6 +731,10 @@ li {
 .buttonDMCA:hover{
   border: 1px solid #5e4dcd;
   cursor: pointer;
+}
+
+footer {
+  min-height: calc(100vh - 1000px);
 }
 
 
