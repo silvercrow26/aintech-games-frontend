@@ -151,3 +151,8 @@
     color: white;
     border-bottom-color: #262729;
   }
+ .accordion{
+    --bs-accordion-border-color: #262729 !important;
+      
+    
+ }
