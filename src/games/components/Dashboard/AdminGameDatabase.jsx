@@ -23,7 +23,6 @@ export const AdminGameDatabase = () => {
     getSearchData();
   }, [gameSearch, games]);
 
-
   const handleNewGame = () => {
     if (activeGame !== null){
       setActiveGame(null);

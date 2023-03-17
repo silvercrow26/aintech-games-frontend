@@ -7,6 +7,12 @@ export const GameContext = createContext();
 
 export const GameProvider = ({children}) => {
 
+
+
+
+
+
+    
     const state = {
 
     }

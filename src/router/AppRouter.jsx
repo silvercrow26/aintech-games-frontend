@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuthStore, ProfileUser, RegisterPage, UserPageId, LoginPage } from '../auth/index'
+import { Footer } from '../games/components/Footer';
 import {
     LowRequirementsPage,
     MediumRequirementsPage,
@@ -80,6 +81,7 @@ export const AppRouter = () => {
                         )
                 }
             </Routes>
+            <Footer />
         </>
     )
 }
