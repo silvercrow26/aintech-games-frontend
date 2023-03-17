@@ -5,7 +5,12 @@ body {
   overflow-x: hidden !important;
   background-color: #262729;
   color: white;
+  margin-bottom:400px;
+}
 
+html{
+  position:relative; 
+  min-height: 100%;
 }
 
 .nav-link .linka {
@@ -723,12 +728,13 @@ li {
   border: 1px solid #5e4dcd;
   cursor: pointer;
 }
-
-footer {
-
-  position:fixed;
-  width: 100%;
-  bottom:0;
+footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height:250px;
+  background:#ccc;
 }
 
 
