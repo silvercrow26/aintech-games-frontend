@@ -3,7 +3,7 @@ import './PrivacyPolicy.css'
 
 export const PrivacyPolicy = () => {
 
-    const web = 'aintech.online';
+    const web = 'Aintech.online';
 
     return (
         <div className='container mt-5 p-5 cardDetailGame'>

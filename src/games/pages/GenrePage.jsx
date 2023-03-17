@@ -11,16 +11,14 @@ export const GenrePage = () => {
     const lastUpdate = setLastUpdate(games);
 
     useEffect(() => {
-
         setGames(tempArray);
-
     }, [tempArray.length, params.genero]);
 
 
     return (
         <div className='container'>
             <h4 className="text-light mt-5">{activeGenre && activeGenre.name}</h4>
-            <p>Last Update: {lastUpdate}</p>
+            <p>Última publicación: {lastUpdate}</p>
             <hr className="text-light" />
             <div className='gamesPageCard'>
                 {

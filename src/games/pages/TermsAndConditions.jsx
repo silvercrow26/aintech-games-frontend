@@ -2,7 +2,7 @@ import React from 'react'
 
 export const TermsAndConditions = () => {
 
-    const web = 'aintech.online';
+    const web = 'Aintech.online';
     const fecha = '8 de marzo de 2023';
     const email = 'aintechsoftware@gmail.com';
     const contacto = '+56981262202';

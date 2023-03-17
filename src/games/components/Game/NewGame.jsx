@@ -62,7 +62,12 @@ export const NewGame = () => {
     }, [detail, downloadServers]);
 
     useEffect(()=> {
-        setActiveGame(null);
+        if(activeGame != null){
+            setActiveGame(null);
+        };
+        if(downloadServers.length !== 0){
+            setDownloadServers([]);
+          }
     },[])
 
     return (

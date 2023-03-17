@@ -5,18 +5,16 @@ import { Link } from "react-router-dom";
 import { useDownloadServerStore, useGameStore, AdminGameDatabaseItem } from '../../index';
 
 export const AdminGameDatabase = () => {
-  const {
-    games,
-    setActiveGame,
-  } = useGameStore();
+  const { games, setActiveGame, activeGame } = useGameStore();
+  const { setDownloadServers, downloadServers } = useDownloadServerStore();
   const [gameSearch, setGameSearch] = useState('');
   const [elementSearch, setElementSearch] = useState([])
-  
+
   const getSearchData = () => {
     const filterData = games.filter((game) => game.name.toLowerCase().includes(gameSearch.toLowerCase())).reverse();
-    if(gameSearch.trim() === ''){
+    if (gameSearch.trim() === '') {
       setElementSearch(games);
-    }else{
+    } else {
       setElementSearch(filterData)
     }
   }
@@ -25,11 +23,14 @@ export const AdminGameDatabase = () => {
     getSearchData();
   }, [gameSearch, games]);
 
-  const { setDownloadServers } = useDownloadServerStore();
 
   const handleNewGame = () => {
-    setDownloadServers([]);
-    setActiveGame(null);
+    if (activeGame !== null){
+      setActiveGame(null);
+    }
+    if(downloadServers.length !== 0){
+      setDownloadServers([]);
+    }
   }
 
   return (

@@ -7,7 +7,7 @@ import {
     HighRequirementsPage,
     AdminGameDatabase,
     AdminPanel, NewGame, Navbar,
-    GameCardWithId, GamesPage, useGameStore, GenrePage, ErrorPage, useGenreStore, PrivacyPolicy, TermsAndConditions
+    GameCardWithId, GamesPage, useGameStore, GenrePage, ErrorPage, useGenreStore, PrivacyPolicy, TermsAndConditions, DMCA
 } from '../games/index';
 import '../App.css';
 
@@ -48,6 +48,7 @@ export const AppRouter = () => {
             <Routes>
                 <Route path='/' element={<GamesPage />} />
                 <Route path='/politica-de-privacidad' element={<PrivacyPolicy />} />
+                <Route path='/dmca' element={<DMCA />} />
                 <Route path='/terminos-y-condiciones' element={<TermsAndConditions />} />
 
                 <Route path='/juegos/generos/:genero' element={<GenrePage />} />

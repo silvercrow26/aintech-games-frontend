@@ -34,6 +34,7 @@ export * from './pages/GenrePage';
 export * from './pages/ErrorPage';
 export * from './pages/PrivacyPolicy';
 export * from './pages/TermsAndConditions';
+export * from './pages/DMCA';
 
 //helpers
 export * from './helpers/getGameDetail';
