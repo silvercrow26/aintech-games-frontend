@@ -11,6 +11,7 @@ import {
     GameCardWithId, GamesPage, useGameStore, GenrePage, ErrorPage, useGenreStore, PrivacyPolicy, TermsAndConditions, DMCA
 } from '../games/index';
 import '../App.css';
+import { Wrapper } from '../Wrapper';
 
 
 export const AppRouter = () => {
@@ -45,6 +46,7 @@ export const AppRouter = () => {
     };
     return (
         <>
+        <Wrapper>
             <Navbar />
             <Routes>
                 <Route path='/' element={<GamesPage />} />
@@ -82,6 +84,7 @@ export const AppRouter = () => {
                 }
             </Routes>
             <Footer />
+            </Wrapper>
         </>
     )
 }

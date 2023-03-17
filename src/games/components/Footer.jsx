@@ -12,7 +12,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
-    <footer className="bg-dark p-3 text-center text-light bgFooter">
+    <footer className="bg-dark p-3 text-center text-light bgFooter ">
       <div className=" row mb-5">
       <div className="d-flex justify-content-center flex-wrap">
         <div className="col-md-4 col-sm-12"> 

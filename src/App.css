@@ -725,7 +725,10 @@ li {
 }
 
 footer {
-  min-height: calc(100vh - 1000px);
+
+  position:fixed;
+  width: 100%;
+  bottom:0;
 }
 
 
