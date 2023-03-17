@@ -14,7 +14,7 @@ export const Footer = () => {
   return (
     <footer className="bg-dark p-3 text-center text-light bgFooter">
       <div className=" row mb-5">
-      <div className="d-flex justify-content-between flex-wrap">
+      <div className="d-flex justify-content-center flex-wrap">
         <div className="col-md-4 col-sm-12"> 
           <ul className="small">
             <p className="text-light small text-center">Navegación</p>
@@ -32,27 +32,27 @@ export const Footer = () => {
             <Link to="/" className="text-decoration-none text-secondary">
             <li className="mb-2">Generos</li>
             </Link>
-            <li className="text-secondary mb-2">Peliculas</li>
+            <li className="text-secondary">Peliculas</li>
           </ul>
         </div>
         <div className="col-md-4 col-sm-12">
           <p className="small mt-5 text-center text-secondary">
             Sitio web desarrollado por AINTECH Online
           </p>
-          <div className="gap-2 flex-wrap">
+          <div className="gap-2 flex-wrap ">
             <div >
             <Link to="/dmca" className="text-decoration-none text-secondary">
-              <p className="buttonDMCA p-1 text-secondary small">DMCA</p>
+              <p className="buttonDMCA p-1 text-secondary small text-center">DMCA</p>
               </Link>
             </div>
             <div  >
               <Link to="/politica-de-privacidad" className="text-decoration-none text-secondary">
-              <p className="buttonDMCA p-1 text-secondary small">Política de privacidad</p>
+              <p className="buttonDMCA p-1 text-secondary small text-center">Política de privacidad</p>
               </Link>
             </div>
             <div >
               <Link to="/terminos-y-condiciones" className="text-decoration-none text-secondary">
-              <p className="buttonDMCA p-1 text-secondary small">Términos y condiciones</p>
+              <p className="buttonDMCA p-1 text-secondary small text-center">Términos y condiciones</p>
               </Link>
             </div>
           </div>
