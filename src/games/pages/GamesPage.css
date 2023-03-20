@@ -101,58 +101,61 @@
         height: 45vh;
         border: 1px solid #6441a5;
         width: 100%;
-      }
-      
-      .imgCarousel {
+    }
+
+    .imgCarousel {
         height: 44.8vh;
         object-fit: fill !important;
         width: 100% !important;
-      }
+    }
 }
 
-@media (max-width:992px){
-        /* carousel */
-        .carouselBorder {
-            border: 1px solid #6441a5;
-            width: 100%;
-            height: 30vh;
-        }
-    
-        .imgCarousel {
-            height: 29.8vh;
-            object-fit: fill !important;
-            width: 100% !important;
-        }
+@media (max-width:992px) {
+
+    /* carousel */
+    .carouselBorder {
+        border: 1px solid #6441a5;
+        width: 100%;
+        height: 30vh;
+    }
+
+    .imgCarousel {
+        height: 29.8vh;
+        object-fit: fill !important;
+        width: 100% !important;
+    }
 }
 
 /* Accordion */
-.accordion-button{
+.accordion-button {
     background-color: #232324 !important;
     color: white;
-    /* border: 1px solid #5e4dcd !important; */
-  }
-  
-  .accordion-button:focus {
+}
+
+.accordion-button:focus {
     border-color: #262729;
     box-shadow: none;
     color: #474bff;
-  }
-  
-  .accordion-button:hover {
+}
+
+.accordion-button:hover {
     color: #474bff !important;
-  }
-  
-  .accordion-button.collapsed {
+}
+
+.accordion-button.collapsed {
     color: white;
-  }
-  
-  .accordion-body{
+}
+
+.accordion-body {
     background-color: #262729;
     color: white;
     border-bottom-color: #262729;
-  }
- .accordion{
+}
+
+.accordion {
     --bs-accordion-border-color: #262729 !important;
-      
-    
- }
+}
+
+.accordion-button:not(.collapsed) {
+    color: #474bff;
+}
