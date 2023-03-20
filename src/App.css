@@ -5,7 +5,8 @@ body {
   overflow-x: hidden !important;
   background-color: #262729;
   color: white;
-  margin-bottom:400px;
+ 
+  
 }
 
 html{
@@ -706,6 +707,7 @@ li {
 
 .bgFooter {
   background-color: #111315 !important;
+ 
 }
 
 
@@ -728,13 +730,14 @@ li {
   border: 1px solid #5e4dcd;
   cursor: pointer;
 }
-footer{
+.footer{
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height:250px;
   background:#ccc;
+
 }
 
 .accordion-button{

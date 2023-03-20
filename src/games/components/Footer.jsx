@@ -12,8 +12,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
-    <footer className="bg-dark p-3 text-center text-light bgFooter ">
-      <div className=" row mb-5">
+    <footer className="p-3 text-center text-light bgFooter">
+      <div className=" row mb-5  bgFooter w-100">
       <div className="d-flex justify-content-center flex-wrap">
         <div className="col-md-4 col-sm-12"> 
           <ul className="small">
@@ -35,11 +35,11 @@ export const Footer = () => {
             <li className="text-secondary">Peliculas</li>
           </ul>
         </div>
-        <div className="col-md-4 col-sm-12">
+        <div className="col-md-4 col-sm-12 ">
           <p className="small mt-5 text-center text-secondary">
             Sitio web desarrollado por AINTECH Online
           </p>
-          <div className="gap-2 flex-wrap ">
+          <div className="">
             <div >
             <Link to="/dmca" className="text-decoration-none text-secondary">
               <p className="buttonDMCA p-1 text-secondary small text-center">DMCA</p>
