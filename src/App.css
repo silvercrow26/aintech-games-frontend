@@ -5,12 +5,12 @@ body {
   overflow-x: hidden !important;
   background-color: #262729;
   color: white;
- 
-  
+
+
 }
 
-html{
-  position:relative; 
+html {
+  position: relative;
   min-height: 100%;
 }
 
@@ -708,7 +708,8 @@ li {
 
 .bgFooter {
   background-color: #111315 !important;
- 
+  position: relative;
+  bottom: 0; left: 0;
 }
 
 
@@ -731,17 +732,18 @@ li {
   border: 1px solid #5e4dcd;
   cursor: pointer;
 }
-.footer{
+
+.footer {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height:250px;
-  background:#ccc;
+  height: 250px;
+  background: #ccc;
 
 }
 
-.accordion-button{
+.accordion-button {
   background-color: #232324 !important;
   color: white;
   border: 0px;
@@ -750,5 +752,5 @@ li {
 footer {
   min-height: calc(100vh - 1000px);
 }
-/* BOTON COMPRAR JUEGO  */
 
+/* BOTON COMPRAR JUEGO  */

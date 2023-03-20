@@ -12,8 +12,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
-    <footer className="p-3 text-center text-light bgFooter">
-      <div className=" row mb-5  bgFooter w-100">
+    <footer className="p-3 text-center text-light  w-100 bgFooter">
+      <div className="row">
       <div className="d-flex justify-content-center flex-wrap">
         <div className="col-md-4 col-sm-12"> 
           <ul className="small">
@@ -59,7 +59,7 @@ export const Footer = () => {
         </div>
         <div className="col-md-4 col-sm-12 ">
           <p className="small text-center">Redes Sociales</p>
-          <ul className=" d-flex justify-content-center flex-wrap gap-4 ">
+          <div className=" d-flex justify-content-center flex-wrap gap-4">
             <FontAwesomeIcon
               icon={faInstagram}
               size="1x"
@@ -80,7 +80,7 @@ export const Footer = () => {
               size="1x"
               className=" p-2 rounded-3 text-light iconsFooter"
             />
-          </ul>
+          </div>
         </div>
       </div>
       </div>
