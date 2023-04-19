@@ -11,25 +11,24 @@ import { useAuthStore } from "../../../auth/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavbarGenre } from "../../index";
 import { useGameStore } from "../../hooks/useGameStore";
+import { useGameHook } from "../../hooks/useGameHook";
 
 export const Navbar = () => {
   const { status, startLogout, user } = useAuthStore();
   const { games, setActiveGame, activeGame } = useGameStore();
-  const [search, setSearch] = useState("");
-  const [searchGame, setSearchGame] = useState([]);
+  const {getSearchGame, search, searchGame, setInputSearch, setSearchGame, msgError} = useGameHook();
 
-  const getSearchGame = (e) => {
-    e.preventDefault();
-    const filterData = games
-      .filter((game) => game.name.toLowerCase().includes(search.toLowerCase()))
-      .reverse();
-    if (search.trim() === "" || !search) {
-      setSearchGame("");
-    } else {
-      setSearchGame(filterData);
-    }
-  };
 
+  useEffect(() => {
+    getSearchGame();
+
+  }, [])
+
+
+  const clearSearchGame = () => {
+    setSearchGame(null)
+
+  }
   const handleLogout = () => {
     startLogout();
   };
@@ -68,6 +67,7 @@ export const Navbar = () => {
                   aria-current="page"
                   href="#"
                   to="/"
+                  onClick={clearSearchGame}
                 >
                   Inicio
                 </Link>
@@ -117,7 +117,7 @@ export const Navbar = () => {
               </li>
             </ul>
 
-            <form className="d-flex searchMobileQuery me-4 " role="search">
+            <div className="d-flex searchMobileQuery me-4 " >
               <div className="input-group">
                 <input
                   type="text"
@@ -126,43 +126,22 @@ export const Navbar = () => {
                   name="search"
                   placeholder="Buscar..."
                   autoComplete="off"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-
+                  onChange={(e) => setInputSearch(e.target.value)}
+                  />
+                  <Link to='/juegos/busqueda' className="text-decoration-none">
                 <a
-                  className="nav-link dropdown-toggle text-light text-decoration-none dropdownUser button--submit"
+                  className="text-light text-decoration-none button--submit pt-3 pb-3"
                   href="#"
                   role="button"
-                  data-bs-toggle="dropdown"
+                  
                   aria-expanded="false"
                   onClick={getSearchGame}
-                >
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  >
+                  <FontAwesomeIcon icon={faMagnifyingGlass}  />
                 </a>
-                <ul className="dropdown-menu text-light ">
-                  {searchGame ? (
-                    searchGame.map((item) => (
-                      <Link to={`/juegos/${item._id}`} >
-                      <li
-                        className="dropdown-item my-3 p-1 textNavbarSearch "
-                        href="#"
-                        >
-                        <img src={item.header_image} className="w-25 " />
-                        <span classname="mx-2">
-                          {item.name.toLowerCase().substring(0, 17)}
-                          {item.name.length >= 16 ? "..." : <span></span>}
-                        </span>
-                      </li>
-                        </Link>
-                    ))
-                  ) : (
-                    <li className="dropdown-item  text-danger " href="#">
-                      El Juego no se encuentra disponible
-                    </li>
-                  )}
-                </ul>
+                  </Link>
               </div>
-            </form>
+            </div>
             {status === "not-authenticated" ? (
               <Link to="/auth/login">
                 <button className="buttonLogin">

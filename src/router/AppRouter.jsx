@@ -12,6 +12,8 @@ import {
 } from '../games/index';
 import '../App.css';
 import { Wrapper } from '../Wrapper';
+import { SearchPage } from '../games/pages/SearchPage';
+import { useGameHook } from '../games/hooks/useGameHook';
 
 
 export const AppRouter = () => {
@@ -19,7 +21,7 @@ export const AppRouter = () => {
     const { status, checkAuthToken } = useAuthStore();
     const { games, startLoadingGames } = useGameStore();
     const { genres, startLoadingGenres } = useGenreStore();
-
+    const {search} = useGameHook();
     useEffect(() => {
         checkAuthToken();
     }, []);
@@ -60,6 +62,7 @@ export const AppRouter = () => {
                 <Route path='/juegos/nivel/medios-requisitos' element={<MediumRequirementsPage />} />
                 <Route path='/juegos/nivel/bajos-requisitos' element={<LowRequirementsPage />} />
                 <Route path='/juegos/:id' element={<GameCardWithId />} />
+                <Route path='/juegos/busqueda' element={<SearchPage />} />    
                 <Route path="/*" element={<ErrorPage />} />
 
                 {

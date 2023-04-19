@@ -20,7 +20,7 @@ export const GameCardWithId = () => {
 
   const handleClick = (genre) => {
     navigate(`/juegos/generos/${genre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(' ').join('-')}`);
-  }
+  } 
 
   return (
     <>
@@ -107,7 +107,7 @@ export const GameCardWithId = () => {
                             }
                             return <span key={dev.id} className="text-warning" onClick={() => handleClick(dev.description)}> {dev.description}<span className="text-light"> | </span></span>
                           }
-                          )}
+                          )} 
                         </p>
                         <div className="text-light mb-5 cardDetailGame">
                           <h4>Descripción del juego: </h4>
