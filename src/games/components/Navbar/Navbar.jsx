@@ -5,18 +5,19 @@ import {
   faScrewdriver,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../../auth/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavbarGenre } from "../../index";
 import { useGameStore } from "../../hooks/useGameStore";
 import { useGameHook } from "../../hooks/useGameHook";
+import logosinfondo from '../../../assets/logosinfondo.png'
 
 export const Navbar = () => {
   const { status, startLogout, user } = useAuthStore();
   const { games, setActiveGame, activeGame } = useGameStore();
-  const {getSearchGame, search, searchGame, setInputSearch, setSearchGame, msgError} = useGameHook();
+  const {getSearchGame, setInputSearch} = useGameHook();
 
 
   useEffect(() => {
@@ -25,10 +26,7 @@ export const Navbar = () => {
   }, [])
 
 
-  const clearSearchGame = () => {
-    setSearchGame(null)
 
-  }
   const handleLogout = () => {
     startLogout();
   };
@@ -40,14 +38,14 @@ export const Navbar = () => {
         data-bs-theme="dark"
       >
         <div className="container-fluid container">
-          <Link
-            className="navbar-brand titles"
+          <a
+            className="navbar-brand "
             aria-current="page"
             href="#"
             to="/"
           >
-            AINTECH Online
-          </Link>
+            <img src={logosinfondo} className="logoNavbar"/>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -67,7 +65,7 @@ export const Navbar = () => {
                   aria-current="page"
                   href="#"
                   to="/"
-                  onClick={clearSearchGame}
+
                 >
                   Inicio
                 </Link>

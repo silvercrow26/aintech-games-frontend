@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import Particles from '../../Particles';
+import { useCounter } from '../hooks/useCounter';
 import { useGameHook } from '../hooks/useGameHook';
 import { Ads, Carousel, GameItem, GamesMostDownloaded, Loader, useGameStore } from '../index'
 import './GamesPage.css';
+import { Pagination } from './Pagination';
 
 
 export const GamesPage = () => {
   const { games: data, isLoading } = useGameStore();
   const [games, setgames] = useState([])
   const {getLatestGamesUploaded} = useGameHook();
-
+ 
   useEffect(() => {
     setgames(data);
     getLatestGamesUploaded();

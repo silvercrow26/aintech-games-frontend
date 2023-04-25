@@ -7,7 +7,7 @@ import { useGameStore } from "../hooks/useGameStore";
 
 export const SearchPage = () => {
   const { isLoading, setActiveGame } = useGameStore();
-  const {searchGame, search, setMsgError, msgError} = useGameHook();
+  const {searchGame, search, msgError} = useGameHook();
 
 
 

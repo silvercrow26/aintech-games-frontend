@@ -13,9 +13,11 @@ export const useGameHook = () => {
       setInputSearch,
       msgError,
       setMsgError,
+      SetLatestGamesData,
+      latestGamesData,
 
     },
-    actions: { getSearchGame, getLatestGamesUploaded },
+    actions: { getSearchGame, getLatestGamesUploaded, },
   } = useContext(GameContext);
 
   return {
@@ -29,6 +31,8 @@ export const useGameHook = () => {
     msgError,
     setMsgError,
     getLatestGamesUploaded,
+    SetLatestGamesData,
+    latestGamesData,
 
   };
 };

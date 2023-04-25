@@ -9,14 +9,14 @@ import { AppRouter } from "./router/AppRouter"
 export const App = () => {
   return (
     <Provider store={store}>
-    <GameProvider>
+      <GameProvider>
 
       <BrowserRouter>
         <AppRouter />
       </BrowserRouter>
       
-    </GameProvider>
 
+    </GameProvider>
     </Provider>
 
   )

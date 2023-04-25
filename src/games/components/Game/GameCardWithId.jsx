@@ -4,19 +4,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { Disqus, useGameStore } from "../../index";
 import { useNavigate } from "react-router-dom";
+import { LastGameUploaded } from "./LastGameUploaded";
+import { useGameHook } from "../../hooks/useGameHook";
 
 export const GameCardWithId = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { games, activeGame, setActiveGame } = useGameStore();
+  const {getLatestGamesUploaded, setLatestGameData, latestGamesData} = useGameHook();
   const url = `${import.meta.env.VITE_API_HOST}/juegos/${params.id}`;
 
   useEffect(() => {
     if (activeGame == null && games.length > 0) {
       const { 0: game } = games.filter((game) => game._id === params.id);
       setActiveGame(game);
+      getLatestGamesUploaded();
     }
-  }, [games]);
+  }, [games, latestGamesData]);
 
   const handleClick = (genre) => {
     navigate(`/juegos/generos/${genre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(' ').join('-')}`);
@@ -96,7 +100,7 @@ export const GameCardWithId = () => {
                         </div>
                         <img
                           src={activeGame.header_image}
-                          className=" gameCardIdWallpaper"
+                          className="gameCardIdWallpaper w-75"
                         />
                         <p className="text-light  mt-3">
                           <b>Géneros:</b> {" "}
@@ -249,7 +253,7 @@ export const GameCardWithId = () => {
                     </div>
                   </div>
                   <div className="col-md-3 col-sm-12 mt-4">
-                    <p className="text-light">columna 2</p>
+                   <LastGameUploaded  latestGamesData={latestGamesData} />
                   </div>
                 </div>
                 <Disqus url={url} id={params.id} name={activeGame.name} />

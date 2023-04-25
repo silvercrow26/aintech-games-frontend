@@ -14,7 +14,7 @@ export const GameProvider = ({children}) => {
     const [msgError, setMsgError] = useState(false);
 
 
-    const [LatestGamesData, setLatestGameData] = useState([]);
+    const [latestGamesData, setLatestGamesData] = useState([]);
 
 
     //filtra el juego buscado en el navbar
@@ -34,9 +34,8 @@ export const GameProvider = ({children}) => {
         //funcion que trae los ultimos 5 juegos subidos
       const getLatestGamesUploaded = () => {
         const gamesUploaded = games.map((item) => item ).reverse().slice(0, 5);
-        setLatestGameData(gamesUploaded);
-
-      }
+        setLatestGamesData(gamesUploaded);
+      };
 
 
     
@@ -49,7 +48,8 @@ export const GameProvider = ({children}) => {
         setSearchGame,
         msgError,
         setMsgError,
-
+        setLatestGamesData,
+        latestGamesData,
     }
 
     const actions = {

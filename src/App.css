@@ -449,6 +449,10 @@ ul {
   width: 100%;
 }
 
+.gameCardIdWallpaper{
+  margin-left: 100px;
+}
+
 @media (max-width: 700px) {
   .searchMobileQuery {
     width: 100% !important;
@@ -456,6 +460,7 @@ ul {
   }
 
   .gameCardIdWallpaper {
+    margin-left: 45px;
     width: 100%;
   }
 }
@@ -756,3 +761,11 @@ footer {
 }
 /* BOTON COMPRAR JUEGO  */
 
+
+.logoNavbar{
+  width: 150px;
+  margin-right: 10px;
+}
+.logoNavbar:hover{
+  filter: grayscale(80%)
+}
