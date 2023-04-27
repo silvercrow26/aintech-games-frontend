@@ -9,6 +9,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import React from "react";
+import logoaintech from '../../assets/aintechlogo.png' 
 import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
@@ -36,9 +37,9 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="col-md-4 col-sm-12 ">
-          <p className="small mt-5 text-center text-secondary">
-            Sitio web desarrollado por AINTECH Online
-          </p>
+          <a className="small mt-5 text-center text-secondary text-decoration-none" target="_blank" href="https://www.aintech.com.ar/">
+            Sitio web desarrollado por <img src={logoaintech} className="logoFooter" />
+          </a >
           <div className="">
             <div >
             <Link to="/dmca" className="text-decoration-none text-secondary">

@@ -31,7 +31,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      <div className='container mt-3  border p-5 bgCardLogin mb-3'>
+      <div className='container mt-3  border p-5 bgCardLogin bg-black mb-3'>
         <Link to="/" className="volverInicio">
           <button className="btn btn-outline-light mb-5"><FontAwesomeIcon icon={faArrowLeft} /> Volver al inicio</button>
         </Link>

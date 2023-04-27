@@ -769,3 +769,11 @@ footer {
 .logoNavbar:hover{
   filter: grayscale(80%)
 }
+
+.logoFooter{
+  width: 50px;
+}
+
+.logoFooter:hover{
+  filter: grayscale(30%)
+}

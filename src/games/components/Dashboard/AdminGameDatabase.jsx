@@ -3,12 +3,17 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useDownloadServerStore, useGameStore, AdminGameDatabaseItem } from '../../index';
+import { Pagination } from "../../pages/Pagination";
+import { useCounter } from "../../hooks/useCounter";
 
 export const AdminGameDatabase = () => {
   const { games, setActiveGame, activeGame } = useGameStore();
   const { setDownloadServers, downloadServers } = useDownloadServerStore();
   const [gameSearch, setGameSearch] = useState('');
   const [elementSearch, setElementSearch] = useState([])
+  const { counter, decrement, increment,reset } = useCounter(1);
+  const maxGames = 12;
+  const lastPage = Math.ceil(games?.length / maxGames);
 
   const getSearchData = () => {
     const filterData = games.filter((game) => game.name.toLowerCase().includes(gameSearch.toLowerCase())).reverse();
@@ -64,7 +69,10 @@ export const AdminGameDatabase = () => {
           </tr>
         </thead>
         <tbody>
-          {elementSearch?.map((game) => (
+          {elementSearch?.slice(
+            (counter - 1) * maxGames,
+            (counter - 1) * maxGames + maxGames
+          ).map((game) => (
             <AdminGameDatabaseItem
               key={game._id}
               game={game}
@@ -72,6 +80,15 @@ export const AdminGameDatabase = () => {
               elementSearch={elementSearch}
             />
           ))}
+          <div className="d-flex justify-content-end">
+
+          <Pagination 
+            page={counter}
+            decrement={decrement}
+            increment={increment}
+            lastPage={lastPage}
+            />
+            </div>
         </tbody>
       </table>
     </section>
