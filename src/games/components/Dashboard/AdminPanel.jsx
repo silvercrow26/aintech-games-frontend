@@ -47,10 +47,10 @@ export const AdminPanel = () => {
       <div className="row">
 
         <div className="col-md-4 col-sm-12 text-center">
-          <p>Menu</p>
+          <p className="text-center">Menu</p>
           <hr className="" />
 
-          <div className="backgroundAdminButtons p-3 mb-3">
+          <div className="backgroundAdminButtons p-3 mb-3 ">
             <span className=""><FontAwesomeIcon icon={faDatabase} /> Users Database</span>
           </div>
 
@@ -69,26 +69,26 @@ export const AdminPanel = () => {
           <hr />
 
           <div className="backgroundCard p-3">
-            <p><b className="titles">Juegos creados:</b></p>
-            <p className="small"> {games.length} Juegos <b><FontAwesomeIcon icon={faCloudArrowUp} /></b></p>
+            <p className="text-center"><b className="titles ">Juegos creados:</b></p>
+            <p className="small text-center"> {games.length} Juegos <b><FontAwesomeIcon icon={faCloudArrowUp} /></b></p>
           </div>
           <div className="d-flex justify-content-around mt-4">
-            <div>
-              <p><b>Altos requerimientos</b></p>
+            <div className="">
+              <p className=" text-center"><b>Altos requerimientos</b></p>
               {gameHighRequirements.length} Juegos <FontAwesomeIcon icon={faCloudArrowUp} />
             </div>
             <div>
-              <p><b>Medios requerimientos</b></p>
+              <p  className=" text-center"><b>Medios requerimientos</b></p>
               {gameMediumRequirements.length} Juegos <FontAwesomeIcon icon={faCloudArrowUp} />
             </div>
             <div>
-              <p><b>Bajos requisitos</b></p>
+              <p  className=" text-center"><b>Bajos requisitos</b></p>
               {gameLowRequirements.length} Juegos <FontAwesomeIcon icon={faCloudArrowUp} />
             </div>
           </div>
-          <div className="backgroundCard p-3 mt-3">
-            <p className="titles"><b>Cuentas creadas:</b></p>
-            <p className="small"> {games.length} Cuentas <b><FontAwesomeIcon icon={faCloudArrowUp} /></b></p>
+          <div className="backgroundCard p-3 mt-3 text-center">
+            <p className="titles text-center"><b>Cuentas creadas:</b></p>
+            <p className="small text-center"> {games.length} Cuentas <b><FontAwesomeIcon icon={faCloudArrowUp} /></b></p>
           </div>
         </div>
       </div>
