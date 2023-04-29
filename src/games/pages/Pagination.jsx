@@ -18,11 +18,11 @@ export const Pagination = ({page, increment, decrement, lastPage}) => {
 
     return (
     <>
-        <div className="container d-flex m-4 justify-content-center">
-            <button className='col-3 btn btn-outline-light w-25' onClick={prevPage}> <FontAwesomeIcon icon={faArrowLeft} /></button>
+        <div className="container d-flex m-4 justify-content-center ">
+            <button className=' btn btn-outline-light ' onClick={prevPage}> <FontAwesomeIcon icon={faArrowLeft} /></button>
             
-                <b className="m-2  text-light"  >Pagina <span className='text-light' >{page} de {lastPage}</span></b>
-                <button className='col-3 btn btn-outline-light w-25' onClick={nextPage} > <FontAwesomeIcon icon={faArrowRight} /></button>
+                <b className="m-2 text-light">Pagina <span className='text-light' >{page} de {lastPage}</span></b>
+                <button className=' btn btn-outline-light ' onClick={nextPage} > <FontAwesomeIcon icon={faArrowRight} /></button>
         </div>
         </>
     )

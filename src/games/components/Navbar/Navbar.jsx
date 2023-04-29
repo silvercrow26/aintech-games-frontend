@@ -13,12 +13,13 @@ import { NavbarGenre } from "../../index";
 import { useGameStore } from "../../hooks/useGameStore";
 import { useGameHook } from "../../hooks/useGameHook";
 import logosinfondo from '../../../assets/logosinfondo.png'
+import { useCounter } from "../../hooks/useCounter";
 
 export const Navbar = () => {
   const { status, startLogout, user } = useAuthStore();
   const { games, setActiveGame, activeGame } = useGameStore();
   const {getSearchGame, setInputSearch} = useGameHook();
-
+  const {setCounter} = useCounter(1);
 
   useEffect(() => {
     getSearchGame();
@@ -65,8 +66,9 @@ export const Navbar = () => {
                   aria-current="page"
                   href="#"
                   to="/"
-
+                  onClick={() => setCounter(1)}
                 >
+
                   Inicio
                 </Link>
               </li>
@@ -131,20 +133,24 @@ export const Navbar = () => {
                   className="text-light text-decoration-none button--submit pt-3 pb-3"
                   href="#"
                   role="button"
-                  
                   aria-expanded="false"
-                  onClick={getSearchGame}
+                  onClick={() => getSearchGame()}
                   >
-                  <FontAwesomeIcon icon={faMagnifyingGlass}  />
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </a>
                   </Link>
               </div>
             </div>
             {status === "not-authenticated" ? (
-              <Link to="/auth/login">
-                <button className="buttonLogin">
-                  <FontAwesomeIcon icon={faRightToBracket} /> Logearse
-                </button>
+              <Link to="/auth/login" className="text-decoration-none">
+                <button className="buttonLogearse">
+                      Logearse
+                <div className="arrow-wrapper">
+                <div className="arrow">
+                </div>
+
+    </div>
+</button>
               </Link>
             ) : (
               <li className="nav-item dropdown">

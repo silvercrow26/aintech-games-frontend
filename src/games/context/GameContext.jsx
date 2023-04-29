@@ -7,7 +7,7 @@ export const GameContext = createContext();
 export const GameProvider = ({children}) => {
 
     const context = useContext(GameContext)
-    const { games, setActiveGame, activeGame } = useGameStore();
+    const { games } = useGameStore();
     const [inputSearch, setInputSearch] = useState("");
     const [search, setSearch] = useState("");
     const [searchGame, setSearchGame] = useState([]);

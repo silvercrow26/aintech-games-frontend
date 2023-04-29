@@ -8,13 +8,13 @@ export const UserPageId = () => {
   console.log(user);
   return (
     <>
-      <section className="mt-5 text-light container  cardDetailUser mb-5">
+      <section className="mt-5 text-light container  cardDetailUser mb-5 bg-black">
             <button className="btn btn-danger d-flex justify-content- mb-5">  <FontAwesomeIcon icon={faTowerCell} className="fa-x3"/> Centro de soporte</button>
       <div className="p-3 text-light text-center w-100 mb-3 ">
         <h3>Detalles de la cuenta</h3>
         <hr />
       </div>
-        <div className="text-center   w-100 table-responsive ">
+        <div className="text-center w-100 table-responsive">
           <table className="table table-dark table-hover text-light backgroundAdminSideBar ">
             <thead>
               <tr>

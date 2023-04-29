@@ -6,7 +6,7 @@ import './LoginPage.css';
 import { faArrowLeft, faEnvelope, faLock, faShield } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import logosinfondo from '../../assets/logosinfondo.png'
 const loginFormFields = {
   loginEmail: '',
   loginPassword: ''
@@ -35,7 +35,9 @@ export const LoginPage = () => {
         <Link to="/" className="volverInicio">
           <button className="btn btn-outline-light mb-5"><FontAwesomeIcon icon={faArrowLeft} /> Volver al inicio</button>
         </Link>
-        <h2 className="mb-3 text-center TituloLogin text-light">Aintech Games</h2>
+        <div className="d-flex justify-content-center align-items-center">
+        <img src={logosinfondo} className="w-50" />
+        </div>
         <form onSubmit={loginSubmit} >
           <div className='form-group'>
             <span className="mb-3 text-light"><FontAwesomeIcon icon={faEnvelope} /> Correo:</span>
@@ -63,7 +65,7 @@ export const LoginPage = () => {
           </div>
           <div className='mt-3 text-center'>
 
-            <button type="submit" className='buttonLoginAuth w-50 mx-5 text-center'>Iniciar Sesión</button>
+            <button type="submit" className='buttonLoginAuth w-25 mx-5 text-center'>Iniciar Sesión</button>
             <div className="mt-3 ">
               <Link className="text-center text-decoration-none" to='/auth/register'><b>Crear una cuenta de aintech.online gratis</b></Link>
             </div>
