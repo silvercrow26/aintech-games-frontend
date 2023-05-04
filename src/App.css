@@ -5,7 +5,7 @@ body {
   overflow-x: hidden !important;
   background-color: #262729;
   color: white;
- 
+
   
 }
 
@@ -19,6 +19,10 @@ html{
   all: unset;
   cursor: pointer;
 }
+
+  .bgFooter{
+    background-color: #111315 !important;
+  }
 
 .titles {
   color: #5e4dcd !important;
@@ -709,14 +713,6 @@ li {
   align-items: center;
 }
 
-
-
-.bgFooter {
-  background-color: #111315 !important;
- 
-}
-
-
 .iconsFooter {
   background-color: #232324 !important;
 }
@@ -736,15 +732,7 @@ li {
   border: 1px solid #5e4dcd;
   cursor: pointer;
 }
-/* .footer{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height:350px;
-  background:#ccc;
 
-} */
 
 .accordion-button{
   background-color: #232324 !important;
@@ -837,3 +825,51 @@ footer {
 .buttonLogearse:hover .arrow:before {
   right: 0;
 }
+
+#bottone1 {
+ padding: 20px 20px 20px 20px;
+  border-radius: 15px;
+  background: #7289da;
+  border: none;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+ }
+ 
+ #bottone1:hover {
+  box-shadow: 7px 5px 56px -14px #7289da;
+  box-shadow: 7px 5px 56px -14px #7289da;
+ }
+ 
+ #bottone1:active {
+  transform: scale(0.97);
+  box-shadow: 7px 5px 56px -10px #7289da;
+  box-shadow: 7px 5px 56px -14px #7289da;
+ }
+
+
+/* boton youtube */
+
+#bottone2 {
+  padding: 20px 20px 20px 20px;
+  border-radius: 15px;
+  background: #c4302b ;
+  border: none;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+ 
+ }
+ 
+ #bottone2:hover {
+  box-shadow: 7px 5px 56px -14px #c4302b ;
+  box-shadow: 7px 5px 56px -14px #c4302b ;
+ }
+ 
+ #bottone2:active {
+  transform: scale(0.97);
+  box-shadow: 7px 5px 56px -10px #c4302b ;
+  box-shadow: 7px 5px 56px -14px #c4302b ;
+ }

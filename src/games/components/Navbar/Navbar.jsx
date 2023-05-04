@@ -18,15 +18,8 @@ import { useCounter } from "../../hooks/useCounter";
 export const Navbar = () => {
   const { status, startLogout, user } = useAuthStore();
   const { games, setActiveGame, activeGame } = useGameStore();
-  const {getSearchGame, setInputSearch} = useGameHook();
+  const {getSearchGame, setInputSearch, inputSearch} = useGameHook();
   const {setCounter} = useCounter(1);
-
-  useEffect(() => {
-    getSearchGame();
-
-  }, [])
-
-
 
   const handleLogout = () => {
     startLogout();
@@ -35,7 +28,7 @@ export const Navbar = () => {
   return (
     <>
       <nav
-        className="navbar bg-dark navbar-expand-lg bg-body-tertiary bgNavbar"
+        className="navbar bg-dark navbar-expand-lg bg-body-tertiary bgNavbar "
         data-bs-theme="dark"
       >
         <div className="container-fluid container">
@@ -126,6 +119,7 @@ export const Navbar = () => {
                   name="search"
                   placeholder="Buscar..."
                   autoComplete="off"
+                  value={inputSearch}
                   onChange={(e) => setInputSearch(e.target.value)}
                   />
                   <Link to='/juegos/busqueda' className="text-decoration-none">
@@ -134,7 +128,7 @@ export const Navbar = () => {
                   href="#"
                   role="button"
                   aria-expanded="false"
-                  onClick={() => getSearchGame()}
+                  onClick={getSearchGame}
                   >
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </a>

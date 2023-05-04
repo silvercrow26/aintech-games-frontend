@@ -19,9 +19,10 @@ export const GameProvider = ({children}) => {
 
     //filtra el juego buscado en el navbar
     const getSearchGame = () => {
+        setMsgError(false)
         const filterData = games.filter((game) => game.name.toLowerCase().includes(inputSearch.toLowerCase())).reverse();
         setSearch(inputSearch)
-        if (search.trim() === "" ) {
+        if (inputSearch.trim() === "" ){ 
             setMsgError(true)
         } else {
             setMsgError(false)

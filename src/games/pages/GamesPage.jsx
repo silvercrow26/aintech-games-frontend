@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Particles from '../../Particles';
+
 import { DiscordWidget } from '../components/DiscordWidget';
 import { useGameHook } from '../hooks/useGameHook';
 import { Ads, Carousel, GameItem, GamesMostDownloaded, Loader, useGameStore } from '../index'
@@ -20,7 +20,6 @@ export const GamesPage = () => {
     <>
         <Carousel />
       <main className="container">
-        <Particles />
         <h4 className="text-light mt-4">Ultimos <b>juegos de PC</b> agregados</h4>
         <hr className="text-light" />
         <div className='row'>
@@ -34,7 +33,7 @@ export const GamesPage = () => {
           </div>
           <div className="col-md-4 mostWanted">
             <GamesMostDownloaded className="mostdownloaded" />
-            <DiscordWidget />
+
             <Ads />
           </div>
         </div>
