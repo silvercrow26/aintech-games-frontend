@@ -14,7 +14,6 @@ export const Footer = () => {
     <footer className="p-3 text-center text-light bgFooter ">
       <div className=" row mb-5 bgFooter w-100">
       <div className="d-flex justify-content-center flex-wrap">
-       
         <div className="col-md-6 col-sm-12 ">
           <a className="small mt-5 text-center text-secondary text-decoration-none" target="_blank" href="https://www.aintech.com.ar/">
             <span>Sitio web desarrollado por</span> <img src={logoaintech} className="logoFooter" />

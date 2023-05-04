@@ -9,8 +9,8 @@ body {
   
 }
 
-html{
-  position:relative; 
+html {
+  position: relative;
   min-height: 100%;
 }
 
@@ -734,7 +734,7 @@ li {
 }
 
 
-.accordion-button{
+.accordion-button {
   background-color: #232324 !important;
   color: white;
   border: 0px;
@@ -747,7 +747,6 @@ li {
 footer {
   min-height: calc(100vh - 1000px);
 }
-/* BOTON COMPRAR JUEGO  */
 
 
 .logoNavbar{
