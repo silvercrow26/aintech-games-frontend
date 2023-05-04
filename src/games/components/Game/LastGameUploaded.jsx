@@ -37,6 +37,7 @@ export const LastGameUploaded = ({ latestGamesData }) => {
           />
       </div>
       <div className="d-flex justify-content-center">
+
         <DiscordWidget />
         <YoutubeWidget />
       </div>
