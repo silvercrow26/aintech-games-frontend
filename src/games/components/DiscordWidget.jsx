@@ -27,7 +27,6 @@ export const DiscordWidget = () => {
     getMembersOnline();
   }, [])
 
-  console.log(discordData)
 
   return (
 
