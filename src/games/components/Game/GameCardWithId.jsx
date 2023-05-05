@@ -194,8 +194,8 @@ export const GameCardWithId = () => {
                       </div>
                       <div className="cardDetailGame mt-2">
                         <h4 className="text-light">Requisitos del sistema:</h4>
-                        <div className="d-flex justify-content-center">
-                          <div className="text-light">
+                        <div className="d-flex requirements justify-content-center">
+                          <div className="text-light w-50">
                             <p
                               dangerouslySetInnerHTML={{
                                 __html:
@@ -204,7 +204,7 @@ export const GameCardWithId = () => {
                               }}
                             ></p>
                           </div>
-                          <div className="text-light">
+                          <div className="text-light w-50">
                             <p
                               dangerouslySetInnerHTML={{
                                 __html:
