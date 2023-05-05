@@ -76,6 +76,9 @@ html {
       rgba(95, 27, 253, 0.392) 60%,
       transparent 100%);
 }
+.backgroundimage{
+  
+}
 
 .buttonLogin:hover:before {
   transform: translateX(15em);

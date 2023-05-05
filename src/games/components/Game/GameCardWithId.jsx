@@ -11,7 +11,7 @@ export const GameCardWithId = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { games, activeGame, setActiveGame } = useGameStore();
-  const {getLatestGamesUploaded, setLatestGameData, latestGamesData} = useGameHook();
+  const { getLatestGamesUploaded, setLatestGameData, latestGamesData } = useGameHook();
   const url = `${import.meta.env.VITE_API_HOST}/juegos/${params.id}`;
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const GameCardWithId = () => {
 
   const handleClick = (genre) => {
     navigate(`/juegos/generos/${genre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(' ').join('-')}`);
-  } 
+  }
 
   return (
     <>
@@ -51,12 +51,14 @@ export const GameCardWithId = () => {
         </div>
       ) : (
         <div
+        className="backgroundimage"
           style={{
-            backgroundImage: `url(${activeGame.detail[0].background})`,
+            backgroundImage: `linear-gradient(rgb(0 0 0 / 78%), rgb(181 92 181 / 6%)), url(${activeGame.detail[0].background})`,
             backgroundSize: "100%",
             backgroundRepeat: "no-repeat",
             backgroundAttachment: "fixed",
             backgroundColor: "#1b2838",
+            
           }}
         >
           {
@@ -111,7 +113,7 @@ export const GameCardWithId = () => {
                             }
                             return <span key={dev.id} className="text-warning" onClick={() => handleClick(dev.description)}> {dev.description}<span className="text-light"> | </span></span>
                           }
-                          )} 
+                          )}
                         </p>
                         <div className="text-light mb-5 cardDetailGame">
                           <h4>Descripción del juego: </h4>
@@ -253,7 +255,7 @@ export const GameCardWithId = () => {
                     </div>
                   </div>
                   <div className="col-md-4 col-sm-12 mt-4">
-                   <LastGameUploaded  latestGamesData={latestGamesData} />
+                    <LastGameUploaded latestGamesData={latestGamesData} />
                   </div>
                 </div>
                 <Disqus url={url} id={params.id} name={activeGame.name} />
