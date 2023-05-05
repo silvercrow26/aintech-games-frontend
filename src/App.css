@@ -834,6 +834,7 @@ footer {
   text-align: center;
   cursor: pointer;
   transition: 0.4s;
+  border: 1px solid #7289da;
  }
  
  #bottone1:hover {
@@ -859,6 +860,7 @@ footer {
   text-align: center;
   cursor: pointer;
   transition: 0.4s;
+  border: 1px solid #c4302b ;
  
  }
  
@@ -872,3 +874,5 @@ footer {
   box-shadow: 7px 5px 56px -10px #c4302b ;
   box-shadow: 7px 5px 56px -14px #c4302b ;
  }
+
+

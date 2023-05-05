@@ -75,7 +75,7 @@ export const GameCardWithId = () => {
               )}
               <div className="container ">
                 <div className="row ">
-                  <div className="col-md-9 mt-4 col-sm-12  ">
+                  <div className="col-md-8 mt-4 col-sm-12  ">
                     <div>
                       <h3 className="text-light text-center">
                         <b>{activeGame.name}</b>
@@ -252,7 +252,7 @@ export const GameCardWithId = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-3 col-sm-12 mt-4">
+                  <div className="col-md-4 col-sm-12 mt-4">
                    <LastGameUploaded  latestGamesData={latestGamesData} />
                   </div>
                 </div>
