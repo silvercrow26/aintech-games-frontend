@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { DiscordWidget } from '../components/DiscordWidget';
+import { SliderAds } from '../components/SliderAds';
 import { useGameHook } from '../hooks/useGameHook';
 import { Ads, Carousel, GameItem, GamesMostDownloaded, Loader, useGameStore } from '../index'
 import './GamesPage.css';
@@ -33,7 +34,7 @@ export const GamesPage = () => {
           </div>
           <div className="col-md-4 mostWanted">
             <GamesMostDownloaded className="mostdownloaded" />
-
+            {/* <SliderAds /> */}
             <Ads />
           </div>
         </div>
