@@ -5,7 +5,7 @@ import {
   faScrewdriver,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import React, {useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../../auth/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,8 +18,8 @@ import { useCounter } from "../../hooks/useCounter";
 export const Navbar = () => {
   const { status, startLogout, user } = useAuthStore();
   const { games, setActiveGame, activeGame } = useGameStore();
-  const {getSearchGame, setInputSearch, inputSearch} = useGameHook();
-  const {setCounter} = useCounter(1);
+  const { getSearchGame, setInputSearch, inputSearch } = useGameHook();
+  const { setCounter } = useCounter(1);
 
   const handleLogout = () => {
     startLogout();
@@ -32,14 +32,15 @@ export const Navbar = () => {
         data-bs-theme="dark"
       >
         <div className="container-fluid container">
-          <a
+          <Link
             className="navbar-brand "
             aria-current="page"
             href="#"
             to="/"
+            onClick={() => setCounter(1)}
           >
-            <img src={logosinfondo} className="logoNavbar"/>
-          </a>
+            <img src={logosinfondo} className="logoNavbar" />
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -121,30 +122,30 @@ export const Navbar = () => {
                   autoComplete="off"
                   value={inputSearch}
                   onChange={(e) => setInputSearch(e.target.value)}
-                  />
-                  <Link to='/juegos/busqueda' className="text-decoration-none">
-                <a
-                  className="text-light text-decoration-none button--submit pt-3 pb-3"
-                  href="#"
-                  role="button"
-                  aria-expanded="false"
-                  onClick={getSearchGame}
+                />
+                <Link to='/juegos/busqueda' className="text-decoration-none">
+                  <a
+                    className="text-light text-decoration-none button--submit pt-3 pb-3"
+                    href="#"
+                    role="button"
+                    aria-expanded="false"
+                    onClick={getSearchGame}
                   >
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </a>
-                  </Link>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </a>
+                </Link>
               </div>
             </div>
             {status === "not-authenticated" ? (
               <Link to="/auth/login" className="text-decoration-none">
                 <button className="buttonLogearse">
-                      Logearse
-                <div className="arrow-wrapper">
-                <div className="arrow">
-                </div>
+                  Logearse
+                  <div className="arrow-wrapper">
+                    <div className="arrow">
+                    </div>
 
-    </div>
-</button>
+                  </div>
+                </button>
               </Link>
             ) : (
               <li className="nav-item dropdown">
