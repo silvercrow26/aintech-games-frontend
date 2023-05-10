@@ -8,10 +8,10 @@ export const Ads = () => {
                 <Adsense
                     className="adsbygoogle"
                     style={{ display: 'block' }}
-                    format="fluid"
-                    layout="-c3-g+h+bq-mp"
+                    format="auto"
+                    responsive='true'
                     client="ca-pub-4288271666568125"
-                    slot="2204313702" />
+                    slot="8836458590" />
             </div>
 
         </>
