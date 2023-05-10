@@ -166,3 +166,7 @@
 .accordion-button:not(.collapsed) {
     color: #474bff;
 }
+
+.bg-medium{
+    background-color: rgb(218, 144, 8);
+}
