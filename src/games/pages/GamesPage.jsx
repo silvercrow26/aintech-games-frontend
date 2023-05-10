@@ -20,7 +20,7 @@ export const GamesPage = () => {
     <>
         <Carousel />
       <main className="container">
-        <h4 className="text-light mt-4">Ultimos <b>juegos de PC</b> agregados</h4>
+        <h4 className="text-light mt-4">Últimos <b>juegos de PC</b> agregados</h4>
         <hr className="text-light" />
         <div className='row'>
           <div className="gamesPageCard col mb-5">
