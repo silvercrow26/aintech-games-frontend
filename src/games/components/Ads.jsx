@@ -1,23 +1,27 @@
 import React, { useEffect } from 'react'
-
+import { Adsense } from '@ctrl/react-adsense';
 export const Ads = () => {
 
-    const componentDidMount = () => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
+    // const componentDidMount = () => {
+    //     (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // }
 
-    useEffect(() => {
-        componentDidMount();
-    }, [])
+    // useEffect(() => {
+    //     componentDidMount();
+    // }, [])
 
     return (
         <>
-            <ins className="adsbygoogle"
-                style={{ display: 'block' }}
-                data-ad-client="ca-pub-4288271666568125"
-                data-ad-slot="8298384110"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
+            {/* <div className='imagenMostWanted'>
+                <Adsense
+                    className="adsbygoogle"
+                    style={{ display: 'block' }}
+                    format="auto"
+                    responsive='true'
+                    client="ca-pub-4288271666568125"
+                    slot="8836458590" />
+            </div> */}
+
         </>
     )
 }

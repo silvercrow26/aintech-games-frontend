@@ -20,7 +20,6 @@ export const GamesMostDownloaded = () => {
         handleAddGameMostDownloaded();
     }, [games])
 
-    console.log(gameMostDownloaded)
     return (
         <>
             <h5 className="text-light text-center backgroundEvent">Los más descargados hasta el momento</h5>

@@ -875,3 +875,15 @@ footer {
   box-shadow: 7px 5px 56px -14px #c4302b ;
  }
 
+ html::-webkit-scrollbar {
+
+  background-color: #202225;
+  width: 15px;
+}
+
+html::-webkit-scrollbar-thumb {
+
+  background-color: #474bff;
+  border-radius: 10px;
+
+}

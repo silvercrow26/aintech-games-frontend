@@ -7,7 +7,7 @@ import { useGameStore } from "../../index";
 export const GameCard = (item) => {
   const requirements = item.requirements.toUpperCase().replace("-", ' ');
   const { setActiveGame, activeGame } = useGameStore();
-  
+
   const handleSubmit = () => {
     if (activeGame == null || activeGame._id != item._id) {
       setActiveGame(item);
@@ -30,12 +30,21 @@ export const GameCard = (item) => {
                 <span className="badge bg-success d-flex justify-content-between">
                   <FontAwesomeIcon icon={faGamepad} /> {requirements}
                 </span>
-              ) : (
+              ) : requirements === "MEDIOS REQUISITOS" ? (
+                (
+
+                  <span className="badge bg-medium d-flex justify-content-between text-center">
+                    <FontAwesomeIcon icon={faGamepad} /> {requirements}
+                  </span>
+                )
+              ) : ((
 
                 <span className="badge bg-danger d-flex justify-content-between text-center">
                   <FontAwesomeIcon icon={faGamepad} /> {requirements}
                 </span>
-              )}
+              ))
+
+            }
 
             <div className="mt-2">
               <h6 className="text-center">{item.name}</h6>

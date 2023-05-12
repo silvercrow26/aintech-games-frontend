@@ -51,14 +51,14 @@ export const GameCardWithId = () => {
         </div>
       ) : (
         <div
-        className="backgroundimage"
+          className="backgroundimage"
           style={{
             backgroundImage: `linear-gradient(rgb(0 0 0 / 78%), rgb(181 92 181 / 6%)), url(${activeGame.detail[0].background})`,
             backgroundSize: "100%",
             backgroundRepeat: "no-repeat",
             backgroundAttachment: "fixed",
             backgroundColor: "#1b2838",
-            
+
           }}
         >
           {
@@ -66,6 +66,11 @@ export const GameCardWithId = () => {
               {activeGame.requirements.toUpperCase().replace("-", " ") ===
                 "BAJOS REQUISITOS" ? (
                 <span className="badge bg-success d-flex justify-content-center p-3">
+                  <FontAwesomeIcon icon={faGamepad} className="mx-3" />{" "}
+                  {activeGame.requirements.toUpperCase().replace("-", " ")}
+                </span>
+              ) : activeGame.requirements.toUpperCase().replace("-", " ") === "MEDIOS REQUISITOS" ? (
+                <span className="badge bg-medium d-flex justify-content-center text-center p-3">
                   <FontAwesomeIcon icon={faGamepad} className="mx-3" />{" "}
                   {activeGame.requirements.toUpperCase().replace("-", " ")}
                 </span>
@@ -194,8 +199,8 @@ export const GameCardWithId = () => {
                       </div>
                       <div className="cardDetailGame mt-2">
                         <h4 className="text-light">Requisitos del sistema:</h4>
-                        <div className="d-flex justify-content-center">
-                          <div className="text-light">
+                        <div className="d-flex requirements justify-content-center">
+                          <div className="text-light w-50">
                             <p
                               dangerouslySetInnerHTML={{
                                 __html:
@@ -204,7 +209,7 @@ export const GameCardWithId = () => {
                               }}
                             ></p>
                           </div>
-                          <div className="text-light">
+                          <div className="text-light w-50">
                             <p
                               dangerouslySetInnerHTML={{
                                 __html:
