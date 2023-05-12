@@ -35,7 +35,7 @@ export const GamesPage = () => {
           <div className="col-md-4 mostWanted">
             <GamesMostDownloaded className="mostdownloaded" />
             {/* <SliderAds /> */}
-            <Ads />
+            {/* <Ads /> */}
           </div>
         </div>
       </main>

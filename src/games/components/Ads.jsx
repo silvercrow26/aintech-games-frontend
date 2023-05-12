@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 
 export const Ads = () => {
 
-    // const componentDidMount = () => {
-    //     (window.adsbygoogle = window.adsbygoogle || []).push({});
-    // }
+    const componentDidMount = () => {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
 
-    // useEffect(() => {
-    //     componentDidMount();
-    // }, [])
+    useEffect(() => {
+        componentDidMount();
+    }, [])
 
     return (
         <>
