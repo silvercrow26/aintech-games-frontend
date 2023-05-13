@@ -19,10 +19,10 @@ export const Pagination = ({page, increment, decrement, lastPage}) => {
     return (
     <>
         <div className="container d-flex m-4 justify-content-center ">
-            <button className=' btn btn-outline-light ' onClick={prevPage}> <FontAwesomeIcon icon={faArrowLeft} /></button>
+        <a href="#"><button className=' btn btn-outline-light ' onClick={prevPage}> <FontAwesomeIcon icon={faArrowLeft} /></button></a> 
             
                 <b className="m-2 text-light">Pagina <span className='text-light' >{page} de {lastPage}</span></b>
-                <button className=' btn btn-outline-light ' onClick={nextPage} > <FontAwesomeIcon icon={faArrowRight} /></button>
+                <a href="#"><button className=' btn btn-outline-light ' onClick={nextPage} ><FontAwesomeIcon icon={faArrowRight} /></button></a> 
         </div>
         </>
     )
