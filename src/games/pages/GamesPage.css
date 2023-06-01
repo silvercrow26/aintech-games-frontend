@@ -5,7 +5,7 @@
     }
 
     .col-md-4 {
-        width: 70%;
+        width: 80%;
         margin-top: 0px !important;
     }
 
@@ -162,9 +162,17 @@
         flex-direction: column !important;
     }
 
+    .socialmedia a{
+        text-align: center;
+    }
+
     #bottone1 {
         margin-right: 0px !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 8px !important;
+        width: 80%;
+    }
+    #bottone2 {
+        width: 80%;
     }
 }
 
