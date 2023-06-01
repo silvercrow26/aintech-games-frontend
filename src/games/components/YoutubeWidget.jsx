@@ -17,7 +17,7 @@ export const YoutubeWidget = () => {
       target="_blank"
       className="text-decoration-none"
     >
-      <button id="bottone2" className="mb-5 backgroundCard">
+      <button id="bottone2" className="mb-5 ms-1 backgroundCard">
         <strong className="text-light">
           <FontAwesomeIcon icon={faYoutube} className="text-danger" />
           <br />

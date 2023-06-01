@@ -6,7 +6,7 @@ body {
   background-color: #262729;
   color: white;
 
-  
+
 }
 
 html {
@@ -20,9 +20,9 @@ html {
   cursor: pointer;
 }
 
-  .bgFooter{
-    background-color: #111315 !important;
-  }
+.bgFooter {
+  background-color: #111315 !important;
+}
 
 .titles {
   color: #5e4dcd !important;
@@ -453,20 +453,28 @@ ul {
   width: 100%;
 }
 
-.gameCardIdWallpaper{
-  margin-left: 100px;
-}
-
 @media (max-width: 700px) {
   .searchMobileQuery {
     width: 100% !important;
     margin-bottom: 10px;
   }
 
-  .gameCardIdWallpaper {
-    margin-left: 45px;
-    width: 100%;
+}
+
+@media (max-width: 767px) {
+
+  .gameCardIdWallpaper img{
+    width: 100% !important;
   }
+}
+
+.gameCardIdWallpaper {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+}
+.gameCardIdWallpaper img{
+  width: 70%;
 }
 
 .gameCardBuy {
@@ -740,7 +748,7 @@ li {
   border: 0px;
 }
 
-.textNavbarSearch{
+.textNavbarSearch {
   word-wrap: break-word;
 }
 
@@ -749,19 +757,20 @@ footer {
 }
 
 
-.logoNavbar{
+.logoNavbar {
   width: 150px;
   margin-right: 10px;
 }
-.logoNavbar:hover{
+
+.logoNavbar:hover {
   filter: grayscale(80%)
 }
 
-.logoFooter{
+.logoFooter {
   width: 50px;
 }
 
-.logoFooter:hover{
+.logoFooter:hover {
   filter: grayscale(30%)
 }
 
@@ -826,7 +835,7 @@ footer {
 }
 
 #bottone1 {
- padding: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
   border-radius: 15px;
   background: #7289da;
   border: none;
@@ -835,18 +844,18 @@ footer {
   cursor: pointer;
   transition: 0.4s;
   border: 1px solid #7289da;
- }
- 
- #bottone1:hover {
+}
+
+#bottone1:hover {
   box-shadow: 7px 5px 56px -14px #7289da;
   box-shadow: 7px 5px 56px -14px #7289da;
- }
- 
- #bottone1:active {
+}
+
+#bottone1:active {
   transform: scale(0.97);
   box-shadow: 7px 5px 56px -10px #7289da;
   box-shadow: 7px 5px 56px -14px #7289da;
- }
+}
 
 
 /* boton youtube */
@@ -854,28 +863,28 @@ footer {
 #bottone2 {
   padding: 20px 20px 20px 20px;
   border-radius: 15px;
-  background: #c4302b ;
+  background: #c4302b;
   border: none;
   font-family: inherit;
   text-align: center;
   cursor: pointer;
   transition: 0.4s;
-  border: 1px solid #c4302b ;
- 
- }
- 
- #bottone2:hover {
-  box-shadow: 7px 5px 56px -14px #c4302b ;
-  box-shadow: 7px 5px 56px -14px #c4302b ;
- }
- 
- #bottone2:active {
-  transform: scale(0.97);
-  box-shadow: 7px 5px 56px -10px #c4302b ;
-  box-shadow: 7px 5px 56px -14px #c4302b ;
- }
+  border: 1px solid #c4302b;
 
- html::-webkit-scrollbar {
+}
+
+#bottone2:hover {
+  box-shadow: 7px 5px 56px -14px #c4302b;
+  box-shadow: 7px 5px 56px -14px #c4302b;
+}
+
+#bottone2:active {
+  transform: scale(0.97);
+  box-shadow: 7px 5px 56px -10px #c4302b;
+  box-shadow: 7px 5px 56px -14px #c4302b;
+}
+
+html::-webkit-scrollbar {
 
   background-color: #202225;
   width: 15px;

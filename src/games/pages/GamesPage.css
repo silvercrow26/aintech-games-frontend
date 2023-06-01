@@ -1,12 +1,16 @@
-@media (max-width: 991px) and (min-width: 767px) {
-    .gameIdCol {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+@media (max-width: 991px) {
+    .col-md-8 {
+        flex: 0 0 auto;
+        width: 100%;
     }
 
-    .w-25 {
-        width: 33% !important;
+    .col-md-4 {
+        width: 70%;
+        margin-top: 0px !important;
+    }
+
+    .row {
+        justify-content: center;
     }
 }
 
@@ -41,11 +45,11 @@
     }
 
     .gamesPageCard .w-25 {
-        width: 80% !important;
+        width: 100% !important;
     }
 
     .gamesPageCard .w-50 {
-        width: 80% !important;
+        width: 100% !important;
     }
 
     .mostWanted {
@@ -55,14 +59,14 @@
     }
 
     .imagenMostWanted {
-        width: 60%;
+        width: 90%;
     }
 
-    .requirements{
+    .requirements {
         flex-direction: column;
     }
 
-    .requirements .w-50{
+    .requirements .w-50 {
         width: 100% !important;
     }
 }
@@ -101,38 +105,6 @@
 
 }
 
-
-@media (min-width: 992px) {
-
-    .carouselBorder {
-        height: 45vh;
-        border: 1px solid #6441a5;
-        width: 100%;
-    }
-
-    .imgCarousel {
-        height: 44.8vh;
-        object-fit: fill !important;
-        width: 100% !important;
-    }
-}
-
-@media (max-width:992px) {
-
-    /* carousel */
-    .carouselBorder {
-        border: 1px solid #6441a5;
-        width: 100%;
-        height: 30vh;
-    }
-
-    .imgCarousel {
-        height: 29.8vh;
-        object-fit: fill !important;
-        width: 100% !important;
-    }
-}
-
 /* Accordion */
 .accordion-button {
     background-color: #232324 !important;
@@ -167,6 +139,31 @@
     color: #474bff;
 }
 
-.bg-medium{
+.bg-medium {
     background-color: rgb(218, 144, 8);
+}
+
+.carouselBorder {
+    border: 1px solid #6441a5;
+    width: 100%;
+    height: 100%;
+}
+
+.imgCarousel {
+    margin: 0 auto;
+    width: auto;
+}
+
+@media (max-width: 441px) {
+    .socialmedia {
+        flex-direction: column !important;
+    }
+    #bottone1{
+        margin-right: 0px !important;
+        margin-bottom: 4px !important;
+    }
+}
+.socialmedia {
+    display: flex;
+    flex-direction: row;
 }

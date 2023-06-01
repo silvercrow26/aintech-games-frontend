@@ -105,10 +105,13 @@ export const GameCardWithId = () => {
                             )}
                           </p>
                         </div>
-                        <img
-                          src={activeGame.header_image}
-                          className="gameCardIdWallpaper w-75"
-                        />
+                        <div className="gameCardIdWallpaper">
+                          <img
+                            src={activeGame.header_image}
+                            
+                          />
+                        </div>
+
                         <p className="text-light  mt-3">
                           <b>Géneros:</b> {" "}
                           {activeGame?.detail[0]?.genres.map((dev, i) => {
@@ -130,7 +133,7 @@ export const GameCardWithId = () => {
                         </div>
                       </div>
                       {/* Carousel images */}
-                      <div className="mb-5 mt-5 carouselBorder">
+                      <div className="mb-5 mt-5">
                         <div
                           id="carouselIndice"
                           className="carousel slide"
@@ -150,7 +153,7 @@ export const GameCardWithId = () => {
                                 ></button>
                               ))}
                           </div>
-                          <div className="carousel-inner ">
+                          <div className="carousel-inner carouselBorder">
                             {activeGame &&
                               activeGame.detail[0]?.screenshots.map(
                                 (item, i) => (

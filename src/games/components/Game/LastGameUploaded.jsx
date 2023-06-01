@@ -23,23 +23,22 @@ export const LastGameUploaded = ({ latestGamesData }) => {
           </div>
         </Link>
       ))}
-        <hr />
+      <hr />
       <div className="backgroundCard">
-      <p className="text-center">
-        <b>¡Informate sobre increibles sorteos y ofertas en nuestras redes!</b>
-      </p>
-        </div>
+        <p className="text-center">
+          <b>¡Informate sobre increibles sorteos y ofertas en nuestras redes!</b>
+        </p>
+      </div>
       <div className="d-flex justify-content-center mb-3 mt-2">
         <FontAwesomeIcon
           icon={faArrowDown}
           className="text-light"
           size={"lg"}
-          />
+        />
       </div>
-      <div className="d-flex justify-content-center">
-
-        <DiscordWidget />
-        <YoutubeWidget />
+      <div className="justify-content-center socialmedia">
+          <DiscordWidget />
+          <YoutubeWidget />
       </div>
 
     </div>
