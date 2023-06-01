@@ -10,8 +10,8 @@ import './GamesPage.css';
 export const GamesPage = () => {
   const { games: data, isLoading } = useGameStore();
   const [games, setgames] = useState([])
-  const {getLatestGamesUploaded} = useGameHook();
- 
+  const { getLatestGamesUploaded } = useGameHook();
+
   useEffect(() => {
     setgames(data);
     getLatestGamesUploaded();
@@ -19,25 +19,22 @@ export const GamesPage = () => {
 
   return (
     <>
-        <Carousel />
+      <Carousel />
       <main className="container">
         <h4 className="text-light mt-4">Últimos <b>juegos de PC</b> agregados</h4>
         <hr className="text-light" />
-        <div className='row'>
-          <div className="gamesPageCard col mb-5">
-            {
-              (isLoading) ? <Loader /> :
-                data.length === 0 ? <p className='ms-5'>No hay juegos disponibles en este momento.</p> :
-                  <GameItem games={games} style={"w-50"} />
-            }
 
-          </div>
-          <div className="col-md-4 mostWanted">
-            <GamesMostDownloaded className="mostdownloaded" />
-            {/* <SliderAds /> */}
-            {/* <Ads /> */}
-          </div>
-        </div>
+
+        {
+          (isLoading) ? <Loader /> :
+            data.length === 0 ? <p className='ms-5'>No hay juegos disponibles en este momento.</p> :
+              <div className='row'>
+                <div className="gamesPageCard col mb-5"> <GameItem games={games} style={"w-50"} /></div>
+                <div className="col-md-4 mostWanted">
+                  <GamesMostDownloaded className="mostdownloaded" /></div>
+              </div>
+        }
+
       </main>
     </>
   )
