@@ -5,12 +5,15 @@
     }
 
     .col-md-4 {
-        width: 70%;
+        width: 80%;
         margin-top: 0px !important;
     }
 
     .row {
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
     }
 }
 
@@ -158,11 +161,21 @@
     .socialmedia {
         flex-direction: column !important;
     }
-    #bottone1{
+
+    .socialmedia a{
+        text-align: center;
+    }
+
+    #bottone1 {
         margin-right: 0px !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 8px !important;
+        width: 80%;
+    }
+    #bottone2 {
+        width: 80%;
     }
 }
+
 .socialmedia {
     display: flex;
     flex-direction: row;
