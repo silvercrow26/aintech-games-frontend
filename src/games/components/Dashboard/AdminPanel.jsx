@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { faCloudArrowUp, faDatabase, faGamepad, faServer, faSignal, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faCloudArrowUp, faDatabase, faGamepad, faServer, faSignal, faUsers} from '@fortawesome/free-solid-svg-icons';
+import {faYoutube} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
 import { useGameStore } from '../../index';
+import logosinfondo from '../../../assets/logosinfondo.png'
 
 export const AdminPanel = () => {
 
@@ -59,10 +61,18 @@ export const AdminPanel = () => {
               <span><FontAwesomeIcon icon={faGamepad} /> Game Database</span>
             </div>
           </Link>
+          <Link to="/admin/youtubedatabase" className="text-decoration-none">
+          <div className="backgroundAdminButtons p-3 mb-3">
+            <span><FontAwesomeIcon icon={faYoutube} /> Youtube Database</span>
+          </div>
+          </Link>
           <div className="backgroundAdminButtons p-3 mb-3">
             <span><FontAwesomeIcon icon={faUsers} /> Users Requests</span>
           </div>
 
+          <div>
+            <img src={logosinfondo} alt="Logo aintech Online" className="w-50" />
+          </div>
         </div>
         <div className="col-md-8 col-sm-12">
           <span><b> Estadisticas generales</b></span>

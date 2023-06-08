@@ -42,7 +42,7 @@ export const AdminGameDatabase = () => {
       <div>
         <h3 className="text-center mt-5 mb-5">Administración de juegos</h3>
         <div className="text-center mb-5">
-          <Link to="/newgame" className="text-decoration-none" onClick={handleNewGame}>
+          <Link to="/admin/newgame" className="text-decoration-none" onClick={handleNewGame}>
             <span className="backgroundAdminButtons p-3"><FontAwesomeIcon icon={faPlus} /> Agregar Juego</span>
           </Link>
         </div>

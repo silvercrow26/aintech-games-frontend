@@ -14,6 +14,8 @@ import '../App.css';
 import { Wrapper } from '../Wrapper';
 import { SearchPage } from '../games/pages/SearchPage';
 import { useGameHook } from '../games/hooks/useGameHook';
+import { AdminYoutubeDatabase } from '../games/components/Dashboard/AdminYoutubeDatabase';
+import { AdminNewVideo } from '../games/components/Dashboard/AdminNewVideo';
 
 
 export const AppRouter = () => {
@@ -70,12 +72,14 @@ export const AppRouter = () => {
                         (
                             <>
                                 <Route path='/' element={<GamesPage />} />
-                                <Route path='/newgame' element={<NewGame />} />
+                                <Route path='/admin/newgame' element={<NewGame />} />
                                 <Route path='/admin/hub' element={<AdminPanel />} />
                                 <Route path='/admin/gamedatabase' element={<AdminGameDatabase />} />
                                 <Route path='/user/configuration/:id' element={<UserPageId />} />
                                 <Route path='/user/profile/:name' element={<ProfileUser />} />
                                 <Route path='/auth/login' element={<Navigate to="/" />} />
+                                <Route path='/admin/youtubedatabase' element={<AdminYoutubeDatabase />}  />
+                                <Route path='/admin/newvideo' element={<AdminNewVideo />} />
                             </>
                         ) : (
                             <>
