@@ -35,7 +35,7 @@ export const AdminNewVideo = () => {
 
                 <div className="mb-3">
                     <label className="form-label">Iframe:</label>
-                    <textarea className="form-control" value={iframe} onChange={onInputChange} name="iframe" rows="3" placeholder="Ingresa el <iframe></iframe> del video"></textarea>
+                    <textarea className="form-control" value={iframe} onChange={onInputChange} name="iframe" rows="3" placeholder="Ingresa el link del video (embed)"></textarea>
                 </div>
                 <button type="submit" onClick={handleSubmit} className="btn btn-primary">Enviar</button>
             </form>
