@@ -24,7 +24,6 @@ export const Navbar = () => {
   const handleLogout = () => {
     startLogout();
   };
-
   return (
     <>
       <nav
@@ -124,7 +123,7 @@ export const Navbar = () => {
                   onChange={(e) => setInputSearch(e.target.value)}
                 />
                 <Link to='/juegos/busqueda' className="text-decoration-none">
-                  <a
+                  <button
                     className="text-light text-decoration-none button--submit pt-3 pb-3"
                     href="#"
                     role="button"
@@ -132,7 +131,7 @@ export const Navbar = () => {
                     onClick={getSearchGame}
                   >
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                  </a>
+                  </button>
                 </Link>
               </div>
             </div>
@@ -159,11 +158,18 @@ export const Navbar = () => {
                   <FontAwesomeIcon icon={faUser} /> {user.username}
                 </a>
                 <ul className="dropdown-menu text-light">
+                  {(user?.role?.name === 'Administrador') ? (
+                  
                   <Link to={"/admin/hub"} className="text-decoration-none">
                     <li className="dropdown-item  text-warning " href="#">
                       <FontAwesomeIcon icon={faScrewdriver} /> <b>Dashboard</b>
                     </li>
                   </Link>
+                  ) :
+
+                    (<></>)
+                  }
+
                   <li className="dropdown-item " href="#">
                     <Link
                       to={`/user/configuration/${user.uid}`}

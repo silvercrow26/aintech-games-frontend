@@ -9,7 +9,7 @@ export const useAuthStore = () => {
     const dispatch = useDispatch();
 
     const startLogin = async ({ email, password }) => {
-            dispatch(onChecking());
+        dispatch(onChecking());
         try {
             const { data } = await gamesApi.post('/auth/login', { email, password });
             localStorage.setItem('token', data.token);
@@ -22,6 +22,21 @@ export const useAuthStore = () => {
             setTimeout(() => {
                 dispatch(onClearErrorMessage());
             }, 3100);
+        }
+    }
+
+    const startRegister = async ({ email, password, username }) => {
+        dispatch(onChecking());
+        try {
+            const { data } = await gamesApi.post('/auth/register', { email, password, username });
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+            dispatch(onLogin(data.user));
+        } catch (error) {
+            dispatch(onLogout(error.response.data?.msg || '--'));
+            setTimeout(() => {
+                dispatch(onClearErrorMessage());
+            }, 10);
         }
     }
 
@@ -57,5 +72,6 @@ export const useAuthStore = () => {
         startLogin,
         checkAuthToken,
         startLogout,
+        startRegister,
     }
 }

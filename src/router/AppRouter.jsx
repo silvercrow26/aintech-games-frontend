@@ -17,6 +17,8 @@ import { useGameHook } from '../games/hooks/useGameHook';
 import { AdminYoutubeDatabase } from '../games/components/Dashboard/AdminYoutubeDatabase';
 import { AdminNewVideo } from '../games/components/Dashboard/AdminNewVideo';
 import { useVideoStore } from '../games/hooks/useVideoStore';
+import { ForgotPasswordPage } from '../auth/pages/ForgotPasswordPage';
+import { ResetPasswordPage } from '../auth/pages/ResetPasswordPage';
 
 
 export const AppRouter = () => {
@@ -89,7 +91,9 @@ export const AppRouter = () => {
                         ) : (
                             <>
                                 <Route path='/auth/login' element={<LoginPage />} />
-                                {/* <Route path='/auth/register' element={<RegisterPage />} /> */}
+                                <Route path='/auth/forgot-password' element={<ForgotPasswordPage/>}></Route>
+                                <Route path='/auth/reset-password/:token' element={<ResetPasswordPage/>}></Route>
+                                <Route path='/auth/register' element={<RegisterPage />} />
                                 <Route path='/user/configuration/:id' element={<Navigate to="/auth/login" />} />
                                 <Route path='/user/profile/:name' element={<ProfileUser />} />
                             </>
