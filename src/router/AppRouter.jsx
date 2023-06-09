@@ -16,6 +16,7 @@ import { SearchPage } from '../games/pages/SearchPage';
 import { useGameHook } from '../games/hooks/useGameHook';
 import { AdminYoutubeDatabase } from '../games/components/Dashboard/AdminYoutubeDatabase';
 import { AdminNewVideo } from '../games/components/Dashboard/AdminNewVideo';
+import { useVideoStore } from '../games/hooks/useVideoStore';
 
 
 export const AppRouter = () => {
@@ -23,7 +24,8 @@ export const AppRouter = () => {
     const { status, checkAuthToken } = useAuthStore();
     const { games, startLoadingGames } = useGameStore();
     const { genres, startLoadingGenres } = useGenreStore();
-    const {search} = useGameHook();
+    const {videos, startLoadingVideos} = useVideoStore();
+
     useEffect(() => {
         checkAuthToken();
     }, []);
@@ -34,6 +36,9 @@ export const AppRouter = () => {
         }
         if (genres.length === 0) {
             startLoadingGenres();
+        }
+        if (videos.length === 0) {
+            startLoadingVideos();
         }
     }, [games])
 

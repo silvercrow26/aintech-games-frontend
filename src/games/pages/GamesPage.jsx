@@ -5,6 +5,7 @@ import { SliderAds } from '../components/SliderAds';
 import { useGameHook } from '../hooks/useGameHook';
 import { Ads, Carousel, GameItem, GamesMostDownloaded, Loader, useGameStore } from '../index'
 import './GamesPage.css';
+import { VideoItem } from '../components/Videos/VideoItem';
 
 
 export const GamesPage = () => {
@@ -20,10 +21,12 @@ export const GamesPage = () => {
   return (
     <>
       <Carousel />
+
       <main className="container">
         <h4 className="text-light mt-4">Últimos <b>juegos de PC</b> agregados</h4>
         <hr className="text-light" />
-
+        
+        <VideoItem />
 
         {
           (isLoading) ? <Loader /> :
@@ -36,6 +39,7 @@ export const GamesPage = () => {
         }
 
       </main>
+      
     </>
   )
 }
