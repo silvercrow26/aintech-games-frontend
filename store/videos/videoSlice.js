@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const videoSlice = createSlice({
-    name: 'sliceName',
+    name: 'videos',
     initialState,
     reducers: {
         onLoadingVideos: (state,) => {

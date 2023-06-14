@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { onAddVideo, onDeleteVideo, onLoadingVideos, onSetActiveGame, onSetActiveVideo, onSetVideos, onUpdateVideo } from '../../../store/index'
+import { onAddVideo, onDeleteVideo, onLoadingVideos, onSetActiveVideo, onSetVideos, onUpdateVideo } from '../../../store/index'
 import gamesApi from '../../api/gamesApi';
 
 export const useVideoStore = () => {
-    const { videos, isLoading, activeVideo, errorMessage } = useSelector(state => state.video);
+    const { videos, isLoading, activeVideo, errorMessage, onSetError } = useSelector(state => state.video);
     const dispatch = useDispatch();
 
     const setActiveVideo = (video) => {
@@ -23,7 +23,7 @@ export const useVideoStore = () => {
     const startSavingVideo = async (video) => {
         try {
             if (video._id) {
-                await gamesApi.put(`/videos/${game._id}`, video);
+                await gamesApi.put(`/videos/${video._id}`, video);
                 dispatch(onUpdateVideo(video));
                 return;
             }
@@ -38,7 +38,7 @@ export const useVideoStore = () => {
 
     const startDeleteVideo = async (video) => {
         try {
-            await gamesApi.delete(`/videos/${game._id}`);
+            await gamesApi.delete(`/videos/${video._id}`);
             dispatch(onDeleteVideo());
         } catch (error) {
             dispatch(onSetError(error.response.data.msg));

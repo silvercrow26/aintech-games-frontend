@@ -26,20 +26,22 @@ export const GamesPage = () => {
         <h4 className="text-light mt-4">Últimos <b>juegos de PC</b> agregados</h4>
         <hr className="text-light" />
         
-        <VideoItem />
 
         {
           (isLoading) ? <Loader /> :
-            data.length === 0 ? <p className='ms-5'>No hay juegos disponibles en este momento.</p> :
-              <div className='row'>
+          data.length === 0 ? <p className='ms-5'>No hay juegos disponibles en este momento.</p> :
+          <div className='row'>
                 <div className="gamesPageCard col mb-5"> <GameItem games={games} style={"w-50"} /></div>
                 <div className="col-md-4 mostWanted">
                   <GamesMostDownloaded className="mostdownloaded" /></div>
               </div>
         }
 
+      <h4 className="text-light mt-4">Últimos <b>Videos</b> agregados</h4>
+      <hr className="text-light" />
+
+        <VideoItem />
       </main>
-      
     </>
   )
 }

@@ -2,7 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {faYoutube} from "@fortawesome/free-brands-svg-icons";
+import { useVideoStore } from '../../hooks/useVideoStore';
+import { AdminYoutubeDatabaseItem } from './AdminYoutubeDatabaseItem';
 export const AdminYoutubeDatabase = () => {
+    const { videos } = useVideoStore();
+
     return (
         <>
             <section className="container mb-5">
@@ -12,6 +16,21 @@ export const AdminYoutubeDatabase = () => {
             <span className="backgroundAdminButtons p-3"><FontAwesomeIcon icon={faYoutube} /> Agregar Video de Youtube</span>
           </Link>
                 </div>
+                <table className="table table-dark table-hover table-responsive text-light container backgroundAdminSideBar mt-5">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Video</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+         {videos.map((video) =>  (
+                 <AdminYoutubeDatabaseItem  video={video} key={video._id}/>
+         ))}
+        </tbody>
+      </table>
             </section>
         </>
     )
