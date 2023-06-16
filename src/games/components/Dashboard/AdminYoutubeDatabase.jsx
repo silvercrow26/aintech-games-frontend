@@ -28,7 +28,7 @@ export const AdminYoutubeDatabase = () => {
         <tbody>
          {videos.map((video) =>  (
                  <AdminYoutubeDatabaseItem  video={video} key={video._id}/>
-         ))}
+         )).reverse()}
         </tbody>
       </table>
             </section>

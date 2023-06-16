@@ -20,7 +20,7 @@ export const VideoItem = () => {
           <div className="p-5 text-light" key={video._id}>
             <VideoCard {...video} />
           </div>
-        ))}
+        )).reverse()}
       </div>
       <div className="col-sm-12 col-md-4">
         <div className="backgroundCard">

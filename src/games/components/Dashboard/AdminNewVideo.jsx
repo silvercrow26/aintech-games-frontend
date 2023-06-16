@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from '../../hooks/useForm'
 import { useVideoStore } from '../../hooks/useVideoStore';
-
+import Swal from 'sweetalert2';
 
 const formFields = {
     name: '',
@@ -11,14 +11,19 @@ const formFields = {
 export const AdminNewVideo = () => {
 
     const { name, iframe, onInputChange, formState } = useForm(formFields);
-    const { videos, activeVideo, setActiveVideo, startSavingVideo } = useVideoStore();
+    const { videos, activeVideo, setActiveVideo, startSavingVideo, errorMessage } = useVideoStore();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const data = await startSavingVideo(formState);
-            console.log(data);
+            if(videos.length > 2){
+                Swal.fire('Ocurrió un error, solo puede haber 3 videos publicados, porfavor borre uno', errorMessage, 'error');
+            }else{
+                const data = await startSavingVideo(formState);
+                console.log(data);
+            }
+            
         } catch (error) {
             console.log(error);
         }

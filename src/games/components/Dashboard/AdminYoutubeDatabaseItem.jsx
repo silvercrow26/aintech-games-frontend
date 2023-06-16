@@ -4,12 +4,14 @@ import { set } from 'date-fns/esm'
 import React from 'react'
 import { useVideoStore } from '../../hooks/useVideoStore'
 import Swal from 'sweetalert2';
+import { useUiStore } from '../../hooks/useUiStore'
+import { VideoModal } from '../Videos/VideoModal'
 
 
 export const AdminYoutubeDatabaseItem = ({video}) => {
 
     const {videos, startDeleteVideo, setActiveVideo} = useVideoStore();
-
+    const { openYoutubeModal } = useUiStore();
     const handleDelete = () => {
       setActiveVideo(video)
       Swal.fire({
@@ -28,6 +30,11 @@ export const AdminYoutubeDatabaseItem = ({video}) => {
 
     }
 
+    const handleEdit = () => {
+        openYoutubeModal();
+        setActiveVideo(video);
+    }
+
     return (
         <tr>
             <td>{video?._id}</td>
@@ -43,7 +50,7 @@ export const AdminYoutubeDatabaseItem = ({video}) => {
               allowFullScreen
             ></iframe></td>
              <td className="">
-                    <button  className="btn btn-outline-warning text-light">
+                    <button  className="btn btn-outline-warning text-light" onClick={handleEdit}>
                         <FontAwesomeIcon icon={faPencilAlt} />
                     </button>
                     <br />
@@ -52,6 +59,7 @@ export const AdminYoutubeDatabaseItem = ({video}) => {
                     </button>
                 </td>
            
+           <VideoModal />
             
         </tr>
     )
