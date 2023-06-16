@@ -28,7 +28,7 @@ export const UserPageId = () => {
             </thead>
             <tbody className="">
               <tr>
-                <td>{user.name} </td>
+                <td>{user.username} </td>
                 <td>
                   {user.email}{" "} 
                 

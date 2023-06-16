@@ -3,16 +3,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../games/hooks/useForm'
+import { useAuthStore } from '../hooks/useAuthStore'
 
 const loginRegisterFields = {
-  registerName: '',
-  registerEmail: '',
-  registerPassword: '',
-  repeatRegisterPassword: '',
+  username: '',
+  email: '',
+  password: '',
+  repeatPassword: '',
 }
 
 export const RegisterPage = () => {
-  const { registerName, registerEmail, registerPassword, repeatRegisterPassword, onInputChange } = useForm(loginRegisterFields);
+  const { username, email, password, repeatPassword, onInputChange, formState } = useForm(loginRegisterFields);
+  const { startRegister } = useAuthStore();
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+
+    if (password !== repeatPassword) {
+      console.log('Las contraseñas no coinciden');
+      return;
+    }
+    try {
+      await startRegister(formState);
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log(formState);
+  }
+
   return (
     <div>
       <div className='container mt-3  border p-5 bgCardLogin mb-5'>
@@ -27,8 +46,8 @@ export const RegisterPage = () => {
               type="text"
               className='borderInputs p-2  bg-dark w-100 text-light'
               placeholder='Nombre'
-              name='registerName'
-              value={registerName}
+              name='username'
+              value={username}
               onChange={onInputChange}
               required
             />
@@ -39,8 +58,8 @@ export const RegisterPage = () => {
               type="email"
               className='borderInputs p-2  bg-dark w-100 text-light'
               placeholder='Correo'
-              name='registerEmail'
-              value={registerEmail}
+              name='email'
+              value={email}
               onChange={onInputChange}
 
               required
@@ -52,8 +71,8 @@ export const RegisterPage = () => {
               type="password"
               className="borderInputs p-2  bg-dark w-100 text-light"
               placeholder="Contraseña"
-              name='registerPassword'
-              value={registerPassword}
+              name='password'
+              value={password}
               onChange={onInputChange}
 
               required
@@ -66,17 +85,16 @@ export const RegisterPage = () => {
               type="password"
               className="borderInputs p-2  bg-dark w-100 text-light"
               placeholder="Contraseña"
-              name='repeatRegisterPassword'
-              value={repeatRegisterPassword}
+              name='repeatPassword'
+              value={repeatPassword}
               onChange={onInputChange}
-
               required
             />
           </div>
 
           <div className='mt-3 text-center'>
 
-            <button type="submit" className='buttonRegistro w-50 mx-5 text-center'>Registrarse</button>
+            <button type="submit" className='buttonRegistro w-50 mx-5 text-center' onClick={handleRegister}>Registrarse</button>
             <div className="mt-3 ">
               <Link className="text-center text-light text-decoration-none" to='/auth/login'><b>¿Ya tienes una cuenta? <span className="text-primary">Conectar</span></b></Link>
             </div>

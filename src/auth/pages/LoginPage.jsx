@@ -7,6 +7,7 @@ import { faArrowLeft, faEnvelope, faLock, faShield } from '@fortawesome/free-sol
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import logosinfondo from '../../assets/logosinfondo.png'
+
 const loginFormFields = {
   loginEmail: '',
   loginPassword: ''
@@ -68,6 +69,9 @@ export const LoginPage = () => {
             <button type="submit" className='buttonLoginAuth w-25 mx-5 text-center'>Iniciar Sesión</button>
             <div className="mt-3 ">
               <Link className="text-center text-decoration-none" to='/auth/register'><b>Crear una cuenta de aintech.online gratis</b></Link>
+            </div>
+            <div className="mt-3 ">
+              <Link className="text-center text-decoration-none" to='/auth/forgot-password'><b>Forgot password</b></Link>
             </div>
           </div>
           <p className="text-center small text-secondary mt-3"><FontAwesomeIcon icon={faShield} /> Datos seguros y protegidos</p>
