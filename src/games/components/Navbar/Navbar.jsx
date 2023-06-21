@@ -19,7 +19,6 @@ export const Navbar = () => {
   const { status, startLogout, user } = useAuthStore();
   const { games, setActiveGame, activeGame } = useGameStore();
   const { getSearchGame, setInputSearch, inputSearch } = useGameHook();
-  const { setCounter } = useCounter(1);
 
   const handleLogout = () => {
     startLogout();
@@ -36,7 +35,6 @@ export const Navbar = () => {
             aria-current="page"
             href="#"
             to="/"
-            onClick={() => setCounter(1)}
           >
             <img src={logosinfondo} className="logoNavbar" />
           </Link>
@@ -59,7 +57,6 @@ export const Navbar = () => {
                   aria-current="page"
                   href="#"
                   to="/"
-                  onClick={() => setCounter(1)}
                 >
 
                   Inicio

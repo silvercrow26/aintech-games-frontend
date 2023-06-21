@@ -1,21 +1,28 @@
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useGameHook } from "../../hooks/useGameHook";
 import { useGameStore } from "../../hooks/useGameStore";
 import { DiscordWidget } from "../DiscordWidget";
 import { YoutubeWidget } from "../YoutubeWidget";
+
 export const LastGameUploaded = ({ latestGamesData }) => {
-  const { setActiveGame } = useGameStore();
+  const { setActiveGame, activeGame } = useGameStore();
+
+  const handleClick = (item) => {
+    if (activeGame && activeGame._id != item._id) {
+      setActiveGame(item);
+    }
+  }
+
   return (
     <div className="mt-5">
       <h5 className="text-center mb-3  mt-5">Últimos juegos subidos</h5>
       <hr />
       {latestGamesData.map((item) => (
         <Link
-          to={`/juegos/${item._id}`}
-          onClick={() => setActiveGame(item)}
+          onClick={() => handleClick(item)}
+          to={`/juegos/${item.index}`}
           key={item._id}
         >
           <div className=" mb-3 bgCard">
@@ -37,8 +44,8 @@ export const LastGameUploaded = ({ latestGamesData }) => {
         />
       </div>
       <div className="justify-content-center socialmedia">
-          <DiscordWidget />
-          <YoutubeWidget />
+        <DiscordWidget />
+        <YoutubeWidget />
       </div>
 
     </div>

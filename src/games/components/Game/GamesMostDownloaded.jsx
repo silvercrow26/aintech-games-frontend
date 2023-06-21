@@ -27,7 +27,7 @@ export const GamesMostDownloaded = () => {
             {gameMostDownloaded ? gameMostDownloaded.map((item, index) => (
                 <div className="imagenMostWanted" key={item._id}>
                     <h2 className="position-absolute mx-2 mt-1 backgroundIndexMostWantedCard ">#{index + 1}</h2>
-                    <Link onClick={() => handleClick(item)} to={`juegos/${item._id}`}>
+                    <Link onClick={() => handleClick(item)} to={`juegos/${item.index}`}>
                         <div className="backgroundMostWantedCard mb-2 " >
                             <img src={item.header_image} className=" w-100 " />
                         </div>

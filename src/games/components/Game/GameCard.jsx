@@ -18,7 +18,7 @@ export const GameCard = (item) => {
     <>
       {item !== null ? (
 
-        <Link to={`/juegos/${item._id}`} className="text-decoration-none">
+        <Link to={`/juegos/${item.index}`} className="text-decoration-none">
           <div onClick={handleSubmit} className="text-light bgCard mb-2 mx-1 ">
             <img
               src={item.header_image}

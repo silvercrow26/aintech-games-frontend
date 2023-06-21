@@ -11,16 +11,16 @@ export const GameCardWithId = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { games, activeGame, setActiveGame } = useGameStore();
-  const { getLatestGamesUploaded, setLatestGameData, latestGamesData } = useGameHook();
-  const url = `${import.meta.env.VITE_API_HOST}/juegos/${params.id}`;
+  const { getLatestGamesUploaded, latestGamesData } = useGameHook();
+  const url = `${import.meta.env.VITE_API_HOST}/juegos/${params.index}`;
 
   useEffect(() => {
     if (activeGame == null && games.length > 0) {
-      const { 0: game } = games.filter((game) => game._id === params.id);
+      const { 0: game } = games.filter((game) => game.index === params.index);
       setActiveGame(game);
       getLatestGamesUploaded();
     }
-  }, [games, latestGamesData]);
+  }, [games]);
 
   const handleClick = (genre) => {
     navigate(`/juegos/generos/${genre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(' ').join('-')}`);

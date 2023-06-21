@@ -13,7 +13,6 @@ import {
 import '../App.css';
 import { Wrapper } from '../Wrapper';
 import { SearchPage } from '../games/pages/SearchPage';
-import { useGameHook } from '../games/hooks/useGameHook';
 import { AdminYoutubeDatabase } from '../games/components/Dashboard/AdminYoutubeDatabase';
 import { AdminNewVideo } from '../games/components/Dashboard/AdminNewVideo';
 import { useVideoStore } from '../games/hooks/useVideoStore';
@@ -70,7 +69,7 @@ export const AppRouter = () => {
                 <Route path='/juegos/nivel/altos-requisitos' element={<HighRequirementsPage />} />
                 <Route path='/juegos/nivel/medios-requisitos' element={<MediumRequirementsPage />} />
                 <Route path='/juegos/nivel/bajos-requisitos' element={<LowRequirementsPage />} />
-                <Route path='/juegos/:id' element={<GameCardWithId />} />
+                <Route path='/juegos/:index' element={<GameCardWithId />} />
                 <Route path='/juegos/busqueda' element={<SearchPage />} />    
                 <Route path="/*" element={<ErrorPage />} />
 

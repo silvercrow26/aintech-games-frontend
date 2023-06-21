@@ -10,7 +10,6 @@ export const VideoItem = () => {
   const { videos } = useVideoStore();
 
   useEffect(() => {
-    console.log(videos);
   }, [videos]);
 
   return (

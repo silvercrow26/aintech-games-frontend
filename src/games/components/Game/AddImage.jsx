@@ -41,7 +41,7 @@ export const AddImage = () => {
                 await startSavingGenre(item.description);
             })
         }
-        navigate(`/juegos/${data._id}`);
+        navigate(`/juegos/${data.index}`);
         Swal.fire({
             position: 'top-end',
             icon: 'success',
